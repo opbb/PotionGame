@@ -3,8 +3,9 @@
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
 
-# All
-*
+# All in the game folder
+/PotionGame/
+/PotionGame/*
 
 # Don't ignore things in the assets folder
 !/PotionGame/
