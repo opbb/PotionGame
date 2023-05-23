@@ -2,6 +2,15 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
+
+# All
+*
+
+# Don't ignore things in the assets folder
+!./PotionGame/Assets/
+!./PotionGame/Assets/*
+
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
