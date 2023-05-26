@@ -32,7 +32,7 @@ public class PickUpBehavior : MonoBehaviour
         /* 
          * Checks what's in front of the player if:
          *  - The player is trying to pick something up
-         *  - There is currently something highlighted (so that we can instantly un-highlight once the item leaves the screen)
+         *  - There is currently something highlighted (so that we can instantly un-highlight once the item isn't in range)
          *  - It has been _checkInterval_ since our last check
          */
         
