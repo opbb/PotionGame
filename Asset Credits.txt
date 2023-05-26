@@ -1,0 +1,2 @@
+Quick Outline - https://assetstore.unity.com/packages/tools/particles-effects/quick-outline-115488
+UniTask - https://github.com/Cysharp/UniTask
