@@ -1,0 +1,22 @@
+.visual-icon-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+    background-color: rgb(14, 14, 14);
+    border-width: 1px;
+    border-color: rgb(75, 75, 75);
+}
+.visual-icon {
+    height: 100%;
+    width: 100%;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.slot-icon-highlighted {
+    border-width: 1px;
+    border-color: rgb(202, 158, 0);
+    transform-origin: center;
+    position: absolute;
+    visibility: hidden;
+}
