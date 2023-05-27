@@ -5,14 +5,19 @@ using UnityEngine;
 public class PickUpBehavior : MonoBehaviour
 {
     [Header("Gamefeel Options")]
+    [Tooltip("The maximum distance (in meters) from which items can be picked up.")]
     [SerializeField] private float pickUpRange;
+    [Tooltip("How close to the center of the screen pickups need to be to be highlighted.\nRecommended: .25ish")]
     [SerializeField] private float pickUpWidth;
 
     [Header("Performance Options")]
+    [Tooltip("The number of seconds between checks for items.\nRecommended: .1ish")]
     [SerializeField] private float checkInterval;
 
     [Header("Unity Options")]
+    [Tooltip("The name of the button which is used to pick things up.\nRecommended: Fire1")]
     [SerializeField] private string pickUpButton;
+    [Tooltip("The Layers which are able to be picked up. Set this to Pickup")]
     [SerializeField] private LayerMask pickupLayers;
 
     private float lastCheckTime;
@@ -42,7 +47,7 @@ public class PickUpBehavior : MonoBehaviour
 
             // Offset the origin back by the sphere radius so that you can pick up things directly in front of your face
             // (colliders that start within the sphere are not registered.)
-            Vector3 castOrigin = transform.position + (transform.forward * pickUpWidth * -1f); 
+            Vector3 castOrigin = transform.position + (transform.forward * pickUpWidth * -1f);
 
             // Cast a sphere in front of the camera to check for anything in the pickup layer. We use a sphere instead of a ray to reduce the need for accuracy.
             if (Physics.SphereCast(castOrigin, pickUpWidth, transform.forward, out hit, pickUpRange, pickupLayers, QueryTriggerInteraction.Collide))
@@ -62,7 +67,7 @@ public class PickUpBehavior : MonoBehaviour
             else
             {
                 // There is no pickup in front of us
-                NullSafeClearOldOutline();
+                ClearCurrentOutline();
             }
         }
     }
@@ -79,29 +84,27 @@ public class PickUpBehavior : MonoBehaviour
     private void HighlightPickup(GameObject pickup)
     {
         // Only execute code if there is a new object to highlight
-        if (!ReferenceEquals(pickup, currentOutline))
+        if (currentOutline == null || !ReferenceEquals(pickup, currentOutline.gameObject))
         {
-            NullSafeClearOldOutline();
+            ClearCurrentOutline();
 
             Outline pickupOutline;
             if (pickup.TryGetComponent<Outline>(out pickupOutline))
             {
-                // If the new object has an outline, enable it and store
+                // If the new object has an outline, enable and store it
                 pickupOutline.enabled = true;
                 currentOutline = pickupOutline;
             }
             else
             {
-                // If the new object doesn't have an outline, report it and clear outline
-                Debug.Log("The pickup that is being hovered over should have an Outline component.\nCheck to make sure that the children of the PickupParent arent set to the Pickup layer.");
-                currentOutline = null;
+                // If the new object doesn't have an outline, give it one
+                currentOutline = pickup.AddComponent<Outline>();
             }
         }
     }
 
-    private void NullSafeClearOldOutline()
+    private void ClearCurrentOutline()
     {
-        // Disable old outline
         if (currentOutline != null)
         {
             currentOutline.enabled = false;
