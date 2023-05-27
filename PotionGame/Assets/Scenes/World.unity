@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1570094, g: 0.4551212, b: 0.6094171, a: 1}
+  m_IndirectSpecularColor: {r: 0.15700936, g: 0.4551212, b: 0.6094171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -30853,14 +30853,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2618555589701929170, guid: 6f632e2fa9c498745881cb28ff81be14, type: 3}
-      propertyPath: airControl
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2618555589701929170, guid: 6f632e2fa9c498745881cb28ff81be14, type: 3}
-      propertyPath: jumpHeight
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2618555589701929172, guid: 6f632e2fa9c498745881cb28ff81be14, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -30904,30 +30896,6 @@ PrefabInstance:
     - target: {fileID: 2618555589701929172, guid: 6f632e2fa9c498745881cb28ff81be14, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6874713013575702858, guid: 6f632e2fa9c498745881cb28ff81be14, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6874713013575702858, guid: 6f632e2fa9c498745881cb28ff81be14, type: 3}
-      propertyPath: pickUpRange
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6874713013575702858, guid: 6f632e2fa9c498745881cb28ff81be14, type: 3}
-      propertyPath: pickUpWidth
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6874713013575702858, guid: 6f632e2fa9c498745881cb28ff81be14, type: 3}
-      propertyPath: pickUpButton
-      value: Fire1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6874713013575702858, guid: 6f632e2fa9c498745881cb28ff81be14, type: 3}
-      propertyPath: checkInterval
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6874713013575702858, guid: 6f632e2fa9c498745881cb28ff81be14, type: 3}
-      propertyPath: pickupLayers.m_Bits
-      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f632e2fa9c498745881cb28ff81be14, type: 3}
