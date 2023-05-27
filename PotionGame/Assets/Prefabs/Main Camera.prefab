@@ -97,10 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38b5c4e09fd92e4c9f39e74c5d5abbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpRange: 1
-  pickUpWidth: 0.25
-  checkInterval: 0.1
-  pickUpButton: Fire1
+  pickUpRange: 0
+  pickUpWidth: 0
+  checkInterval: 0
+  pickUpButton: 
   pickupLayers:
     serializedVersion: 2
     m_Bits: 64

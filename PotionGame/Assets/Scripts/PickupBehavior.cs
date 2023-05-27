@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpBehavior : MonoBehaviour
+public class PickupBehavior : MonoBehaviour
 {
 
     [Header("Gamefeel Options")]
