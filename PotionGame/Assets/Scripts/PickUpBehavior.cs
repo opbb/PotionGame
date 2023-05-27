@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickupBehavior : MonoBehaviour
+public class PickUpBehavior : MonoBehaviour
 {
-
     [Header("Gamefeel Options")]
     [SerializeField] private float pickUpRange;
     [SerializeField] private float pickUpWidth;
@@ -35,7 +34,7 @@ public class PickupBehavior : MonoBehaviour
          *  - There is currently something highlighted (so that we can instantly un-highlight once the item isn't in range)
          *  - It has been _checkInterval_ since our last check
          */
-        
+
         if (Input.GetButton(pickUpButton) || lastOutlined != null || Time.time - lastCheckTime >= checkInterval)
         {
             lastCheckTime = Time.time;
@@ -55,7 +54,8 @@ public class PickupBehavior : MonoBehaviour
                 {
                     HighlightPickup(pickup);
                 }
-            } else
+            }
+            else
             {
                 // There is no pickup in front of us
                 NullSafeClearOldOutline();
@@ -85,7 +85,8 @@ public class PickupBehavior : MonoBehaviour
                 // If the new object has an outline, enable it and store
                 pickupOutline.enabled = true;
                 lastOutlined = pickup;
-            } else
+            }
+            else
             {
                 // If the new object doesn't have an outline, report it and clear outline
                 Debug.Log("The pickup that is being hovered over should have an Outline component.\nCheck to make sure that the children of the PickupParent arent set to the Pickup layer.");
