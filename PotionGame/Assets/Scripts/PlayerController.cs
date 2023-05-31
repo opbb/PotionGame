@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    public float jumpHeight = 1f;
+    public float jumpHeight = 10f;
     public float gravity = 9.8f;
-    public float airControl = 3f;
+    public float airControl = 10f; 
 
     CharacterController controller;
     Vector3 input, moveDirection;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,18 +26,16 @@ public class PlayerController : MonoBehaviour
 
         input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
 
-        input *= moveSpeed;
+        input *= moveSpeed; 
 
         if (controller.isGrounded)
         {
-            moveDirection = input;
+            moveDirection = input; 
             // we can jump
             if (Input.GetButton("Jump"))
             {
-                Debug.Log("Jump pressed");
-
                 moveDirection.y = Mathf.Sqrt(2 * jumpHeight * gravity);
-            }
+            } 
             else
             {
                 moveDirection.y = 0.0f;
@@ -51,9 +49,9 @@ public class PlayerController : MonoBehaviour
         }
 
         // apply gravity 
-        moveDirection.y -= gravity * Time.deltaTime;
+        moveDirection.y -= gravity * Time.deltaTime; 
 
         controller.Move(moveDirection * Time.deltaTime);
-
+        
     }
 }
