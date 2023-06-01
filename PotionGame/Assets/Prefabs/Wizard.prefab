@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 7430035105156665035}
   - component: {fileID: 2024844219683552349}
   - component: {fileID: 2119331768689407357}
+  - component: {fileID: 936954599}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Player
@@ -220,7 +221,21 @@ MonoBehaviour:
   - {fileID: 0}
   recipes:
   - {fileID: 11400000, guid: b95dcd0127d85b444ae50cfccfcf3677, type: 2}
-  - {fileID: 11400000, guid: 5f5ea14e6bfe1324d9e106720030a12a, type: 2}
+  - {fileID: 11400000, guid: b95dcd0127d85b444ae50cfccfcf3677, type: 2}
+--- !u!114 &936954599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7430035105156664884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f33906e90ae0b64491f5341cc301f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questInfo: 
+  questTime: 100
 --- !u!1001 &1494892267842511148
 PrefabInstance:
   m_ObjectHideFlags: 0
