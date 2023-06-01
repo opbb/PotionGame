@@ -7,8 +7,12 @@ public class MouseLook : MonoBehaviour
     Transform playerBody;
     public float mouseSensitivity = 150f;
     public static bool isUIActive; 
+    public Vector3 thirdPersonOffset = new Vector3(0, 2, -2);
+    public Vector3 firstPersonOffset = new Vector3(0.142f, 2.52f, 0.5f);
 
     float pitch = 0;
+
+    bool isFirstPerson = true;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +41,28 @@ public class MouseLook : MonoBehaviour
             pitch = Mathf.Clamp(pitch, -90f, 90f);
 
             transform.localRotation = Quaternion.Euler(pitch, 0, 0);
+
+            // toggle between first and third person
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                ToggleViewMode();
+            }
         }
         
+    }
+
+    void ToggleViewMode() {
+        isFirstPerson = !isFirstPerson;
+
+        if (isFirstPerson)
+        {
+            transform.localPosition = firstPersonOffset;
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
+            transform.localPosition = thirdPersonOffset;
+            transform.localRotation = Quaternion.Euler(20, 0, 0);
+        }
     }
 }

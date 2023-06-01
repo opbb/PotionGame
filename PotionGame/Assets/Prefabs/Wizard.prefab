@@ -97,7 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964c9dc29f2e9e84a9ef028564bc0fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
+  mouseSensitivity: 400
+  thirdPersonOffset: {x: 0, y: 4, z: -4}
+  firstPersonOffset: {x: 0.142, y: 2.52, z: 0.5}
 --- !u!1 &7430035105156664884
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questInfo: 
   questTime: 100
+  questText: {fileID: 0}
 --- !u!1001 &1494892267842511148
 PrefabInstance:
   m_ObjectHideFlags: 0
