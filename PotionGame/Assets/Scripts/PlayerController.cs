@@ -12,10 +12,13 @@ public class PlayerController : MonoBehaviour
     CharacterController controller;
     Vector3 input, moveDirection;
     
+    private RecipeManager recipeManager;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        recipeManager = GetComponent<RecipeManager>();
     }
 
     // Update is called once per frame
@@ -52,6 +55,11 @@ public class PlayerController : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime; 
 
         controller.Move(moveDirection * Time.deltaTime);
-        
+
+        if (InRange.isInRange && Input.GetKeyDown(KeyCode.T))
+        {
+            recipeManager.displayRecipies();
+        }
+
     }
 }
