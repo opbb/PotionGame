@@ -74,9 +74,6 @@ public class PickUpBehavior : MonoBehaviour
 
     private void PickUp(GameObject pickup)
     {
-        PlayerInventory.Instance.StoreInInv(pickup.name);
-        PlayerInventory.Instance.ShowInv();
-
         Destroy(pickup); // Destroy the pickup
     }
 
