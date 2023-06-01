@@ -7,6 +7,7 @@
     border-width: 1px;
     border-color: rgb(75, 75, 75);
 }
+
 .visual-icon {
     height: 100%;
     width: 100%;
@@ -19,4 +20,13 @@
     transform-origin: center;
     position: absolute;
     visibility: hidden;
+}
+
+.mouse-tracker {
+    flex-basis: 100%;
+    flex-grow: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    visibility: visible;
 }

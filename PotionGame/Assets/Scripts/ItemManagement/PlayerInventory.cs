@@ -2,35 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.UIElements;
-using Cysharp.Threading.Tasks;
-using System.Linq;
-using System.Threading.Tasks;
 
-public sealed class PlayerInventory : MonoBehaviour
+/*
+ * PlayerInventory manages the mechanics of the inventory, storing the data, making it accessible
+ * to other scripts, and ensuring the Tetrising happens correctly.
+ */
+public class PlayerInventory : MonoBehaviour
 {
-    // A static variable allowing any script to access the inventory.
+    public static Dimensions InventoryDimensions { get; private set; }
+
+    public List<ItemDefinition> startingItems;
+
+    // The number of slots in the 
+    private readonly int InventoryWidthSlotCount = 7;
+    private readonly int InventoryHeightSlotCount = 8;
+
+    // The array representing the grid of the inventory.
+    private StoredItem[,] inventory;
+
+    // A static variable allowing any script to access the inventory UI.
     [HideInInspector] public static PlayerInventory Instance;
 
-    private VisualElement m_Root;
-    private VisualElement m_InventoryGrid;
-    private static Label m_ItemDetailHeader;
-    private static Label m_ItemDetailBody;
-    private static Label m_ItemDetailPrice;
-    private bool m_IsInventoryReady;
-    public static Dimensions SlotDimension { get; private set; }
+    // Start is called before the first frame update
+    void Start()
+    {
+        LoadInventory();
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
 
-    public List<StoredItem> StoredItems = new List<StoredItem>();
-    public Dimensions InventoryDimensions;
+    }
 
-    private VisualElement m_Telegraph;
-
-
-    // Temporary way of storing inventory, for testing
-    // TODO: Make real inventory
-    private ArrayList invList;
-    
     // This awake method enforces the singleton design pattern.
     // i.e. there can only ever be one PlayerInventory
     private void Awake()
@@ -38,7 +42,8 @@ public sealed class PlayerInventory : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            Configure();
+            ConfigureInventoryDimensions();
+            ConfigureInventoryArray();
         }
         else if (Instance != this)
         {
@@ -46,171 +51,259 @@ public sealed class PlayerInventory : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void LoadInventory()
     {
-        invList = new ArrayList();
-        LoadInventory();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void StoreInInv(string itemName)
-    {
-        invList.Add(itemName);
-    }
-
-    public void ShowInv()
-    {
-        string invMsg = "Inventory: ";
-        bool first = true;
-        foreach(string itemName in invList)
+        foreach(ItemDefinition item in startingItems)
         {
-            if(!first)
+            StoredItem initItem = new StoredItem();
+            initItem.Details = item;
+            bool wasAdded = AutoAddItem(initItem);
+            if(!wasAdded)
             {
-                invMsg = invMsg + ", ";
-            } else
-            {
-                first = false;
+                Debug.Log("Could not add item \"" + item.CommonName + "\" as it would not fit.");
             }
-            invMsg = invMsg + itemName;
         }
-        invMsg = invMsg + ".";
-        Debug.Log(invMsg);
+        PlayerInventoryView.Instance.LoadInventory();
     }
 
-    // Methods below copied from tutorial, I will finish them later
-    // TODO: Implement inventory
-    private async void Configure()
+    private void ConfigureInventoryDimensions()
     {
-        m_Root = GetComponentInChildren<UIDocument>().rootVisualElement;
-        m_InventoryGrid = m_Root.Q<VisualElement>("Grid");
-        //VisualElement itemDetails = m_Root.Q<VisualElement>("ItemDetails");
-        //m_ItemDetailHeader = itemDetails.Q<Label>("Header");
-        //m_ItemDetailBody = itemDetails.Q<Label>("Body");
-        //m_ItemDetailPrice = itemDetails.Q<Label>("SellPrice");
-        //await UniTask.WaitForEndOfFrame();
-
-        ConfigureInventoryTelegraph();
-
-        await UniTask.Yield(PlayerLoopTiming.LastPostLateUpdate);
-        ConfigureSlotDimensions();
-        m_IsInventoryReady = true;
-    }
-    private void ConfigureSlotDimensions()
-    {
-        VisualElement firstSlot = m_InventoryGrid.Children().First();
-        SlotDimension = new Dimensions
+        InventoryDimensions = new Dimensions
         {
-            Width = Mathf.RoundToInt(firstSlot.worldBound.width),
-            Height = Mathf.RoundToInt(firstSlot.worldBound.height)
+            Width = InventoryWidthSlotCount,
+            Height = InventoryHeightSlotCount
         };
     }
-    private async Task<bool> GetPositionForItem(VisualElement newItem)
+    
+    private void ConfigureInventoryArray()
+    {
+        inventory = new StoredItem[InventoryWidthSlotCount, InventoryHeightSlotCount];
+    }
+
+        // Applies the given lambda function to all the slots for the given item.
+        // Returns ApplyToSlotsResults.OutOfBounds if the given position and dimensions were outside the inventory.
+        // Otherwise, stores the boolean output of the lambda, and if there was a false, returns ApplyToSlotsResults.LambdaError
+        // If there were only trues, returns ApplyToSlotsResults.LambdaSuccess
+    private ApplyToSlotsResults ApplyToItemSlots(InvPos position, Dimensions dimensions, Func<int, int, bool> lambda)
+    {
+        if (position.x + dimensions.Width >= PlayerInventory.InventoryDimensions.Width ||
+           position.y + dimensions.Height >= PlayerInventory.InventoryDimensions.Height)
+        {
+            return ApplyToSlotsResults.OutOfBounds;
+        }
+
+        bool lambdaSuccess = true;
+
+        // Iterate through all affected slots
+        for (int i = position.x; i < (position.x + dimensions.Width); i++)
+        {
+            for (int j = position.y; j < (position.y + dimensions.Height); j++)
+            {
+                lambdaSuccess = lambdaSuccess && lambda(i,j);
+            }
+        }
+
+        if (lambdaSuccess)
+        {
+            return ApplyToSlotsResults.LambdaSuccess;
+        } else
+        {
+            return ApplyToSlotsResults.LambdaError;
+        }
+    }
+
+    // Overload to allow Actions (ie. lambda's that return void)
+    private ApplyToSlotsResults ApplyToItemSlots(InvPos position, Dimensions dimensions, Action<int, int> action)
+    {
+        Func<int, int, bool> lambda = (x, y) =>
+        {
+            action(x, y);
+            return true;
+        };
+        return ApplyToItemSlots(position, dimensions, lambda);
+    }
+
+    private enum ApplyToSlotsResults {
+        OutOfBounds,
+        LambdaError,
+        LambdaSuccess
+   }
+
+    // Adds the given item to the inventory at the given position. Returns true if the item was added successfully, and false otherwise.
+    public bool AddToInventory(InvPos position, StoredItem item)
+    {
+        Dimensions dim = item.Details.SlotDimension;
+
+        if (AreSlotsOpen(position, dim))
+        {
+            Func<int, int, bool> lambda = (x, y) =>
+            {
+                inventory[x,y] = item;
+                return true;
+            };
+
+            ApplyToSlotsResults results = ApplyToItemSlots(position, dim, lambda);
+            item.position = position;
+
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+    // Checks that all the slots occupied by the given dimensions at the given position are empty.
+    public bool AreSlotsOpen(InvPos position, Dimensions dimensions) 
+    {
+        Func<int, int, bool> lambda = (x, y) => inventory[x,y] == null;
+
+        ApplyToSlotsResults results = ApplyToItemSlots(position, dimensions, lambda);
+
+        return results == ApplyToSlotsResults.LambdaSuccess;
+    }
+
+    // OVERLOAD: Checks that all the slots occupied by the given item at the given position are empty.
+    public bool AreSlotsOpen(InvPos position, StoredItem item)
+    {
+        Dimensions dim = item.Details.SlotDimension;
+        return AreSlotsOpen(position, dim);
+    }
+
+    public bool AreSlotsItem(InvPos position, StoredItem item)
+    {
+        Dimensions dim = item.Details.SlotDimension;
+
+        Func<int, int, bool> lambda = (x, y) => ReferenceEquals(inventory[x, y], item);
+
+        ApplyToSlotsResults results = ApplyToItemSlots(position, dim, lambda);
+
+        return results == ApplyToSlotsResults.LambdaSuccess;
+    }
+
+    // Removes the given item, throws an error if the item is not in the inventory or if a slot being cleared does not contain the item
+    public void RemoveFromInventory(StoredItem item)
+    {
+        Dimensions dim = item.Details.SlotDimension;
+
+        if (item.position == null)
+        {
+            throw new InvalidOperationException("The given item's position is null. It is probably not in the inventory.");
+        }
+
+        if (AreSlotsItem(item.position, item))
+        {
+            Action<int, int> lambda = (x, y) =>
+            {
+                inventory[x, y] = null;
+            };
+
+            ApplyToSlotsResults results = ApplyToItemSlots(item.position, dim, lambda);
+            item.position = null; // Item is no longer in inventory, so remove position
+        } else
+        {
+            throw new InvalidOperationException("The given item's position is occupied by other items.");
+        }
+    }
+
+    public List<StoredItem> GetItemsInInventory()
+    {
+        List<StoredItem> invList = new List<StoredItem>();
+
+        StoredItem currentItem = null;
+
+        Predicate<StoredItem> sameAsCurrent = (itemInList) => ReferenceEquals(itemInList, currentItem);
+
+        for (int y = 0; y < InventoryDimensions.Height; y++)
+        {
+            for (int x = 0; x < InventoryDimensions.Width; x++)
+            {
+                currentItem = inventory[x,y];
+                if(currentItem != null && !invList.Exists(sameAsCurrent))
+                {
+                    invList.Add(currentItem);
+                }
+            }
+        }
+
+        return invList;
+    }
+
+    public bool AutoAddItem(StoredItem newItem)
     {
         for (int y = 0; y < InventoryDimensions.Height; y++)
         {
             for (int x = 0; x < InventoryDimensions.Width; x++)
             {
                 //try position
-                SetItemPosition(newItem, new Vector2(SlotDimension.Width * x,
-                    SlotDimension.Height * y));
-                //await UniTask.WaitForEndOfFrame();
-                await UniTask.Yield(PlayerLoopTiming.LastPostLateUpdate);
-                StoredItem overlappingItem = StoredItems.FirstOrDefault(s =>
-                    s.RootVisual != null &&
-                    s.RootVisual.layout.Overlaps(newItem.layout));
-                //Nothing is here! Place the item.
-                if (overlappingItem == null)
+                bool successful = AddToInventory(new InvPos(x,y), newItem);
+
+                if(successful)
                 {
                     return true;
                 }
             }
         }
+
         return false;
     }
-    private static void SetItemPosition(VisualElement element, Vector2 vector)
+
+
+    // Opens the inventory with the given item in the lefthand side, ready to be stored
+    public void OpenInventoryWithItem(string item)
     {
-        element.style.left = vector.x;
-        element.style.top = vector.y;
+        // TODO: MAke method fr
+        Debug.Log(item);
     }
 
-    private async void LoadInventory()
+    // A class storing a position within the player inventory. Ensures that the position is within bounds.
+    public class InvPos
     {
-        await UniTask.WaitUntil(() => m_IsInventoryReady);
-        foreach (StoredItem loadedItem in StoredItems)
-        {
-            ItemVisual inventoryItemVisual = new ItemVisual(loadedItem.Details);
+        public readonly int x;
+        public readonly int y;
 
-            AddItemToInventoryGrid(inventoryItemVisual);
-            bool inventoryHasSpace = await GetPositionForItem(inventoryItemVisual);
-            if (!inventoryHasSpace)
+        public InvPos(int x, int y)
+        {
+            // Check that the position is within bounds
+            if(!IsValid(x,y))
             {
-                Debug.Log("No space - Cannot pick up the item");
-                RemoveItemFromInventoryGrid(inventoryItemVisual);
-                continue;
+                throw new ArgumentException("The given coordinates (" + x + "," + y + ") are outside of the bounds of the inventory (" +
+                    PlayerInventory.InventoryDimensions.Width  + "," + PlayerInventory.InventoryDimensions.Height  + ".");
             }
-            ConfigureInventoryItem(loadedItem, inventoryItemVisual);
+
+            this.x = x;
+            this.y = y;
         }
-    }
-    private void AddItemToInventoryGrid(VisualElement item) => m_InventoryGrid.Add(item);
-    private void RemoveItemFromInventoryGrid(VisualElement item) => m_InventoryGrid.Remove(item);
-    private static void ConfigureInventoryItem(StoredItem item, ItemVisual visual)
-    {
-        item.RootVisual = visual;
-        visual.style.visibility = Visibility.Visible;
+
+        public static bool IsValid(int x, int y) =>
+            x >= 0 && y >= 0 && x < PlayerInventory.InventoryDimensions.Width && y < PlayerInventory.InventoryDimensions.Height;
     }
 
-    private void ConfigureInventoryTelegraph()
+    //For testing
+    public void LogInventory()
     {
-        m_Telegraph = new VisualElement
+        string outString = "";
+        for (int y = 0; y < InventoryDimensions.Height; y++)
         {
-            name = "Telegraph",
-            style =
-        {
-            position = Position.Absolute,
-            visibility = Visibility.Hidden
+            for (int x = 0; x < InventoryDimensions.Width; x++)
+            {
+                if(inventory[x,y] == null)
+                {
+                    outString = outString + " _ ";
+                } else
+                {
+                    outString = outString + " " + inventory[x,y].Details.CommonName.Substring(0,1) + " ";
+                }
+            }
+            outString = outString + "\n";
         }
-        };
-        m_Telegraph.AddToClassList("slot-icon-highlighted");
-        AddItemToInventoryGrid(m_Telegraph);
+        Debug.Log(outString);
     }
+}
 
-    public (bool canPlace, Vector2 position) ShowPlacementTarget(ItemVisual draggedItem)
-    {
-        if (!m_InventoryGrid.layout.Contains(new Vector2(draggedItem.localBound.xMax,
-            draggedItem.localBound.yMax)))
-        {
-            m_Telegraph.style.visibility = Visibility.Hidden;
-            return (canPlace: false, position: Vector2.zero);
-        }
-        VisualElement targetSlot = m_InventoryGrid.Children().Where(x =>
-            x.layout.Overlaps(draggedItem.layout) && x != draggedItem).OrderBy(x =>
-            Vector2.Distance(x.worldBound.position,
-            draggedItem.worldBound.position)).First();
-        m_Telegraph.style.width = draggedItem.style.width;
-        m_Telegraph.style.height = draggedItem.style.height;
-        SetItemPosition(m_Telegraph, new Vector2(targetSlot.layout.position.x,
-            targetSlot.layout.position.y));
-        m_Telegraph.style.visibility = Visibility.Visible;
-        var overlappingItems = StoredItems.Where(x => x.RootVisual != null &&
-            x.RootVisual.layout.Overlaps(m_Telegraph.layout)).ToArray();
-        if (overlappingItems.Length > 1)
-        {
-            m_Telegraph.style.visibility = Visibility.Hidden;
-            return (canPlace: false, position: Vector2.zero);
-        }
-        return (canPlace: true, targetSlot.worldBound.position);
-    }
-
-    [Serializable]
-    public class StoredItem
-    {
-        public ItemDefinition Details;
-        public ItemVisual RootVisual;
-    }
+[Serializable]
+public class StoredItem
+{
+    public PlayerInventory.InvPos position; // Should be null if the item is not in the inventory
+    public ItemDefinition Details;
+    public ItemVisual RootVisual;
 }
