@@ -87,4 +87,12 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    public void TeleportPlayer(Vector3 position)
+    {
+        moveDirection = Vector3.zero;
+        controller.enabled = false;
+        transform.position = position;
+        controller.enabled = true;
+    }
 }
