@@ -7,11 +7,15 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 10f;
     public float jumpHeight = 10f;
     public float gravity = 9.8f;
-    public float airControl = 10f; 
+    public float airControl = 10f;
 
+    public AudioClip walkingSFX;
+    public AudioClip jumpStartSFX;
+
+    AudioSource audioSource;
     CharacterController controller;
     Vector3 input, moveDirection;
-    
+
     private RecipeManager recipeManager;
 
     // Start is called before the first frame update
@@ -19,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         recipeManager = GetComponent<RecipeManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -29,18 +34,35 @@ public class PlayerController : MonoBehaviour
 
         input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
 
-        input *= moveSpeed; 
+        input *= moveSpeed;
 
+        bool isMoving = input.magnitude > 0.01f;
+
+      
         if (controller.isGrounded)
         {
-            moveDirection = input; 
-            // we can jump
+            moveDirection = input;
+
+            if (isMoving && !audioSource.isPlaying)
+            {
+                audioSource.clip = walkingSFX;
+                audioSource.Play();
+            }
+            else if (!isMoving)
+            {
+                audioSource.Stop();
+            }
+
             if (Input.GetButton("Jump"))
             {
+                // Play jump start clip
+                audioSource.clip = jumpStartSFX;
+                audioSource.Play();
+
                 moveDirection.y = Mathf.Sqrt(2 * jumpHeight * gravity);
                 // doing this bc animation clips with camera on jump
                 Camera.main.nearClipPlane = 0.9f;
-            } 
+            }
             else
             {
                 moveDirection.y = 0.0f;
@@ -55,7 +77,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // apply gravity 
-        moveDirection.y -= gravity * Time.deltaTime; 
+        moveDirection.y -= gravity * Time.deltaTime;
 
         controller.Move(moveDirection * Time.deltaTime);
 
