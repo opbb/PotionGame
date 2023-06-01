@@ -6,6 +6,7 @@ public class MouseLook : MonoBehaviour
 {
     Transform playerBody;
     public float mouseSensitivity = 150f;
+    public static bool isUIActive; 
 
     float pitch = 0;
 
@@ -15,23 +16,28 @@ public class MouseLook : MonoBehaviour
         playerBody = transform.parent.transform;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        isUIActive = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float moveX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float moveY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        if (!isUIActive)
+        {
+            float moveX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+            float moveY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        // Apply yaw rotation to player body
-        playerBody.Rotate(Vector3.up * moveX);
+            // Apply yaw rotation to player body
+            playerBody.Rotate(Vector3.up * moveX);
 
-        // Apply pitch to camera
-        pitch -= moveY;
+            // Apply pitch to camera
+            pitch -= moveY;
 
-        // limit player from rotating all the way upside down
-        pitch = Mathf.Clamp(pitch, -90f, 90f);
+            // limit player from rotating all the way upside down
+            pitch = Mathf.Clamp(pitch, -90f, 90f);
 
-        transform.localRotation = Quaternion.Euler(pitch, 0, 0);
+            transform.localRotation = Quaternion.Euler(pitch, 0, 0);
+        }
+        
     }
 }
