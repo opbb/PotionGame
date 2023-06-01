@@ -54,6 +54,12 @@ public sealed class PlayerInventoryView : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        Configure();
+        LoadInventory();
+    }
+
     // Update is called once per frame
     void Update()
     {

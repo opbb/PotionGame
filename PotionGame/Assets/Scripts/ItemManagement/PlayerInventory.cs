@@ -11,6 +11,9 @@ public class PlayerInventory : MonoBehaviour
 {
     public static Dimensions InventoryDimensions { get; private set; }
 
+    [SerializeField] private KeyCode inventoryKey = KeyCode.E;
+    [SerializeField] private GameObject playerInventoryView;
+
     public List<ItemDefinition> startingItems;
 
     // The number of slots in the 
@@ -32,7 +35,26 @@ public class PlayerInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(inventoryKey))
+        {
+            if(playerInventoryView.activeInHierarchy)
+            {
+                DisableInventoryView();
+            } else
+            {
+                EnableInventoryView();
+            }
+        }
+    }
 
+    public void EnableInventoryView()
+    {
+        playerInventoryView.SetActive(true);
+    }
+
+    public void DisableInventoryView()
+    {
+        playerInventoryView.SetActive(false);
     }
 
     // This awake method enforces the singleton design pattern.
@@ -86,8 +108,8 @@ public class PlayerInventory : MonoBehaviour
         // If there were only trues, returns ApplyToSlotsResults.LambdaSuccess
     private ApplyToSlotsResults ApplyToItemSlots(InvPos position, Dimensions dimensions, Func<int, int, bool> lambda)
     {
-        if (position.x + dimensions.Width >= PlayerInventory.InventoryDimensions.Width ||
-           position.y + dimensions.Height >= PlayerInventory.InventoryDimensions.Height)
+        if (position.x + dimensions.Width - 1 >= PlayerInventory.InventoryDimensions.Width ||
+           position.y + dimensions.Height - 1 >= PlayerInventory.InventoryDimensions.Height) // Subtrack one from each to account for indexing from 0
         {
             return ApplyToSlotsResults.OutOfBounds;
         }
@@ -136,10 +158,9 @@ public class PlayerInventory : MonoBehaviour
 
         if (AreSlotsOpen(position, dim))
         {
-            Func<int, int, bool> lambda = (x, y) =>
+            Action<int, int> lambda = (x, y) =>
             {
                 inventory[x,y] = item;
-                return true;
             };
 
             ApplyToSlotsResults results = ApplyToItemSlots(position, dim, lambda);
