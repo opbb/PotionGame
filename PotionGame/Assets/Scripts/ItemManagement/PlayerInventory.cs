@@ -15,6 +15,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private GameObject playerInventoryView;
 
     public List<ItemDefinition> startingItems;
+    private List<StoredItem> looseItemQueue;
 
     // The number of slots in the 
     private readonly int InventoryWidthSlotCount = 7;
@@ -25,6 +26,23 @@ public class PlayerInventory : MonoBehaviour
 
     // A static variable allowing any script to access the inventory UI.
     [HideInInspector] public static PlayerInventory Instance;
+
+
+    // This awake method enforces the singleton design pattern.
+    // i.e. there can only ever be one PlayerInventory
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            Configure();
+
+        }
+        else if (Instance != this)
+        {
+            Destroy(this);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +65,18 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    private void Configure()
+    {
+        ConfigureInventoryDimensions();
+        ConfigureInventoryArray();
+        ConfigureLooseQueue();
+    }
+
+    private void ConfigureLooseQueue()
+    {
+        looseItemQueue = new List<StoredItem>();
+    }
+
     public void EnableInventoryView()
     {
         playerInventoryView.SetActive(true);
@@ -55,22 +85,6 @@ public class PlayerInventory : MonoBehaviour
     public void DisableInventoryView()
     {
         playerInventoryView.SetActive(false);
-    }
-
-    // This awake method enforces the singleton design pattern.
-    // i.e. there can only ever be one PlayerInventory
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            ConfigureInventoryDimensions();
-            ConfigureInventoryArray();
-        }
-        else if (Instance != this)
-        {
-            Destroy(this);
-        }
     }
 
     private void LoadInventory()
@@ -85,7 +99,12 @@ public class PlayerInventory : MonoBehaviour
                 Debug.Log("Could not add item \"" + item.CommonName + "\" as it would not fit.");
             }
         }
-        PlayerInventoryView.Instance.LoadInventory();
+        
+        if(PlayerInventoryView.Instance != null) 
+        {
+            PlayerInventoryView.Instance.LoadInventory();
+        }
+        
     }
 
     private void ConfigureInventoryDimensions()
@@ -270,10 +289,13 @@ public class PlayerInventory : MonoBehaviour
 
 
     // Opens the inventory with the given item in the lefthand side, ready to be stored
-    public void OpenInventoryWithItem(string item)
+    public void OpenInventoryWithItem(ItemDefinition itemDef)
     {
-        // TODO: MAke method fr
-        Debug.Log(item);
+        StoredItem item = new StoredItem();
+        item.Details = itemDef;
+        looseItemQueue.Add(item);
+
+        EnableInventoryView();
     }
 
     // A class storing a position within the player inventory. Ensures that the position is within bounds.
@@ -297,6 +319,13 @@ public class PlayerInventory : MonoBehaviour
 
         public static bool IsValid(int x, int y) =>
             x >= 0 && y >= 0 && x < PlayerInventory.InventoryDimensions.Width && y < PlayerInventory.InventoryDimensions.Height;
+    }
+
+    public List<StoredItem> DequeueLooseItems()
+    {
+        List<StoredItem>  currentQueue = new List<StoredItem>(looseItemQueue);
+        looseItemQueue.Clear();
+        return currentQueue;
     }
 
     //For testing

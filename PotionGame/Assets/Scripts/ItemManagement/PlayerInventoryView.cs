@@ -21,6 +21,7 @@ public sealed class PlayerInventoryView : MonoBehaviour
     private VisualElement m_Root;
     private VisualElement m_InventoryGrid;
     private VisualElement m_WholeScreen;
+    private VisualElement m_Loose;
     private MouseTracker mouseTracker;
     //private static Label m_ItemDetailHeader;
     //private static Label m_ItemDetailBody;
@@ -82,6 +83,8 @@ public sealed class PlayerInventoryView : MonoBehaviour
         m_Root = GetComponentInChildren<UIDocument>().rootVisualElement;
         m_InventoryGrid = m_Root.Q<VisualElement>("Grid");
         m_WholeScreen = m_Root.Q<VisualElement>("WholeScreen");
+        m_Loose = m_Root.Q<VisualElement>("Loose");
+        
         //VisualElement itemDetails = m_Root.Q<VisualElement>("ItemDetails");
         //m_ItemDetailHeader = itemDetails.Q<Label>("Header");
         //m_ItemDetailBody = itemDetails.Q<Label>("Body");
@@ -115,17 +118,24 @@ public sealed class PlayerInventoryView : MonoBehaviour
     {
         await UniTask.WaitUntil(() => m_IsInventoryReady);
         List<StoredItem> invList = PlayerInventory.Instance.GetItemsInInventory();
-        Debug.Log("Items in inventory:");
+        List<StoredItem> looseList = PlayerInventory.Instance.DequeueLooseItems();
         foreach (StoredItem loadedItem in invList)
         {
-            Debug.Log(loadedItem);
-            Debug.Log(loadedItem.Details.CommonName);
             ItemVisual inventoryItemVisual = new ItemVisual(loadedItem);
 
             AddItemToInventoryGrid(inventoryItemVisual);
             SetItemPosition(inventoryItemVisual, new Vector2(SlotDimension.Width * loadedItem.position.x,
                     SlotDimension.Height * loadedItem.position.y));
             ConfigureInventoryItem(loadedItem, inventoryItemVisual);
+        }
+
+        foreach (StoredItem looseItem in looseList)
+        {
+            ItemVisual looseItemVisual = new ItemVisual(looseItem);
+
+            AddItemToInventoryGrid(looseItemVisual);
+            SetItemPosition(looseItemVisual, new Vector2(-m_InventoryGrid.layout.center.x, m_InventoryGrid.layout.center.y));
+            ConfigureInventoryItem(looseItem, looseItemVisual);
         }
     }
     private void AddItemToInventoryGrid(VisualElement item) => m_InventoryGrid.Add(item);

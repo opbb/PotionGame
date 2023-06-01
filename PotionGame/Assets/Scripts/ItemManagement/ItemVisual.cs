@@ -76,12 +76,13 @@ public class ItemVisual : VisualElement
         int xSlot = xPos / PlayerInventoryView.SlotDimension.Width;
         int ySlot = yPos / PlayerInventoryView.SlotDimension.Height;
 
-
         // First, if the item is currently in the inventory, remove it and record its position in case we have to put it back.
         PlayerInventory.InvPos originalPosition = null;
+        bool startedInInventory = false;
         if (thisItem.position != null)
         {
             originalPosition = thisItem.position;
+            startedInInventory = true;
             PlayerInventory.Instance.RemoveFromInventory(thisItem);
         }
 
@@ -96,13 +97,14 @@ public class ItemVisual : VisualElement
             {
                 // Place item visual
                 MoveToGridSlot(xSlot, ySlot);
+
             } else
             {
                 // Return item visual to original position
                 SetPosition(new Vector2(m_OriginalPosition.x, m_OriginalPosition.y));
 
                 // If the item was originally in the inventory, re-add it
-                if (originalPosition != null)
+                if (startedInInventory)
                 {
                     successful = PlayerInventory.Instance.AddToInventory(originalPosition, thisItem);
 
