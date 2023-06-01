@@ -48,25 +48,6 @@ public class ItemVisual : VisualElement
         style.top = pos.y;
     }
 
-    private void OnMouseUpEvent(MouseUpEvent mouseEvent)
-    {
-        if (!m_IsDragging)
-        {
-            StartDrag();
-            return;
-        }
-        m_IsDragging = false;
-
-        if (m_PlacementResults.canPlace)
-        {
-            SetPosition(new Vector2(
-                m_PlacementResults.position.x - parent.worldBound.position.x,
-                m_PlacementResults.position.y - parent.worldBound.position.y));
-            return;
-        }
-        SetPosition(new Vector2(m_OriginalPosition.x, m_OriginalPosition.y));
-    }
-
     public void TryPlace()
     {
         int xPos = Mathf.RoundToInt(layout.x) + (PlayerInventoryView.SlotDimension.Width / 2);

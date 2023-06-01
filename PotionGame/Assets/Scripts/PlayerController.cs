@@ -5,17 +5,25 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    public float jumpHeight = 1f;
+    public float jumpHeight = 10f;
     public float gravity = 9.8f;
-    public float airControl = 3f;
+    public float airControl = 10f;
 
+    public AudioClip walkingSFX;
+    public AudioClip jumpStartSFX;
+
+    AudioSource audioSource;
     CharacterController controller;
     Vector3 input, moveDirection;
+
+    private RecipeManager recipeManager;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        recipeManager = GetComponent<RecipeManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -28,19 +36,37 @@ public class PlayerController : MonoBehaviour
 
         input *= moveSpeed;
 
+        bool isMoving = input.magnitude > 0.01f;
+
+      
         if (controller.isGrounded)
         {
             moveDirection = input;
-            // we can jump
+
+            if (isMoving && !audioSource.isPlaying)
+            {
+                audioSource.clip = walkingSFX;
+                audioSource.Play();
+            }
+            else if (!isMoving)
+            {
+                audioSource.Stop();
+            }
+
             if (Input.GetButton("Jump"))
             {
-                Debug.Log("Jump pressed");
+                // Play jump start clip
+                audioSource.clip = jumpStartSFX;
+                audioSource.Play();
 
                 moveDirection.y = Mathf.Sqrt(2 * jumpHeight * gravity);
+                // doing this bc animation clips with camera on jump
+                Camera.main.nearClipPlane = 0.9f;
             }
             else
             {
                 moveDirection.y = 0.0f;
+                Camera.main.nearClipPlane = 0.01f;
             }
         }
         else
@@ -55,5 +81,18 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(moveDirection * Time.deltaTime);
 
+        if (InRange.isInRange && Input.GetKeyDown(KeyCode.T))
+        {
+            recipeManager.displayRecipies();
+        }
+
+    }
+
+    public void TeleportPlayer(Vector3 position)
+    {
+        moveDirection = Vector3.zero;
+        controller.enabled = false;
+        transform.position = position;
+        controller.enabled = true;
     }
 }

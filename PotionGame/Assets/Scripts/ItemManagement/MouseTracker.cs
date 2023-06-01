@@ -13,7 +13,6 @@ public class MouseTracker : VisualElement
         //this.style.height = parent.style.height;
         //this.style.position = parent.style.position;
         RegisterCallback<MouseMoveEvent>(OnMouseMoveEvent);
-        Debug.Log("MouseTracker Created");
     }
 
     ~MouseTracker()

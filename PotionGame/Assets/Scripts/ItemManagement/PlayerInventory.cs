@@ -79,12 +79,24 @@ public class PlayerInventory : MonoBehaviour
 
     public void EnableInventoryView()
     {
-        playerInventoryView.SetActive(true);
+        if(playerInventoryView != null)
+        {
+            playerInventoryView.SetActive(true);
+            MouseLook.isUIActive = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+        }
     }
 
     public void DisableInventoryView()
     {
-        playerInventoryView.SetActive(false);
+        if (playerInventoryView != null)
+        {
+            playerInventoryView.SetActive(false);
+            MouseLook.isUIActive = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     private void LoadInventory()
