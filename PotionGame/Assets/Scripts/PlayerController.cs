@@ -38,10 +38,13 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButton("Jump"))
             {
                 moveDirection.y = Mathf.Sqrt(2 * jumpHeight * gravity);
+                // doing this bc animation clips with camera on jump
+                Camera.main.nearClipPlane = 0.9f;
             } 
             else
             {
                 moveDirection.y = 0.0f;
+                Camera.main.nearClipPlane = 0.01f;
             }
         }
         else
