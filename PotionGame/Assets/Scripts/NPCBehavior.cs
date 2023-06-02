@@ -45,7 +45,7 @@ public class NPCBehavior : MonoBehaviour
         }
 
         // if player is in quest menu, don't act
-        if (questManager.showGUI) {
+        if (questManager.showGUI && questManager.quest == quest) {
             // making player look at npc, lerp over time
             var lookPos = transform.position - player.transform.position;
             lookPos.y = 0;
