@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BasicQuest
   m_EditorClassIdentifier: 
   questName: Strongest Potions
-  requiredPotion: unavailable(their too strong)
+  requiredPotion: Dandelion
   questDialogue: I'd like your strongest potions sir
   questCompleteDialogue: This isn't your strongest! But thank you.
   questAcceptDialogue: Only the strongest please!

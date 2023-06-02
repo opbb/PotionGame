@@ -20,12 +20,17 @@ public class QuestManager : MonoBehaviour
     public float maxInteractDistance = 2.0f;
     // public float questTime = 100;
     public QuestState questState = QuestState.Initiate;
+    public PlayerInventory inventory;
     Rect titleWindow = new Rect(0, 0, 200, 20);
     Rect textWindow = new Rect(0, 20, 200, 130);
 
     // Start is called before the first frame update
     void Start()
     {
+        if (inventory == null)
+        {
+            inventory = GameObject.Find("PlayerInventory").GetComponent<PlayerInventory>();
+        }
     }
 
     // Update is called once per frame
@@ -128,7 +133,28 @@ public class QuestManager : MonoBehaviour
         {
             Debug.Log("complete button pressed");
             // do something with the inventory here or smthn
+
+            List<StoredItem> ingredients = inventory.GetItemsInInventory();
+            StoredItem potion = CheckInventory(ingredients, quest.requiredPotion);
+            if (potion != null) {
+                Debug.Log("quest complete!");
+                questState = QuestState.Complete;
+                inventory.RemoveFromInventory(potion);
+            } else {
+                Debug.Log("missing ingredients!");
+            }
+
         }
+    }
+
+    StoredItem CheckInventory(List<StoredItem> ingredients, string potionName) {
+        foreach (StoredItem ingredient in ingredients) {
+            if (ingredient.Details.CommonName == potionName) {
+                return ingredient;
+            }
+        }
+
+        return null;
     }
 
     // first screen when seeing quest
