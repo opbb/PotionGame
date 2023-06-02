@@ -4,20 +4,13 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewQuest", menuName = "ScriptableObjects/Quest", order = 1)]
 
-public class Quests : ScriptableObject
+public class Quest : ScriptableObject
 {
     public string questName;
-    public int questTime;
     public string requiredPotion;
-    
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string questDialogue;
+    public string questCompleteDialogue;
+    public string questAcceptDialogue;
+    public string questRejectDialogue;
+    public string questInProgressDialogue;
 }

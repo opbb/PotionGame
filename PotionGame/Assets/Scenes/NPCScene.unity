@@ -501,23 +501,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1233163408}
   m_CullTransparentMesh: 1
---- !u!1 &1263819300 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3571375146726528178, guid: 57325e4a4eb4d2d4d8f43d92b274688b, type: 3}
-  m_PrefabInstance: {fileID: 3571375147981950614}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1263819305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1263819300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ce91f7b90d17c3499c0cf77b13e170a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1331264893
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1349346965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,6 +966,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2119331768689407357, guid: 31fc6cafad9d15d4ba7d74f0e885537f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2119331768689407357, guid: 31fc6cafad9d15d4ba7d74f0e885537f, type: 3}
       propertyPath: recipeButtons.Array.data[0]
       value: 
