@@ -2,7 +2,9 @@
     <Style src="project://database/Assets/UI/Stylesheets/InventoryStyleSheet.uss?fileID=7433441132597879392&amp;guid=01e0346a892e6714a9e3986bec8d7b1d&amp;type=3#InventoryStyleSheet" />
     <ui:VisualElement name="WholeScreen" style="width: 100%; height: 100%;">
         <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgba(152, 110, 38, 0.74); flex-direction: row;">
-            <ui:VisualElement name="Loose" style="width: 50%; margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+            <ui:VisualElement name="Loose" style="width: 50%; margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;">
+                <ui:VisualElement name="LooseCenter" style="justify-content: flex-start; left: 35%; top: 35%; right: auto; bottom: auto; width: 30%; height: 30%;" />
+            </ui:VisualElement>
             <ui:VisualElement name="Bag" style="width: 50%; margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px;">
                 <ui:VisualElement name="Grid" style="height: 100%; width: 100%; flex-direction: row; flex-wrap: wrap; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; justify-content: flex-start; align-items: stretch; left: auto;">
                     <ui:VisualElement name="SlotIcon" style="border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; width: 14.285%; height: 12.5%; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);" />

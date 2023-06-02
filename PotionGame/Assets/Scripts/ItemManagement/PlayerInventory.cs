@@ -182,7 +182,7 @@ public class PlayerInventory : MonoBehaviour
     // Opens the inventory with the given item in the lefthand side, ready to be stored
     public void OpenInventoryWithItems(List<ItemDefinition> itemDefs)
     {
-        foreach(ItemDefinition itemDef in itemDefs)
+        foreach (ItemDefinition itemDef in itemDefs)
         {
             StoredItem item = new StoredItem();
             item.Details = itemDef;

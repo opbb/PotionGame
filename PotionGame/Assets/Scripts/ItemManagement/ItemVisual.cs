@@ -105,13 +105,6 @@ public class ItemVisual : VisualElement
         //PlayerInventory.Instance.LogInventory();
     }
 
-    public void StartDrag()
-    {
-        m_IsDragging = true;
-        m_OriginalPosition = worldBound.position - parent.worldBound.position;
-        BringToFront();
-    }
-
     public void MoveToMouse(Vector2 mousePosition)
     {
         SetPosition(GetMousePosition(mousePosition));
@@ -134,6 +127,11 @@ public class ItemVisual : VisualElement
     }
 
     private void OnMouseDownEvent(MouseDownEvent mouseEvent)
+    {
+        StartDrag();
+    }
+
+    private void StartDrag()
     {
         m_OriginalPosition = worldBound.position - parent.worldBound.position;
         BringToFront();

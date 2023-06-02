@@ -24,7 +24,7 @@ public sealed class PlayerInventoryView : MonoBehaviour
     private VisualElement m_Root;
     private VisualElement m_InventoryGrid;
     private VisualElement m_WholeScreen;
-    private VisualElement m_Loose;
+    private VisualElement m_LooseCenter;
     private MouseTracker mouseTracker;
     //private static Label m_ItemDetailHeader;
     //private static Label m_ItemDetailBody;
@@ -64,7 +64,7 @@ public sealed class PlayerInventoryView : MonoBehaviour
         m_Root = GetComponentInChildren<UIDocument>().rootVisualElement;
         m_InventoryGrid = m_Root.Q<VisualElement>("Grid");
         m_WholeScreen = m_Root.Q<VisualElement>("WholeScreen");
-        m_Loose = m_Root.Q<VisualElement>("Loose");
+        m_LooseCenter = m_Root.Q<VisualElement>("LooseCenter");
         looseItems = new HashSet<StoredItem>();
         
         //VisualElement itemDetails = m_Root.Q<VisualElement>("ItemDetails");
@@ -182,6 +182,7 @@ public sealed class PlayerInventoryView : MonoBehaviour
             MouseLook.isUIActive = true;
             UnityEngine.Cursor.visible = true;
             UnityEngine.Cursor.lockState = CursorLockMode.None;
+            SwitchLooseCenterItemsToGrid();
         }
     }
 
@@ -202,8 +203,8 @@ public sealed class PlayerInventoryView : MonoBehaviour
     {
         ItemVisual looseItemVisual = new ItemVisual(item);
 
-        AddItemToInventoryGrid(looseItemVisual);
-        SetItemPosition(looseItemVisual, new Vector2(-m_InventoryGrid.layout.center.x, m_InventoryGrid.layout.center.y));
+        AddItemToLooseCenter(looseItemVisual);
+        SetItemPosition(looseItemVisual, new Vector2(0,0));
         ConfigureInventoryItem(item, looseItemVisual);
         looseItems.Add(item);
     }
@@ -245,6 +246,8 @@ public sealed class PlayerInventoryView : MonoBehaviour
 
     private void AddItemToInventoryGrid(VisualElement item) => m_InventoryGrid.Add(item);
     private void RemoveItemFromInventoryGrid(VisualElement item) => m_InventoryGrid.Remove(item);
+    private void AddItemToLooseCenter(VisualElement item) => m_LooseCenter.Add(item);
+    private void RemoveItemFromLooseCenter(VisualElement item) => m_LooseCenter.Remove(item);
 
     public void StartDragging(StoredItem item)
     {
@@ -256,6 +259,20 @@ public sealed class PlayerInventoryView : MonoBehaviour
 
             // So that the item doesn't teleport to the old mouse position before the mouse position updates
             mouseTracker.mousePosition = draggedItem.RootVisual.GetCenterPosition();
+        }
+    }
+
+    // Changes the parent of every child of loose center to be a child of inventory grid
+    private async void SwitchLooseCenterItemsToGrid()
+    {
+        await UniTask.Yield(PlayerLoopTiming.LastPostLateUpdate);
+        List<VisualElement> looseCenterChildren = new List<VisualElement>(m_LooseCenter.Children());
+
+        foreach(VisualElement child in looseCenterChildren)
+        {
+            RemoveItemFromLooseCenter(child);
+            AddItemToInventoryGrid(child);
+            SetItemPosition(child, m_LooseCenter.layout.position -m_InventoryGrid.parent.layout.position);
         }
     }
 
