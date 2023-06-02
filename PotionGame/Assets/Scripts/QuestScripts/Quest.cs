@@ -7,7 +7,7 @@ using UnityEngine;
 public class Quest : ScriptableObject
 {
     public string questName;
-    public string requiredPotion;
+    public ItemDefinition requiredPotion;
     public string questDialogue;
     public string questCompleteDialogue;
     public string questAcceptDialogue;

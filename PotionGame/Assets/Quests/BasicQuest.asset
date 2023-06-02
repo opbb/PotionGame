@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BasicQuest
   m_EditorClassIdentifier: 
   questName: Strongest Potions
-  requiredPotion: Dandelion
+  requiredPotion: {fileID: 11400000, guid: ff16e668a1428924c991404e333b5b30, type: 2}
   questDialogue: I'd like your strongest potions sir
   questCompleteDialogue: This isn't your strongest! But thank you.
   questAcceptDialogue: Only the strongest please!

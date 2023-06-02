@@ -131,19 +131,14 @@ public class QuestManager : MonoBehaviour
         // submitting code
         if (GUI.Button(new Rect(0, 150, 95, 20), "Complete"))
         {
-            Debug.Log("complete button pressed");
-            // do something with the inventory here or smthn
-
-            List<StoredItem> ingredients = inventory.GetItemsInInventory();
-            StoredItem potion = CheckInventory(ingredients, activeQuest.requiredPotion);
-            if (potion != null) {
+            bool success = inventory.TryTakeOutItem(activeQuest.requiredPotion);
+            if (success) {
                 Debug.Log("quest complete!");
                 questState = QuestState.Complete;
-                inventory.RemoveFromInventory(potion);
             } else {
+                GUI.TextField(textWindow, "You don't have it!", style);
                 Debug.Log("missing ingredients!");
             }
-
         }
     }
 
