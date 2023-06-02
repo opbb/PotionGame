@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
+  m_Name: Peony
+  m_EditorClassIdentifier: 
+  ID: f648efe6-4148-4de2-a72c-8832754ec6e5
+  CommonName: Peony
+  Description: Purple is the best color. Pink will do.
+  Icon: {fileID: 21300000, guid: 2fc638cd4d2ec8b41bf671e8cd2c2d53, type: 3}
+  SlotDimension:
+    Height: 2
+    Width: 1
