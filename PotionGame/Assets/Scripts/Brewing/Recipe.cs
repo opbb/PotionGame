@@ -8,4 +8,5 @@ public class Recipe : ScriptableObject
     public string recipeName;
     public int brewingTime;
     public List<StoredItem> requiredIngredients;
+    public StoredItem resultingItem;
 }

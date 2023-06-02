@@ -126,6 +126,8 @@ public class RecipeManager : MonoBehaviour
 
     private void StartBrewingPotion(Recipe recipe)
     {
+        // TODO figure out how to add item
+        //inventory.AutoAddItem(recipe.resultingItem);
         // Implement the logic to start brewing the potion
         // Use the properties of the recipe object to determine brewing time, effects, etc.
         Debug.Log("brewing " + recipe.name);
