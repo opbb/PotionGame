@@ -11,11 +11,7 @@ public class PlayerInventory : MonoBehaviour
 {
     public static Dimensions InventoryDimensions { get; private set; }
 
-    [SerializeField] private KeyCode inventoryKey = KeyCode.E;
-    [SerializeField] private GameObject playerInventoryView;
-
     public List<ItemDefinition> startingItems;
-    private List<StoredItem> looseItemQueue;
 
     // The number of slots in the 
     private readonly int InventoryWidthSlotCount = 7;
@@ -27,6 +23,10 @@ public class PlayerInventory : MonoBehaviour
     // A static variable allowing any script to access the inventory UI.
     [HideInInspector] public static PlayerInventory Instance;
 
+
+    // =======================================
+    // ========= Configuration/Setup =========
+    // =======================================
 
     // This awake method enforces the singleton design pattern.
     // i.e. there can only ever be one PlayerInventory
@@ -50,53 +50,24 @@ public class PlayerInventory : MonoBehaviour
         LoadInventory();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(inventoryKey))
-        {
-            if(playerInventoryView.activeInHierarchy)
-            {
-                DisableInventoryView();
-            } else
-            {
-                EnableInventoryView();
-            }
-        }
-    }
-
     private void Configure()
     {
         ConfigureInventoryDimensions();
         ConfigureInventoryArray();
-        ConfigureLooseQueue();
     }
 
-    private void ConfigureLooseQueue()
+    private void ConfigureInventoryDimensions()
     {
-        looseItemQueue = new List<StoredItem>();
-    }
-
-    public void EnableInventoryView()
-    {
-        if(playerInventoryView != null)
+        InventoryDimensions = new Dimensions
         {
-            playerInventoryView.SetActive(true);
-            MouseLook.isUIActive = true;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
-        }
+            Width = InventoryWidthSlotCount,
+            Height = InventoryHeightSlotCount
+        };
     }
 
-    public void DisableInventoryView()
+    private void ConfigureInventoryArray()
     {
-        if (playerInventoryView != null)
-        {
-            playerInventoryView.SetActive(false);
-            MouseLook.isUIActive = false;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        inventory = new StoredItem[InventoryWidthSlotCount, InventoryHeightSlotCount];
     }
 
     private void LoadInventory()
@@ -119,95 +90,37 @@ public class PlayerInventory : MonoBehaviour
         
     }
 
-    private void ConfigureInventoryDimensions()
+    // Adds the given item to the first open slot in the inventory. Notably does not add any visual for the item. Used for initial setup.
+    private bool AutoAddItem(StoredItem newItem)
     {
-        InventoryDimensions = new Dimensions
+        for (int y = 0; y < InventoryDimensions.Height; y++)
         {
-            Width = InventoryWidthSlotCount,
-            Height = InventoryHeightSlotCount
-        };
-    }
-    
-    private void ConfigureInventoryArray()
-    {
-        inventory = new StoredItem[InventoryWidthSlotCount, InventoryHeightSlotCount];
-    }
-
-        // Applies the given lambda function to all the slots for the given item.
-        // Returns ApplyToSlotsResults.OutOfBounds if the given position and dimensions were outside the inventory.
-        // Otherwise, stores the boolean output of the lambda, and if there was a false, returns ApplyToSlotsResults.LambdaError
-        // If there were only trues, returns ApplyToSlotsResults.LambdaSuccess
-    private ApplyToSlotsResults ApplyToItemSlots(InvPos position, Dimensions dimensions, Func<int, int, bool> lambda)
-    {
-        if (position.x + dimensions.Width - 1 >= PlayerInventory.InventoryDimensions.Width ||
-           position.y + dimensions.Height - 1 >= PlayerInventory.InventoryDimensions.Height) // Subtrack one from each to account for indexing from 0
-        {
-            return ApplyToSlotsResults.OutOfBounds;
-        }
-
-        bool lambdaSuccess = true;
-
-        // Iterate through all affected slots
-        for (int i = position.x; i < (position.x + dimensions.Width); i++)
-        {
-            for (int j = position.y; j < (position.y + dimensions.Height); j++)
+            for (int x = 0; x < InventoryDimensions.Width; x++)
             {
-                lambdaSuccess = lambdaSuccess && lambda(i,j);
+                //try position
+                bool successful = AddToInventory(new InvPos(x, y), newItem);
+
+                if (successful)
+                {
+                    return true;
+                }
             }
         }
 
-        if (lambdaSuccess)
-        {
-            return ApplyToSlotsResults.LambdaSuccess;
-        } else
-        {
-            return ApplyToSlotsResults.LambdaError;
-        }
+        return false;
     }
 
-    // Overload to allow Actions (ie. lambda's that return void)
-    private ApplyToSlotsResults ApplyToItemSlots(InvPos position, Dimensions dimensions, Action<int, int> action)
-    {
-        Func<int, int, bool> lambda = (x, y) =>
-        {
-            action(x, y);
-            return true;
-        };
-        return ApplyToItemSlots(position, dimensions, lambda);
-    }
+    // ================================
+    // ========= Safe For Use =========
+    // ================================
 
-    private enum ApplyToSlotsResults {
-        OutOfBounds,
-        LambdaError,
-        LambdaSuccess
-   }
-
-    // Adds the given item to the inventory at the given position. Returns true if the item was added successfully, and false otherwise.
-    public bool AddToInventory(InvPos position, StoredItem item)
-    {
-        Dimensions dim = item.Details.SlotDimension;
-
-        if (AreSlotsOpen(position, dim))
-        {
-            Action<int, int> lambda = (x, y) =>
-            {
-                inventory[x,y] = item;
-            };
-
-            ApplyToSlotsResults results = ApplyToItemSlots(position, dim, lambda);
-            item.position = position;
-
-            return true;
-        } else
-        {
-            return false;
-        }
-    }
+    // Note: These methods are friendly in that they maintain the sync between the PlayerInventory and the PlayerInventoryView,
+    //       so they should be safe to use as you please.
 
     // Checks that all the slots occupied by the given dimensions at the given position are empty.
-    public bool AreSlotsOpen(InvPos position, Dimensions dimensions) 
+    public bool AreSlotsOpen(InvPos position, Dimensions dimensions)
     {
-        Func<int, int, bool> lambda = (x, y) => inventory[x,y] == null;
+        Func<int, int, bool> lambda = (x, y) => inventory[x, y] == null;
 
         ApplyToSlotsResults results = ApplyToItemSlots(position, dimensions, lambda);
 
@@ -231,6 +144,97 @@ public class PlayerInventory : MonoBehaviour
 
         return results == ApplyToSlotsResults.LambdaSuccess;
     }
+
+    public List<StoredItem> GetItemsInInventory()
+    {
+        List<StoredItem> invList = new List<StoredItem>();
+
+        StoredItem currentItem = null;
+
+        Predicate<StoredItem> sameAsCurrent = (itemInList) => ReferenceEquals(itemInList, currentItem);
+
+        for (int y = 0; y < InventoryDimensions.Height; y++)
+        {
+            for (int x = 0; x < InventoryDimensions.Width; x++)
+            {
+                currentItem = inventory[x, y];
+                if (currentItem != null && !invList.Exists(sameAsCurrent))
+                {
+                    invList.Add(currentItem);
+                }
+            }
+        }
+
+        return invList;
+    }
+
+    // Opens the inventory with the given item in the lefthand side, ready to be stored
+    public void OpenInventoryWithItem(ItemDefinition itemDef)
+    {
+        StoredItem item = new StoredItem();
+        item.Details = itemDef;
+        PlayerInventoryView.Instance.AddLooseItem(item);
+        PlayerInventoryView.Instance.EnableInventoryView();
+    }
+
+    // If this type of item is present in the inventory then it will be removed, and the method will return true.
+    // If it is not present, then the method will return false.
+    public bool TryTakeOutItem(ItemDefinition itemDef)
+    {
+        StoredItem currentItem;
+
+        // Check every cell for the desired item
+        for (int y = 0; y < InventoryDimensions.Height; y++)
+        {
+            for (int x = 0; x < InventoryDimensions.Width; x++)
+            {
+                currentItem = inventory[x, y];
+
+                if (currentItem != null && currentItem.Details.ID.Equals(itemDef.ID))
+                {
+                    // If we find it, remove it and return true
+                    RemoveFromInventory(currentItem);
+                    PlayerInventoryView.Instance.RemoveItem(currentItem);
+                    return true;
+                }
+            }
+        }
+
+        // If we don't find it, return false
+        return false;
+    }
+
+    // ==========================================
+    // ========= Inventory Manipulation =========
+    // ==========================================
+
+    // Note: These methods are unfriendly in that they DO NOT maintain the sync between the PlayerInventory
+    //       and the PlayerInventoryView, so proceeed with caution.
+
+
+    // Adds the given item to the inventory at the given position. Returns true if the item was added successfully, and false otherwise.
+    public bool AddToInventory(InvPos position, StoredItem item)
+    {
+        Dimensions dim = item.Details.SlotDimension;
+
+        if (AreSlotsOpen(position, dim))
+        {
+            Action<int, int> lambda = (x, y) =>
+            {
+                inventory[x,y] = item;
+            };
+
+            ApplyToSlotsResults results = ApplyToItemSlots(position, dim, lambda);
+            item.position = position;
+
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+    
 
     // Removes the given item, throws an error if the item is not in the inventory or if a slot being cleared does not contain the item
     public void RemoveFromInventory(StoredItem item)
@@ -257,57 +261,57 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public List<StoredItem> GetItemsInInventory()
+    //Helpers
+
+    // Applies the given lambda function to all the slots for the given item.
+    // Returns ApplyToSlotsResults.OutOfBounds if the given position and dimensions were outside the inventory.
+    // Otherwise, stores the boolean output of the lambda, and if there was a false, returns ApplyToSlotsResults.LambdaError
+    // If there were only trues, returns ApplyToSlotsResults.LambdaSuccess
+    private ApplyToSlotsResults ApplyToItemSlots(InvPos position, Dimensions dimensions, Func<int, int, bool> lambda)
     {
-        List<StoredItem> invList = new List<StoredItem>();
-
-        StoredItem currentItem = null;
-
-        Predicate<StoredItem> sameAsCurrent = (itemInList) => ReferenceEquals(itemInList, currentItem);
-
-        for (int y = 0; y < InventoryDimensions.Height; y++)
+        if (position.x + dimensions.Width - 1 >= PlayerInventory.InventoryDimensions.Width ||
+           position.y + dimensions.Height - 1 >= PlayerInventory.InventoryDimensions.Height) // Subtrack one from each to account for indexing from 0
         {
-            for (int x = 0; x < InventoryDimensions.Width; x++)
+            return ApplyToSlotsResults.OutOfBounds;
+        }
+
+        bool lambdaSuccess = true;
+
+        // Iterate through all affected slots
+        for (int i = position.x; i < (position.x + dimensions.Width); i++)
+        {
+            for (int j = position.y; j < (position.y + dimensions.Height); j++)
             {
-                currentItem = inventory[x,y];
-                if(currentItem != null && !invList.Exists(sameAsCurrent))
-                {
-                    invList.Add(currentItem);
-                }
+                lambdaSuccess = lambdaSuccess && lambda(i, j);
             }
         }
 
-        return invList;
-    }
-
-    public bool AutoAddItem(StoredItem newItem)
-    {
-        for (int y = 0; y < InventoryDimensions.Height; y++)
+        if (lambdaSuccess)
         {
-            for (int x = 0; x < InventoryDimensions.Width; x++)
-            {
-                //try position
-                bool successful = AddToInventory(new InvPos(x,y), newItem);
-
-                if(successful)
-                {
-                    return true;
-                }
-            }
+            return ApplyToSlotsResults.LambdaSuccess;
         }
-
-        return false;
+        else
+        {
+            return ApplyToSlotsResults.LambdaError;
+        }
     }
 
-
-    // Opens the inventory with the given item in the lefthand side, ready to be stored
-    public void OpenInventoryWithItem(ItemDefinition itemDef)
+    // Overload to allow Actions (ie. lambda's that return void)
+    private ApplyToSlotsResults ApplyToItemSlots(InvPos position, Dimensions dimensions, Action<int, int> action)
     {
-        StoredItem item = new StoredItem();
-        item.Details = itemDef;
-        looseItemQueue.Add(item);
+        Func<int, int, bool> lambda = (x, y) =>
+        {
+            action(x, y);
+            return true;
+        };
+        return ApplyToItemSlots(position, dimensions, lambda);
+    }
 
-        EnableInventoryView();
+    private enum ApplyToSlotsResults
+    {
+        OutOfBounds,
+        LambdaError,
+        LambdaSuccess
     }
 
     // A class storing a position within the player inventory. Ensures that the position is within bounds.
@@ -331,13 +335,6 @@ public class PlayerInventory : MonoBehaviour
 
         public static bool IsValid(int x, int y) =>
             x >= 0 && y >= 0 && x < PlayerInventory.InventoryDimensions.Width && y < PlayerInventory.InventoryDimensions.Height;
-    }
-
-    public List<StoredItem> DequeueLooseItems()
-    {
-        List<StoredItem>  currentQueue = new List<StoredItem>(looseItemQueue);
-        looseItemQueue.Clear();
-        return currentQueue;
     }
 
     //For testing

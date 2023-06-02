@@ -78,7 +78,7 @@ public class ItemVisual : VisualElement
             {
                 // Place item visual
                 MoveToGridSlot(xSlot, ySlot);
-
+                PlayerInventoryView.Instance.MakeItemNotLoose(thisItem);
             } else
             {
                 // Return item visual to original position
@@ -95,6 +95,10 @@ public class ItemVisual : VisualElement
                     }
                 }
             }
+        } else
+        {
+            // If the item is outside of the inventory, then mark it as loose
+            PlayerInventoryView.Instance.MakeItemLoose(thisItem);
         }
 
         // This will show you what the actual PlayerInventory array looks like so you can confirm that it matches the visuals
