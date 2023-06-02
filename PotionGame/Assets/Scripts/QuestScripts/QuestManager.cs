@@ -9,6 +9,7 @@ public enum QuestState {
     Accept,
     Reject,
     InProgress,
+    MissingIngredients,
     Complete
 }
 
@@ -20,6 +21,7 @@ public class QuestManager : MonoBehaviour
     public float maxInteractDistance = 2.0f;
     public QuestState questState = QuestState.Initiate;
     public PlayerInventory inventory;
+    public string missingIngredientsDialogue = "You don't have what I need!\nCome back when you do!";
     Rect titleWindow = new Rect(50, 40, 200, 20);
     Rect textWindow = new Rect(50, 60, 200, 130);
 
@@ -40,6 +42,12 @@ public class QuestManager : MonoBehaviour
             if (questState == QuestState.Accept)
             {
                 questState = QuestState.InProgress;
+            }
+            else if (questState == QuestState.MissingIngredients)
+            {
+                questState = QuestState.InProgress;
+            } else {
+                Debug.Log("how'd you get here?");
             }
 
             ToggleUI(false);
@@ -101,6 +109,9 @@ public class QuestManager : MonoBehaviour
                 case QuestState.InProgress:
                     InProgressGUI(style);
                     break;
+                case QuestState.MissingIngredients:
+                    GUI.TextField(textWindow, missingIngredientsDialogue, style);
+                    break;
                 case QuestState.Complete:
                     GUI.TextField(textWindow, quest.questCompleteDialogue, style);
                     break;
@@ -139,6 +150,7 @@ public class QuestManager : MonoBehaviour
                 Invoke("GiveReward", 2.0f);
             } else {
                 Debug.Log("missing ingredients!");
+                questState = QuestState.MissingIngredients;
             }
         }
     }
