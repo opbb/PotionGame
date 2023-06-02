@@ -20,9 +20,14 @@ public class QuestManager : MonoBehaviour
     public float maxInteractDistance = 2.0f;
     public QuestState questState = QuestState.Initiate;
     public PlayerInventory inventory;
+<<<<<<< Updated upstream
     
     Rect titleWindow = new Rect(0, 0, 200, 20);
     Rect textWindow = new Rect(0, 20, 200, 130);
+=======
+    Rect titleWindow = new Rect(50, 40, 200, 20);
+    Rect textWindow = new Rect(50, 60, 200, 130);
+>>>>>>> Stashed changes
 
     // Start is called before the first frame update
     void Start()
@@ -111,14 +116,14 @@ public class QuestManager : MonoBehaviour
 
     void InitiateGUI(GUIStyle style) {
         GUI.TextField(textWindow, quest.questDialogue + "\n\nRequirement: " + quest.requiredPotion, style);
-        if (GUI.Button(new Rect(0, 150, 95, 20), "Accept"))
+        if (GUI.Button(new Rect(50, 200, 95, 20), "Accept"))
         {
             Debug.Log("accept button pressed");
             questState = QuestState.Accept;
             activeQuest = quest;
         }
 
-        if (GUI.Button(new Rect(105, 150, 95, 20), "Reject"))
+        if (GUI.Button(new Rect(155, 200, 95, 20), "Reject"))
         {
             Debug.Log("reject button pressed");
             questState = QuestState.Reject;
