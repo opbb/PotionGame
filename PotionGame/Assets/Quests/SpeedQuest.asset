@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SpeedQuest
   m_EditorClassIdentifier: 
   questName: Speedy Soup
-  requiredPotion: Dandelion, Mushroom
+  requiredPotion: {fileID: 11400000, guid: ff16e668a1428924c991404e333b5b30, type: 2}
+  rewardItem: {fileID: 11400000, guid: 37b38026af3f8714baffbedee51c4118, type: 2}
   questDialogue: I need to beat my brother in our semi-annual foot race tomorrow.
     Can you make me a potion to ensure I'll win?
   questCompleteDialogue: I'm not sure this will be enough, but it's better than nothing

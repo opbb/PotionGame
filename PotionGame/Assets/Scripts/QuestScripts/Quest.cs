@@ -8,6 +8,7 @@ public class Quest : ScriptableObject
 {
     public string questName;
     public ItemDefinition requiredPotion;
+    public ItemDefinition rewardItem;
     public string questDialogue;
     public string questCompleteDialogue;
     public string questAcceptDialogue;

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: GrowthQuest
   m_EditorClassIdentifier: 
   questName: Grow Up Goop
-  requiredPotion: Mushroom
+  requiredPotion: {fileID: 11400000, guid: 37b38026af3f8714baffbedee51c4118, type: 2}
+  rewardItem: {fileID: 11400000, guid: ff16e668a1428924c991404e333b5b30, type: 2}
   questDialogue: I'm tired of never being able to reach the top shelf. Can you make
     me a potion to make me bigger and taller?
   questCompleteDialogue: This isn't your strongest! But it'll do for now though.

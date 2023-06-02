@@ -35,7 +35,7 @@ public class QuestManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1)) && showGUI)
         {
             if (questState == QuestState.Accept)
             {
@@ -109,7 +109,7 @@ public class QuestManager : MonoBehaviour
     }
 
     void InitiateGUI(GUIStyle style) {
-        GUI.TextField(textWindow, quest.questDialogue + "\n\nRequirement: " + quest.requiredPotion, style);
+        GUI.TextField(textWindow, quest.questDialogue + "\n\nRequirement: " + quest.requiredPotion.CommonName, style);
         if (GUI.Button(new Rect(50, 200, 95, 20), "Accept"))
         {
             Debug.Log("accept button pressed");
@@ -125,17 +125,19 @@ public class QuestManager : MonoBehaviour
     }
 
     void InProgressGUI(GUIStyle style) {
-        GUI.TextField(textWindow, activeQuest.questInProgressDialogue, style);
+        string infoText = activeQuest.questInProgressDialogue + "\n\nRequirement: " + activeQuest.requiredPotion.CommonName;
+        GUI.TextField(textWindow, infoText, style);
 
         // submitting code
-        if (GUI.Button(new Rect(0, 150, 95, 20), "Complete"))
+        if (GUI.Button(new Rect(50, 200, 95, 20), "Complete"))
         {
             bool success = inventory.TryTakeOutItem(activeQuest.requiredPotion);
             if (success) {
                 Debug.Log("quest complete!");
                 questState = QuestState.Complete;
+
+                Invoke("GiveReward", 2.0f);
             } else {
-                GUI.TextField(textWindow, "You don't have it!", style);
                 Debug.Log("missing ingredients!");
             }
         }
@@ -168,9 +170,14 @@ public class QuestManager : MonoBehaviour
         showGUI = flag;
         MouseLook.isUIActive = flag;
         Cursor.visible = flag;
-        Cursor.lockState = flag ? CursorLockMode.Confined : CursorLockMode.Locked;
+        Cursor.lockState = flag ? CursorLockMode.None : CursorLockMode.Locked;
         
         // disabling character movement
         gameObject.GetComponent<CharacterController>().enabled = !flag;
+    }
+
+    void GiveReward() {
+        ToggleUI(false);
+        inventory.OpenInventoryWithItem(activeQuest.rewardItem);
     }
 }
