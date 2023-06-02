@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfff35830ba3a94ab0cb51cab691c4d, type: 3}
   m_Name: MushroomSoup
   m_EditorClassIdentifier: 
-  recipeName: 
-  brewingTime: 0
-  requiredIngredients: []
+  recipeName: Mushroom Soup
+  brewingTime: 10
+  requiredIngredients:
+  - Details: {fileID: 11400000, guid: 37b38026af3f8714baffbedee51c4118, type: 2}

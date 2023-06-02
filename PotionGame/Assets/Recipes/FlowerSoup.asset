@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfff35830ba3a94ab0cb51cab691c4d, type: 3}
   m_Name: FlowerSoup
   m_EditorClassIdentifier: 
-  recipeName: 
-  brewingTime: 0
-  requiredIngredients: []
+  recipeName: Flower Soup
+  brewingTime: 5
+  requiredIngredients:
+  - Details: {fileID: 11400000, guid: 37b38026af3f8714baffbedee51c4118, type: 2}
+  - Details: {fileID: 11400000, guid: ff16e668a1428924c991404e333b5b30, type: 2}
