@@ -20,14 +20,8 @@ public class QuestManager : MonoBehaviour
     public float maxInteractDistance = 2.0f;
     public QuestState questState = QuestState.Initiate;
     public PlayerInventory inventory;
-<<<<<<< Updated upstream
-    
-    Rect titleWindow = new Rect(0, 0, 200, 20);
-    Rect textWindow = new Rect(0, 20, 200, 130);
-=======
     Rect titleWindow = new Rect(50, 40, 200, 20);
     Rect textWindow = new Rect(50, 60, 200, 130);
->>>>>>> Stashed changes
 
     // Start is called before the first frame update
     void Start()
