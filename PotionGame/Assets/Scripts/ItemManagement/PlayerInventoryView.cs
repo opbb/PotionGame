@@ -13,10 +13,13 @@ using System.Threading.Tasks;
 public sealed class PlayerInventoryView : MonoBehaviour
 {
 
-    public readonly string dragButton = "Fire1";
+    [SerializeField] private readonly string dragButton = "Fire1";
+    [SerializeField] private KeyCode inventoryKey = KeyCode.E;
 
     // A static variable allowing any script to access the inventory UI.
     [HideInInspector] public static PlayerInventoryView Instance;
+
+    private HashSet<StoredItem> looseItems;
 
     private VisualElement m_Root;
     private VisualElement m_InventoryGrid;
@@ -34,6 +37,11 @@ public sealed class PlayerInventoryView : MonoBehaviour
     private bool isDragging = false;
     private StoredItem draggedItem = null;
 
+
+    // =======================================
+    // ========= Configuration/Setup =========
+    // =======================================
+
     // This awake method enforces the singleton design pattern.
     // i.e. there can only ever be one PlayerInventoryView
     private void Awake()
@@ -49,33 +57,6 @@ public sealed class PlayerInventoryView : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    private void OnEnable()
-    {
-        Configure();
-        LoadInventory();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (isDragging)
-        {
-            draggedItem.RootVisual.MoveToMouse(mouseTracker.mousePosition);
-            if (!Input.GetButton(dragButton))
-            {
-                isDragging = false;
-                draggedItem.RootVisual.TryPlace();
-                mouseTracker.pickingMode = PickingMode.Ignore;
-            }
-        }
-    }
-
     // Methods below copied from tutorial, I will finish them later
     // TODO: Implement inventory
     private async void Configure()
@@ -84,6 +65,7 @@ public sealed class PlayerInventoryView : MonoBehaviour
         m_InventoryGrid = m_Root.Q<VisualElement>("Grid");
         m_WholeScreen = m_Root.Q<VisualElement>("WholeScreen");
         m_Loose = m_Root.Q<VisualElement>("Loose");
+        looseItems = new HashSet<StoredItem>();
         
         //VisualElement itemDetails = m_Root.Q<VisualElement>("ItemDetails");
         //m_ItemDetailHeader = itemDetails.Q<Label>("Header");
@@ -108,38 +90,6 @@ public sealed class PlayerInventoryView : MonoBehaviour
         };
     }
 
-    private static void SetItemPosition(VisualElement element, Vector2 vector)
-    {
-        element.style.left = vector.x;
-        element.style.top = vector.y;
-    }
-
-    public async void LoadInventory()
-    {
-        await UniTask.WaitUntil(() => m_IsInventoryReady);
-        List<StoredItem> invList = PlayerInventory.Instance.GetItemsInInventory();
-        List<StoredItem> looseList = PlayerInventory.Instance.DequeueLooseItems();
-        foreach (StoredItem loadedItem in invList)
-        {
-            ItemVisual inventoryItemVisual = new ItemVisual(loadedItem);
-
-            AddItemToInventoryGrid(inventoryItemVisual);
-            SetItemPosition(inventoryItemVisual, new Vector2(SlotDimension.Width * loadedItem.position.x,
-                    SlotDimension.Height * loadedItem.position.y));
-            ConfigureInventoryItem(loadedItem, inventoryItemVisual);
-        }
-
-        foreach (StoredItem looseItem in looseList)
-        {
-            ItemVisual looseItemVisual = new ItemVisual(looseItem);
-
-            AddItemToInventoryGrid(looseItemVisual);
-            SetItemPosition(looseItemVisual, new Vector2(-m_InventoryGrid.layout.center.x, m_InventoryGrid.layout.center.y));
-            ConfigureInventoryItem(looseItem, looseItemVisual);
-        }
-    }
-    private void AddItemToInventoryGrid(VisualElement item) => m_InventoryGrid.Add(item);
-    private void RemoveItemFromInventoryGrid(VisualElement item) => m_InventoryGrid.Remove(item);
     private static void ConfigureInventoryItem(StoredItem item, ItemVisual visual)
     {
         item.RootVisual = visual;
@@ -153,8 +103,6 @@ public sealed class PlayerInventoryView : MonoBehaviour
         mouseTracker.BringToFront();
         mouseTracker.pickingMode = PickingMode.Ignore;
         m_WholeScreen.Add(mouseTracker);
-
-        Debug.Log("Mouse Tracker: " + mouseTracker);
     }
 
     private void ConfigureInventoryTelegraph()
@@ -171,6 +119,131 @@ public sealed class PlayerInventoryView : MonoBehaviour
         m_Telegraph.AddToClassList("slot-icon-highlighted");
         AddItemToInventoryGrid(m_Telegraph);
     }
+
+    // Is called by PlayerInventory.LoadInventory() once it finishes.
+    public async void LoadInventory()
+    {
+        await UniTask.WaitUntil(() => m_IsInventoryReady);
+        List<StoredItem> invList = PlayerInventory.Instance.GetItemsInInventory();
+
+        foreach (StoredItem loadedItem in invList)
+        {
+            ItemVisual inventoryItemVisual = new ItemVisual(loadedItem);
+
+            AddItemToInventoryGrid(inventoryItemVisual);
+            SetItemPosition(inventoryItemVisual, new Vector2(SlotDimension.Width * loadedItem.position.x,
+                    SlotDimension.Height * loadedItem.position.y));
+            ConfigureInventoryItem(loadedItem, inventoryItemVisual);
+        }
+    }
+
+
+    // ================================
+    // ========= Player Input =========
+    // ================================
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isDragging)
+        {
+            draggedItem.RootVisual.MoveToMouse(mouseTracker.mousePosition);
+            if (!Input.GetButton(dragButton))
+            {
+                isDragging = false;
+                draggedItem.RootVisual.TryPlace();
+                mouseTracker.pickingMode = PickingMode.Ignore;
+            }
+        }
+
+        if (Input.GetKeyDown(inventoryKey))
+        {
+            if (m_Root.style.display == DisplayStyle.Flex)
+            {
+                DisableInventoryView();
+            }
+            else
+            {
+                EnableInventoryView();
+            }
+        }
+    }
+
+    // ========================================
+    // ========= Inventory Management =========
+    // ========================================
+
+    public void EnableInventoryView()
+    {
+        if (Instance != null)
+        {
+            m_Root.style.display = DisplayStyle.Flex;
+            MouseLook.isUIActive = true;
+            UnityEngine.Cursor.visible = true;
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+        }
+    }
+
+    public void DisableInventoryView()
+    {
+        if (Instance != null)
+        {
+            m_Root.style.display = DisplayStyle.None;
+            MouseLook.isUIActive = false;
+            UnityEngine.Cursor.visible = false;
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            ClearLooseItems();
+        }
+    }
+
+    // Loads adds an item to the left panel, outside of the inventory grid
+    public void AddLooseItem(StoredItem item)
+    {
+        ItemVisual looseItemVisual = new ItemVisual(item);
+
+        AddItemToInventoryGrid(looseItemVisual);
+        SetItemPosition(looseItemVisual, new Vector2(-m_InventoryGrid.layout.center.x, m_InventoryGrid.layout.center.y));
+        ConfigureInventoryItem(item, looseItemVisual);
+        looseItems.Add(item);
+    }
+
+    public void ClearLooseItems()
+    {
+        foreach(StoredItem item in looseItems)
+        {
+            RemoveItemFromInventoryGrid(item.RootVisual);
+        }
+        looseItems.Clear();
+    }
+
+    public void RemoveItem(StoredItem item)
+    {
+        looseItems.Remove(item);
+        RemoveItemFromInventoryGrid(item.RootVisual);
+    }
+
+    public void MakeItemLoose(StoredItem item)
+    {
+        looseItems.Add(item);
+    }
+
+    public void MakeItemNotLoose(StoredItem item)
+    {
+        looseItems.Remove(item);
+    }
+
+    // ===========================
+    // ========= Helpers =========
+    // ===========================
+
+    private static void SetItemPosition(VisualElement element, Vector2 vector)
+    {
+        element.style.left = vector.x;
+        element.style.top = vector.y;
+    }
+
+    private void AddItemToInventoryGrid(VisualElement item) => m_InventoryGrid.Add(item);
+    private void RemoveItemFromInventoryGrid(VisualElement item) => m_InventoryGrid.Remove(item);
 
     public void StartDragging(StoredItem item)
     {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1105,6 +1105,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 226851826, guid: 31fc6cafad9d15d4ba7d74f0e885537f, type: 3}
+      propertyPath: playerInventoryView
+      value: 
+      objectReference: {fileID: 906438842}
     - target: {fileID: 7430035105156664884, guid: 31fc6cafad9d15d4ba7d74f0e885537f, type: 3}
       propertyPath: m_Name
       value: Wizard
@@ -1534,11 +1538,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory
       objectReference: {fileID: 0}
+    - target: {fileID: 5546232285719953471, guid: 007021e33f30bc44da52613602b1dd58, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 007021e33f30bc44da52613602b1dd58, type: 3}
 --- !u!4 &878195841 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2343971775437326851, guid: 007021e33f30bc44da52613602b1dd58, type: 3}
+  m_PrefabInstance: {fileID: 878195840}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &906438842 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5546232285719953471, guid: 007021e33f30bc44da52613602b1dd58, type: 3}
   m_PrefabInstance: {fileID: 878195840}
   m_PrefabAsset: {fileID: 0}
 --- !u!43 &1128750913
