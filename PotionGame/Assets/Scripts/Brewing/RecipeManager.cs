@@ -9,6 +9,7 @@ public class RecipeManager : MonoBehaviour
     public List<Recipe> recipes;
 
     public PlayerInventory inventory;
+   
 
     // Start is called before the first frame update
     void Start()

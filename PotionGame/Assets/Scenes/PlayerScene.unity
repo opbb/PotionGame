@@ -224,6 +224,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2119331768689407357, guid: 31fc6cafad9d15d4ba7d74f0e885537f, type: 3}
+      propertyPath: recipeButtons.Array.data[0]
+      value: 
+      objectReference: {fileID: 1909394920}
+    - target: {fileID: 2119331768689407357, guid: 31fc6cafad9d15d4ba7d74f0e885537f, type: 3}
+      propertyPath: recipeButtons.Array.data[1]
+      value: 
+      objectReference: {fileID: 1940039212}
     - target: {fileID: 7430035105156664884, guid: 31fc6cafad9d15d4ba7d74f0e885537f, type: 3}
       propertyPath: m_Name
       value: Wizard (1)
@@ -345,7 +353,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Recipe1
+  m_Text: 'Mushroom Soup
+
+    - 2 Mushrooms
 
 '
 --- !u!222 &1121271720
@@ -495,9 +505,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Recipe2
+  m_Text: 'Flower Soup
 
-'
+    - 1 Mushroom
+
+    - 1 Flower'
 --- !u!222 &1209389165
 CanvasRenderer:
   m_ObjectHideFlags: 0
