@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3370670}
   - component: {fileID: 2378354}
   - component: {fileID: -7957646405898305263}
+  - component: {fileID: -187863170500522568}
   m_Layer: 6
   m_Name: SM_Env_Flower_07
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 145908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,3 +98,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisItemDef: {fileID: 11400000, guid: 35256129840900c49a694f741bf1ae92, type: 2}
+--- !u!135 &-187863170500522568
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.26731452
+  m_Center: {x: -0.0000003874302, y: 0.18853259, z: 0.00000008940697}

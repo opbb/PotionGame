@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3369796}
   - component: {fileID: 2333446}
   - component: {fileID: -9082919288520278991}
+  - component: {fileID: 4664561143481139420}
   m_Layer: 6
   m_Name: SM_Env_Grass_Large_02
   m_TagString: Untagged
@@ -97,3 +98,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisItemDef: {fileID: 11400000, guid: fa6e06dd91632d3448c7a53b6eba5ff1, type: 2}
+--- !u!135 &4664561143481139420
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154980}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.3572024
+  m_Center: {x: -0.00000047683716, y: 0.6286264, z: -0.0000014305115}

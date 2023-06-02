@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3360116}
   - component: {fileID: 2328966}
   - component: {fileID: -5246111629648543499}
+  - component: {fileID: -7525848663087191669}
   m_Layer: 6
   m_Name: SM_Env_Reeds_03
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 199584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,3 +98,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisItemDef: {fileID: 11400000, guid: 5a1574bdb0baf9942804613b1f7f840c, type: 2}
+--- !u!135 &-7525848663087191669
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199584}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5049404
+  m_Center: {x: 0, y: 0.39329365, z: 0}

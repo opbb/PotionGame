@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964c9dc29f2e9e84a9ef028564bc0fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 400
+  mouseSensitivity: 200
   thirdPersonOffset: {x: 0, y: 4, z: -4}
   firstPersonOffset: {x: 0.142, y: 2.52, z: 0.5}
 --- !u!82 &3780947705883384049
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38b5c4e09fd92e4c9f39e74c5d5abbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpRange: 1.5
+  pickUpRange: 3
   pickUpWidth: 0.25
   checkInterval: 0.1
   pickUpButton: Fire1
@@ -347,6 +347,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bdcf5929e2198d84ea1f328eb64ab8a0, type: 2}
   - {fileID: 11400000, guid: 8217664b296a925458684f87ef2adcb5, type: 2}
   inventory: {fileID: 0}
+  brewFailedText: {fileID: 0}
 --- !u!114 &936954599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,6 +366,10 @@ MonoBehaviour:
   maxInteractDistance: 4
   questState: 0
   inventory: {fileID: 0}
+  missingIngredientsDialogue: 'You don''t have what I need!
+
+    Come back when you
+    do!'
 --- !u!82 &7656101821744860944
 AudioSource:
   m_ObjectHideFlags: 0
@@ -487,11 +492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1fd4c967b52d04e86f8d1ade85e92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingItems:
-  - {fileID: 11400000, guid: ff16e668a1428924c991404e333b5b30, type: 2}
-  - {fileID: 11400000, guid: 37b38026af3f8714baffbedee51c4118, type: 2}
-  - {fileID: 11400000, guid: 37b38026af3f8714baffbedee51c4118, type: 2}
-  - {fileID: 11400000, guid: ff16e668a1428924c991404e333b5b30, type: 2}
+  startingItems: []
 --- !u!1001 &1494892267842511148
 PrefabInstance:
   m_ObjectHideFlags: 0

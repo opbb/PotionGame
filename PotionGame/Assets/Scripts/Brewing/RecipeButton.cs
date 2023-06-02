@@ -9,12 +9,14 @@ public class RecipeButton : MonoBehaviour
     private void Start()
     {
         recipeManager = FindObjectOfType<RecipeManager>();
+        
         Button button = GetComponent<Button>();
         button.onClick.AddListener(BrewPotion);
     }
 
     private void BrewPotion()
     {
+        Debug.Log("Brewing Potion");
         recipeManager.BrewPotion(recipeIndex);
     }
 }
