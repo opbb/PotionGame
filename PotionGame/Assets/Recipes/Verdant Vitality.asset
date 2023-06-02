@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dfff35830ba3a94ab0cb51cab691c4d, type: 3}
-  m_Name: FlowerSoup
+  m_Name: Verdant Vitality
   m_EditorClassIdentifier: 
-  recipeName: Flower Soup
-  brewingTime: 5
+  recipeName: Verdant Vitality
+  brewingTime: 10
   requiredIngredients:
   - Details: {fileID: 11400000, guid: 37b38026af3f8714baffbedee51c4118, type: 2}
-  - Details: {fileID: 11400000, guid: ff16e668a1428924c991404e333b5b30, type: 2}
+  - Details: {fileID: 11400000, guid: 35256129840900c49a694f741bf1ae92, type: 2}
+  - Details: {fileID: 11400000, guid: dff6d5d5b28ab584b8f460e0936cd178, type: 2}
   resultingItem:
-    Details: {fileID: 11400000, guid: 37b38026af3f8714baffbedee51c4118, type: 2}
+    Details: {fileID: 11400000, guid: cf5c4515cde96cf4bbef90a657db6e56, type: 2}
