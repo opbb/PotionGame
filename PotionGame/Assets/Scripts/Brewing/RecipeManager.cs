@@ -9,7 +9,7 @@ public class RecipeManager : MonoBehaviour
     public List<Recipe> recipes;
 
     public PlayerInventory inventory;
-   
+    public Text brewFailedText; 
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +29,7 @@ public class RecipeManager : MonoBehaviour
             Cursor.visible = false;
 
             toggleUIButtons(false);
+            brewFailedText.gameObject.SetActive(false);
         }
 
     }
@@ -46,7 +47,7 @@ public class RecipeManager : MonoBehaviour
     {
         foreach (Button b in recipeButtons)
         {
-            b.gameObject.SetActive(isActive);
+            b.gameObject.gameObject.SetActive(isActive);
         }
     }
 
@@ -64,7 +65,7 @@ public class RecipeManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Missing ingredients! Cannot brew potion.");
+            brewFailedText.gameObject.SetActive(true);
         }
     }
 
@@ -88,23 +89,15 @@ public class RecipeManager : MonoBehaviour
             }
         }
 
-
-        // Print all elements and their counts
-        foreach (KeyValuePair<string, int> pair in inventoryCount)
-        {
-            Debug.Log("Item: " + pair.Key + ", Count: " + pair.Value);
-        }
-
         // Check if the inventory has all the required ingredients
         foreach (StoredItem requiredItem in requiredIngredients)
         {
             if (!inventoryCount.ContainsKey(requiredItem.Details.CommonName) || inventoryCount[requiredItem.Details.CommonName] == 0)
             {
-                // Required ingredient not found in inventory or not enough quantity
+               
                 return false;
             }
 
-            // Decrement the count of the required ingredient in the inventory
             inventoryCount[requiredItem.Details.CommonName]--;
         }
 
@@ -117,19 +110,18 @@ public class RecipeManager : MonoBehaviour
         foreach (StoredItem requiredItem in requiredIngredients)
         {
             inventory.TryTakeOutItem(requiredItem.Details);
-            // Implement the logic to remove the required ingredient from the player's inventory
-            // Modify the player's inventory accordingly
-            // ...
+           
             print("Removing " + requiredItem.Details.CommonName + " from inventory");
         }
     }
 
     private void StartBrewingPotion(Recipe recipe)
     {
-        // TODO figure out how to add item
-        //inventory.AutoAddItem(recipe.resultingItem);
-        // Implement the logic to start brewing the potion
-        // Use the properties of the recipe object to determine brewing time, effects, etc.
+        // Hide the crafting buttons
+        toggleUIButtons(false);
+
+        // show the inventory
+        inventory.OpenInventoryWithItem(recipe.resultingItem.Details);
         Debug.Log("brewing " + recipe.name);
     }
 }
