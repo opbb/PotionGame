@@ -64,7 +64,7 @@ public class ItemVisual : VisualElement
         {
             originalPosition = thisItem.position;
             startedInInventory = true;
-            PlayerInventory.Instance.RemoveFromInventory(thisItem);
+            PlayerInventory.UnsafeMethods.RemoveFromInventory(thisItem);
         }
 
         // Next, if the item is within the inventory, deal with the inventory
@@ -72,7 +72,7 @@ public class ItemVisual : VisualElement
         {
             // Try to place the item
             PlayerInventory.InvPos position = new PlayerInventory.InvPos(xSlot, ySlot);
-            bool successful = PlayerInventory.Instance.AddToInventory(position, thisItem);
+            bool successful = PlayerInventory.UnsafeMethods.AddToInventory(position, thisItem);
             
             if(successful)
             {
@@ -87,7 +87,7 @@ public class ItemVisual : VisualElement
                 // If the item was originally in the inventory, re-add it
                 if (startedInInventory)
                 {
-                    successful = PlayerInventory.Instance.AddToInventory(originalPosition, thisItem);
+                    successful = PlayerInventory.UnsafeMethods.AddToInventory(originalPosition, thisItem);
 
                     if(!successful)
                     {

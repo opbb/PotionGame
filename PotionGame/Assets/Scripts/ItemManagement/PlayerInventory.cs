@@ -110,6 +110,8 @@ public class PlayerInventory : MonoBehaviour
         return false;
     }
 
+    
+
     // ================================
     // ========= Safe For Use =========
     // ================================
@@ -176,6 +178,18 @@ public class PlayerInventory : MonoBehaviour
         PlayerInventoryView.Instance.AddLooseItem(item);
         PlayerInventoryView.Instance.EnableInventoryView();
     }
+    
+    // Opens the inventory with the given item in the lefthand side, ready to be stored
+    public void OpenInventoryWithItems(List<ItemDefinition> itemDefs)
+    {
+        foreach(ItemDefinition itemDef in itemDefs)
+        {
+            StoredItem item = new StoredItem();
+            item.Details = itemDef;
+            PlayerInventoryView.Instance.AddLooseItem(item);
+        }
+        PlayerInventoryView.Instance.EnableInventoryView();
+    }
 
     // If this type of item is present in the inventory then it will be removed, and the method will return true.
     // If it is not present, then the method will return false.
@@ -211,9 +225,23 @@ public class PlayerInventory : MonoBehaviour
     // Note: These methods are unfriendly in that they DO NOT maintain the sync between the PlayerInventory
     //       and the PlayerInventoryView, so proceeed with caution.
 
+    // Locks the unsafe method behind a call to "UnsafeMethods" so people at least know they're unsafe
+    public static class UnsafeMethods
+    {
+
+        public static bool AddToInventory(InvPos position, StoredItem item)
+        {
+            return PlayerInventory.Instance.AddToInventory(position, item);
+        }
+
+        public static void RemoveFromInventory(StoredItem item)
+        {
+            PlayerInventory.Instance.RemoveFromInventory(item);
+        }
+    }
 
     // Adds the given item to the inventory at the given position. Returns true if the item was added successfully, and false otherwise.
-    public bool AddToInventory(InvPos position, StoredItem item)
+    private bool AddToInventory(InvPos position, StoredItem item)
     {
         Dimensions dim = item.Details.SlotDimension;
 
@@ -237,7 +265,7 @@ public class PlayerInventory : MonoBehaviour
     
 
     // Removes the given item, throws an error if the item is not in the inventory or if a slot being cleared does not contain the item
-    public void RemoveFromInventory(StoredItem item)
+    private void RemoveFromInventory(StoredItem item)
     {
         Dimensions dim = item.Details.SlotDimension;
 
@@ -313,6 +341,11 @@ public class PlayerInventory : MonoBehaviour
         LambdaError,
         LambdaSuccess
     }
+
+
+    // ======================================
+    // ========= Inventory Position =========
+    // ======================================
 
     // A class storing a position within the player inventory. Ensures that the position is within bounds.
     public class InvPos

@@ -326,11 +326,6 @@ Transform:
   m_Father: {fileID: 1763483767}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &389072825 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9094266586015171653, guid: 843b0a3c9ffca57468e821991ec15fbb, type: 3}
-  m_PrefabInstance: {fileID: 1652858342557284461}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &508496808 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2827968600191574914, guid: 822f4a3a0bcdbcb448de9abdd2e129e5, type: 3}
@@ -661,6 +656,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1763483767}
     m_Modifications:
+    - target: {fileID: 1081133652089861536, guid: 843b0a3c9ffca57468e821991ec15fbb, type: 3}
+      propertyPath: testItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 37b38026af3f8714baffbedee51c4118, type: 2}
     - target: {fileID: 3426467941391075673, guid: 843b0a3c9ffca57468e821991ec15fbb, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -675,7 +674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5105005954579621675, guid: 843b0a3c9ffca57468e821991ec15fbb, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5105005954579621675, guid: 843b0a3c9ffca57468e821991ec15fbb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -817,8 +816,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1fd4c967b52d04e86f8d1ade85e92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryKey: 101
-  playerInventoryView: {fileID: 389072825}
   startingItems:
   - {fileID: 11400000, guid: 37b38026af3f8714baffbedee51c4118, type: 2}
   - {fileID: 11400000, guid: ff16e668a1428924c991404e333b5b30, type: 2}
