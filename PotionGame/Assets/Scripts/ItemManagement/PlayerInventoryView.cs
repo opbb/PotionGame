@@ -137,12 +137,7 @@ public sealed class PlayerInventoryView : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        DisableInventoryView();
-    }
-
-
+ 
     // ================================
     // ========= Player Input =========
     // ================================

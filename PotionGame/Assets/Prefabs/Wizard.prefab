@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7430035103956227925}
   - component: {fileID: 7430035103956227922}
   - component: {fileID: 3780947705883384049}
+  - component: {fileID: 1601711442}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -197,6 +198,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1601711442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7430035103956227921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b38b5c4e09fd92e4c9f39e74c5d5abbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUpRange: 1.5
+  pickUpWidth: 0.25
+  checkInterval: 0.1
+  pickUpButton: Fire1
+  pickupLayers:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &7430035105156664884
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,8 +344,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   recipes:
-  - {fileID: 11400000, guid: b95dcd0127d85b444ae50cfccfcf3677, type: 2}
-  - {fileID: 11400000, guid: b95dcd0127d85b444ae50cfccfcf3677, type: 2}
+  - {fileID: 11400000, guid: bdcf5929e2198d84ea1f328eb64ab8a0, type: 2}
+  - {fileID: 11400000, guid: 8217664b296a925458684f87ef2adcb5, type: 2}
+  inventory: {fileID: 0}
 --- !u!114 &936954599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,9 +359,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f33906e90ae0b64491f5341cc301f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questInfo: 
-  questTime: 100
-  questText: {fileID: 0}
+  quest: {fileID: 11400000, guid: 19fe68b884a655447aa480bd794773c1, type: 2}
+  activeQuest: {fileID: 0}
+  showGUI: 0
+  maxInteractDistance: 4
+  questState: 0
+  inventory: {fileID: 0}
 --- !u!82 &7656101821744860944
 AudioSource:
   m_ObjectHideFlags: 0
@@ -463,8 +487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1fd4c967b52d04e86f8d1ade85e92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryKey: 101
-  playerInventoryView: {fileID: 0}
   startingItems:
   - {fileID: 11400000, guid: ff16e668a1428924c991404e333b5b30, type: 2}
   - {fileID: 11400000, guid: 37b38026af3f8714baffbedee51c4118, type: 2}
