@@ -29276,30 +29276,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 690647243}
-  - component: {fileID: 690647242}
   m_Layer: 0
   m_Name: PlayerInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &690647242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690647241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e1fd4c967b52d04e86f8d1ade85e92a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingItems:
-  - {fileID: 11400000, guid: ff16e668a1428924c991404e333b5b30, type: 2}
-  - {fileID: 11400000, guid: ff16e668a1428924c991404e333b5b30, type: 2}
-  - {fileID: 11400000, guid: 37b38026af3f8714baffbedee51c4118, type: 2}
+  m_IsActive: 0
 --- !u!4 &690647243
 Transform:
   m_ObjectHideFlags: 0

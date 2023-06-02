@@ -18,9 +18,9 @@ public class QuestManager : MonoBehaviour
     public Quest activeQuest;
     public bool showGUI = false;
     public float maxInteractDistance = 2.0f;
-    // public float questTime = 100;
     public QuestState questState = QuestState.Initiate;
     public PlayerInventory inventory;
+    
     Rect titleWindow = new Rect(0, 0, 200, 20);
     Rect textWindow = new Rect(0, 20, 200, 130);
 
@@ -29,7 +29,7 @@ public class QuestManager : MonoBehaviour
     {
         if (inventory == null)
         {
-            inventory = GameObject.Find("PlayerInventory").GetComponent<PlayerInventory>();
+            inventory = gameObject.GetComponent<PlayerInventory>();
         }
     }
 
@@ -126,7 +126,7 @@ public class QuestManager : MonoBehaviour
     }
 
     void InProgressGUI(GUIStyle style) {
-        GUI.TextField(textWindow, quest.questInProgressDialogue, style);
+        GUI.TextField(textWindow, activeQuest.questInProgressDialogue, style);
 
         // submitting code
         if (GUI.Button(new Rect(0, 150, 95, 20), "Complete"))
@@ -135,7 +135,7 @@ public class QuestManager : MonoBehaviour
             // do something with the inventory here or smthn
 
             List<StoredItem> ingredients = inventory.GetItemsInInventory();
-            StoredItem potion = CheckInventory(ingredients, quest.requiredPotion);
+            StoredItem potion = CheckInventory(ingredients, activeQuest.requiredPotion);
             if (potion != null) {
                 Debug.Log("quest complete!");
                 questState = QuestState.Complete;

@@ -34,6 +34,11 @@ public class NPCBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if this quest is active
+        if (questManager.activeQuest != null && questManager.activeQuest.questName == quest.questName) {
+            questState = questManager.questState;
+        }
+
         // will only follow player if quest is not initiated
         if (questState != QuestState.Initiate) {
             return;
@@ -47,11 +52,6 @@ public class NPCBehavior : MonoBehaviour
             var rotation = Quaternion.LookRotation(lookPos);
             player.transform.rotation = Quaternion.Slerp(player.transform.rotation, rotation, Time.deltaTime * 5);
             return;
-        }
-
-        // if this quest is active
-        if (questManager.activeQuest != null && questManager.activeQuest.questName == quest.questName) {
-            questState = questManager.questState;
         }
 
         // cooldown for following player if player rejects quest
