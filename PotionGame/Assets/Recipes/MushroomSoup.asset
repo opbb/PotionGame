@@ -16,3 +16,5 @@ MonoBehaviour:
   brewingTime: 10
   requiredIngredients:
   - Details: {fileID: 11400000, guid: 37b38026af3f8714baffbedee51c4118, type: 2}
+  resultingItem:
+    Details: {fileID: 11400000, guid: ff16e668a1428924c991404e333b5b30, type: 2}
