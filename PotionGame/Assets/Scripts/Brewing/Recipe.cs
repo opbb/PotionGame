@@ -7,6 +7,5 @@ public class Recipe : ScriptableObject
 {
     public string recipeName;
     public int brewingTime;
-    public List<string> requiredIngredients;
-    // Add additional properties as needed
+    public List<StoredItem> requiredIngredients;
 }

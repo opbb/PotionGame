@@ -38116,11 +38116,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2343971775437326851, guid: 007021e33f30bc44da52613602b1dd58, type: 3}
   m_PrefabInstance: {fileID: 1296232167}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1296232169 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5546232285719953471, guid: 007021e33f30bc44da52613602b1dd58, type: 3}
-  m_PrefabInstance: {fileID: 1296232167}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1299403265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40516,14 +40511,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 226851826, guid: 31fc6cafad9d15d4ba7d74f0e885537f, type: 3}
-      propertyPath: playerInventoryView
-      value: 
-      objectReference: {fileID: 1296232169}
-    - target: {fileID: 936954599, guid: 31fc6cafad9d15d4ba7d74f0e885537f, type: 3}
-      propertyPath: maxInteractDistance
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 7430035105156664884, guid: 31fc6cafad9d15d4ba7d74f0e885537f, type: 3}
       propertyPath: m_Name
       value: Wizard
@@ -42011,30 +41998,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 468672, guid: 9de81cb010fadd74c85f793bbb3f6830, type: 3}
   m_PrefabInstance: {fileID: 1590749807}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1601711436 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7430035103956227921, guid: 31fc6cafad9d15d4ba7d74f0e885537f, type: 3}
-  m_PrefabInstance: {fileID: 1511956477}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1601711442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1601711436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b38b5c4e09fd92e4c9f39e74c5d5abbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickUpRange: 1.5
-  pickUpWidth: 0.25
-  checkInterval: 0.1
-  pickUpButton: Fire1
-  pickupLayers:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!1 &1607946879 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 172702, guid: a23fb293000fa8e4c80503409c5c14dc, type: 3}

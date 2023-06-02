@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dfff35830ba3a94ab0cb51cab691c4d, type: 3}
-  m_Name: RedPotion
+  m_Name: MushroomSoup
   m_EditorClassIdentifier: 
-  recipeName: Red Potion
-  brewingTime: 5
-  requiredIngredients:
-  - stone
+  recipeName: 
+  brewingTime: 0
+  requiredIngredients: []
