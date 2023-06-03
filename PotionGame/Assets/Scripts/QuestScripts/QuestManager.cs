@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 
 public enum QuestState {
     Initiate,
@@ -91,7 +89,7 @@ public class QuestManager : MonoBehaviour
     }
 
     private void OnGUI() {
-        GUIStyle style = new GUIStyle(EditorStyles.textArea);
+        GUIStyle style = new GUIStyle(GUI.skin.textArea);
         style.wordWrap = true;
         
         if (showGUI) {
