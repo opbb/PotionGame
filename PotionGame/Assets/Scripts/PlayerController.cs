@@ -91,6 +91,11 @@ public class PlayerController : MonoBehaviour
             recipeManager.displayRecipies();
         }
 
+        // dash - launch player forward
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            controller.Move(transform.forward * 10f);
+        }
     }
 
     public void TeleportPlayer(Vector3 position)

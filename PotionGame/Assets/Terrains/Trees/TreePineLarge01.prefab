@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 459478}
   - component: {fileID: 3358230}
   - component: {fileID: 2399542}
+  - component: {fileID: 1848628571097919629}
   m_Layer: 0
-  m_Name: SM_Env_Tree_Pine_Large_01
+  m_Name: TreePineLarge01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &1848628571097919629
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.72
+  m_Height: 28.145157
+  m_Direction: 1
+  m_Center: {x: 0.06, y: 13.529572, z: 0.02}
