@@ -2020,7 +2020,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 566707834}
 --- !u!33 &87132266
@@ -7409,7 +7409,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1030784362}
 --- !u!33 &130300381
@@ -12228,37 +12228,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 402700, guid: 77009d3729b694c498bdc68c9d75018d, type: 3}
   m_PrefabInstance: {fileID: 164108723}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &165341201
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 165341202}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &165341202
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165341201}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1391110486}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &169142441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12564,6 +12533,11 @@ Transform:
   m_Father: {fileID: 700443625}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &180249078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 161618, guid: 8dca1e95f9274e447abd396b9633e35c, type: 3}
+  m_PrefabInstance: {fileID: 932741855}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &182951921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23637,7 +23611,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1719334214}
 --- !u!33 &553394104
@@ -44146,6 +44120,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 460560, guid: 8dca1e95f9274e447abd396b9633e35c, type: 3}
   m_PrefabInstance: {fileID: 932741855}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &932741859
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180249078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 2fbbb5cf95ff28b4a8f4200be1053c37, type: 3}
 --- !u!1001 &939709851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55519,7 +55507,6 @@ Transform:
   - {fileID: 1261009237}
   - {fileID: 1220682667}
   - {fileID: 1612165261}
-  - {fileID: 165341202}
   m_Father: {fileID: 1626712784}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58004,7 +57991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7430035103956227922, guid: 31fc6cafad9d15d4ba7d74f0e885537f, type: 3}
       propertyPath: mouseSensitivity
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7430035103956227924, guid: 31fc6cafad9d15d4ba7d74f0e885537f, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -61433,8 +61420,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626712783}
-  m_LocalRotation: {x: -0, y: 0.9999443, z: -0, w: -0.010554459}
-  m_LocalPosition: {x: 627.89996, y: -10.9, z: 513.9}
+  m_LocalRotation: {x: -0, y: 0.9943776, z: -0, w: 0.10589253}
+  m_LocalPosition: {x: 530.9, y: -10.9, z: 528.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -61443,7 +61430,7 @@ Transform:
   - {fileID: 415688004}
   m_Father: {fileID: 522028812}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -192.157, z: 0}
 --- !u!1001 &1630541383
 PrefabInstance:
   m_ObjectHideFlags: 0
