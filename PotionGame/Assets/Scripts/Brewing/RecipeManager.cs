@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RecipeManager : MonoBehaviour
+public class RecipeManager : MonoBehaviour, IGUIScreen
 {
     public List<Button> recipeButtons;
     public List<Recipe> recipes;
 
     public PlayerInventory inventory;
     public Text brewFailedText; 
+
+    // Remembers whether this screen is currently active
+    private bool isActive;
 
     // Start is called before the first frame update
     void Start()
@@ -18,29 +21,6 @@ public class RecipeManager : MonoBehaviour
         {
             inventory = gameObject.GetComponent<PlayerInventory>();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            MouseLook.isUIActive = false;
-            Cursor.visible = false;
-
-            toggleUIButtons(false);
-            brewFailedText.gameObject.SetActive(false);
-        }
-
-    }
-
-    public void displayRecipies()
-    {
-        MouseLook.isUIActive = true;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
-
-        toggleUIButtons(true);
     }
 
     public void toggleUIButtons(bool isActive)
@@ -123,5 +103,24 @@ public class RecipeManager : MonoBehaviour
         // show the inventory
         inventory.OpenInventoryWithItem(recipe.resultingItem.Details);
         Debug.Log("brewing " + recipe.name);
+    }
+
+    // IGUIScreen implementation
+    public bool isGUIActive()
+    {
+        return isActive;
+    }
+
+    public void activateGUI()
+    {
+        isActive = true;
+        toggleUIButtons(true);
+    }
+
+    public void deactivateGUI()
+    {
+        isActive = false;
+        toggleUIButtons(false);
+        brewFailedText.gameObject.SetActive(false);
     }
 }

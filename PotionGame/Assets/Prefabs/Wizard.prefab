@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 7656101821744860944}
   - component: {fileID: 148283268}
   - component: {fileID: 226851826}
+  - component: {fileID: 8011309177378150321}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Player
@@ -275,6 +276,7 @@ MonoBehaviour:
   jumpHeight: 3
   gravity: 9.8
   airControl: 3
+  friction: 1
   walkingSFX: {fileID: 8300000, guid: fc32c6fd07980144996b811e5d1f2971, type: 3}
   jumpStartSFX: {fileID: 8300000, guid: 984d316ed8be3ac4da9e31768a8b1fa9, type: 3}
 --- !u!114 &7430035105156665032
@@ -495,6 +497,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingItems: []
+--- !u!114 &8011309177378150321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7430035105156664884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a883e937b247b5a4bb8eb68535580f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInventory: {fileID: 0}
+  questManager: {fileID: 0}
+  recipeManager: {fileID: 0}
+  closeUIKey: 27
+  inventoryKey: 101
+  recipeKey: 116
 --- !u!1001 &1494892267842511148
 PrefabInstance:
   m_ObjectHideFlags: 0

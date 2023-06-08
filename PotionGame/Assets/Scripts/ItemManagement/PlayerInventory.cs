@@ -7,7 +7,7 @@ using System;
  * PlayerInventory manages the mechanics of the inventory, storing the data, making it accessible
  * to other scripts, and ensuring the Tetrising happens correctly.
  */
-public class PlayerInventory : MonoBehaviour
+public class PlayerInventory : MonoBehaviour, IGUIScreen
 {
     public static Dimensions InventoryDimensions { get; private set; }
 
@@ -369,6 +369,26 @@ public class PlayerInventory : MonoBehaviour
         public static bool IsValid(int x, int y) =>
             x >= 0 && y >= 0 && x < PlayerInventory.InventoryDimensions.Width && y < PlayerInventory.InventoryDimensions.Height;
     }
+
+    // =============================================
+    // ========= IGUIScreen Implementation =========
+    // =============================================
+
+    public bool isGUIActive()
+    {
+        return PlayerInventoryView.Instance.isGUIActive();
+    }
+
+    public void activateGUI()
+    {
+        PlayerInventoryView.Instance.activateGUI();
+    }
+
+    public void deactivateGUI()
+    {
+        PlayerInventoryView.Instance.deactivateGUI();
+    }
+
 
     //For testing
     public void LogInventory()

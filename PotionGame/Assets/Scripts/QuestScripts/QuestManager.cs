@@ -11,7 +11,7 @@ public enum QuestState {
     Complete
 }
 
-public class QuestManager : MonoBehaviour
+public class QuestManager : MonoBehaviour, IGUIScreen
 {
     public Quest quest;
     public Quest activeQuest;
@@ -35,22 +35,6 @@ public class QuestManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1)) && showGUI)
-        {
-            if (questState == QuestState.Accept)
-            {
-                questState = QuestState.InProgress;
-            }
-            else if (questState == QuestState.MissingIngredients)
-            {
-                questState = QuestState.InProgress;
-            } else {
-                Debug.Log("how'd you get here?");
-            }
-
-            ToggleUI(false);
-        }
-
         // send out raycast to see if player is looking at npc
         if (Input.GetMouseButtonDown(1) && !showGUI)
         {
@@ -166,28 +150,74 @@ public class QuestManager : MonoBehaviour
     // first screen when seeing quest
     public void InitiateQuest(Quest npcQuest)
     {
-        Debug.Log("quest initiated!");
 
-        ToggleUI();
+        if(ToggleUI())
+        {
+            Debug.Log("quest initiated!");
+            questState = QuestState.Initiate;
 
-        questState = QuestState.Initiate;
-
-        quest = npcQuest;
+            quest = npcQuest;
+        } else
+        {
+            Debug.Log("Tried to initiate quest but UI couldn't open.");
+        }
     }
 
-    void ToggleUI(bool flag = true) {
+    private bool ToggleUI(bool flag = true) {
         // gui stuff
-        showGUI = flag;
-        MouseLook.isUIActive = flag;
-        Cursor.visible = flag;
-        Cursor.lockState = flag ? CursorLockMode.None : CursorLockMode.Locked;
-        
-        // disabling character movement
-        gameObject.GetComponent<CharacterController>().enabled = !flag;
+        if(flag)
+        {
+            // Tell UIController to activate this UI
+            bool succeeded = UIController.Instance.ActivateQuestManager();
+            if(succeeded)
+            {
+                // We successfully activated the UI.
+            } else
+            {
+                // The UI could not be activated (something else is probably open already)
+            }
+
+            return succeeded;
+        } else
+        {
+            // Tell UIController to deactivate this UI
+            UIController.Instance.DeactivateQuestManager();
+            return true;
+        }
     }
 
     void GiveReward() {
         ToggleUI(false);
         inventory.OpenInventoryWithItem(activeQuest.rewardItem);
+    }
+
+
+    //  IGUIScreen implementation
+    public bool isGUIActive()
+    {
+        return showGUI;
+    }
+
+    public void activateGUI()
+    {
+        showGUI = true;
+    }
+
+    public void deactivateGUI()
+    {
+        if (questState == QuestState.Accept)
+        {
+            questState = QuestState.InProgress;
+        }
+        else if (questState == QuestState.MissingIngredients)
+        {
+            questState = QuestState.InProgress;
+        }
+        else
+        {
+            Debug.Log("how'd you get here?");
+        }
+
+        deactivateGUI();
     }
 }

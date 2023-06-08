@@ -14,7 +14,6 @@ public sealed class PlayerInventoryView : MonoBehaviour
 {
 
     [SerializeField] private readonly string dragButton = "Fire1";
-    [SerializeField] private KeyCode inventoryKey = KeyCode.E;
 
     // A static variable allowing any script to access the inventory UI.
     [HideInInspector] public static PlayerInventoryView Instance;
@@ -36,6 +35,9 @@ public sealed class PlayerInventoryView : MonoBehaviour
 
     private bool isDragging = false;
     private StoredItem draggedItem = null;
+
+    // Whether or not the GUI is active
+    public bool isActive { get; private set; }
 
 
     // =======================================
@@ -79,6 +81,9 @@ public sealed class PlayerInventoryView : MonoBehaviour
         await UniTask.Yield(PlayerLoopTiming.LastPostLateUpdate);
         ConfigureSlotDimensions();
         m_IsInventoryReady = true;
+        
+        // Ensure the inventory starts closed
+        deactivateGUI();
     }
     private void ConfigureSlotDimensions()
     {
@@ -156,18 +161,6 @@ public sealed class PlayerInventoryView : MonoBehaviour
                 mouseTracker.pickingMode = PickingMode.Ignore;
             }
         }
-
-        if (Input.GetKeyDown(inventoryKey))
-        {
-            if (m_Root.style.display == DisplayStyle.Flex)
-            {
-                DisableInventoryView();
-            }
-            else
-            {
-                EnableInventoryView();
-            }
-        }
     }
 
     // ========================================
@@ -176,26 +169,12 @@ public sealed class PlayerInventoryView : MonoBehaviour
 
     public void EnableInventoryView()
     {
-        if (Instance != null)
-        {
-            m_Root.style.display = DisplayStyle.Flex;
-            MouseLook.isUIActive = true;
-            UnityEngine.Cursor.visible = true;
-            UnityEngine.Cursor.lockState = CursorLockMode.None;
-            SwitchLooseCenterItemsToGrid();
-        }
+        UIController.Instance.ActivatePlayerInventory();
     }
 
     public void DisableInventoryView()
     {
-        if (Instance != null)
-        {
-            m_Root.style.display = DisplayStyle.None;
-            MouseLook.isUIActive = false;
-            UnityEngine.Cursor.visible = false;
-            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-            ClearLooseItems();
-        }
+        UIController.Instance.DeactivatePlayerInventory();
     }
 
     // Loads adds an item to the left panel, outside of the inventory grid
@@ -273,6 +252,35 @@ public sealed class PlayerInventoryView : MonoBehaviour
             RemoveItemFromLooseCenter(child);
             AddItemToInventoryGrid(child);
             SetItemPosition(child, m_LooseCenter.layout.position -m_InventoryGrid.parent.layout.position);
+        }
+    }
+
+    // =============================================
+    // ========= IGUIScreen Implementation =========
+    // =============================================
+
+    public bool isGUIActive()
+    {
+        return isActive;
+    }
+
+    public void activateGUI()
+    {
+        if (Instance != null)
+        {
+            m_Root.style.display = DisplayStyle.Flex;
+            isActive = true;
+            SwitchLooseCenterItemsToGrid();
+        }
+    }
+
+    public void deactivateGUI()
+    {
+        if (Instance != null)
+        {
+            m_Root.style.display = DisplayStyle.None;
+            isActive = false;
+            ClearLooseItems();
         }
     }
 

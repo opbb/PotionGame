@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public float friction = 1f;
     float moveSpeedStore;
 
+    public static bool isUIActive;
+
     public AudioClip walkingSFX;
     public AudioClip jumpStartSFX;
 
@@ -34,15 +36,36 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!controller.enabled)
-        {
-            return;
-        }
+        float moveHorizontal;
+        float moveVertical;
+        bool jump;
 
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        if (!isUIActive && controller.enabled)
+        {
+            // If we are not in UI, get input
+            moveHorizontal = Input.GetAxis("Horizontal");
+            moveVertical = Input.GetAxis("Vertical");
+            jump = Input.GetButton("Jump");
+        } else
+        {
+            // Otherwise, don't
+            moveHorizontal = 0f;
+            moveVertical = 0f;
+            jump = false;
+        }
+        
 
         input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
+
+        // sprint
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            moveSpeed = 1.5f * moveSpeedStore;
+        }
+        else
+        {
+            moveSpeed = moveSpeedStore;
+        }
 
         input *= moveSpeed;
 
@@ -67,7 +90,7 @@ public class PlayerController : MonoBehaviour
                 audioSource.Stop();
             }
 
-            if (Input.GetButton("Jump"))
+            if (jump)
             {
                 // Play jump start clip
                 audioSource.clip = jumpStartSFX;
@@ -94,21 +117,6 @@ public class PlayerController : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
 
         controller.Move(moveDirection * Time.deltaTime);
-
-        if (InRange.isInRange && Input.GetKeyDown(KeyCode.T))
-        {
-            recipeManager.displayRecipies();
-        }
-
-        // sprint
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            moveSpeed = 1.5f * moveSpeedStore;
-        }
-        else
-        {
-            moveSpeed = moveSpeedStore;
-        }
     }
 
     public void TeleportPlayer(Vector3 position)
