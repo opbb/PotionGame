@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
     public float gravity = 9.8f;
     public float airControl = 10f;
 
+    // 1 = no friction, 0 = no movement
+    public float friction = 1f;
+    float moveSpeedStore;
+
     public AudioClip walkingSFX;
     public AudioClip jumpStartSFX;
 
@@ -24,6 +28,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         recipeManager = GetComponent<RecipeManager>();
         audioSource = GetComponent<AudioSource>();
+        moveSpeedStore = moveSpeed;
     }
 
     // Update is called once per frame
@@ -47,6 +52,10 @@ public class PlayerController : MonoBehaviour
         if (controller.isGrounded)
         {
             moveDirection = input;
+
+            // apply friction to slow down player
+            moveDirection.x *= friction;
+            moveDirection.z *= friction;
 
             if (isMoving && !audioSource.isPlaying)
             {
@@ -91,10 +100,14 @@ public class PlayerController : MonoBehaviour
             recipeManager.displayRecipies();
         }
 
-        // dash - launch player forward
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        // sprint
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            controller.Move(transform.forward * 10f);
+            moveSpeed = 1.5f * moveSpeedStore;
+        }
+        else
+        {
+            moveSpeed = moveSpeedStore;
         }
     }
 

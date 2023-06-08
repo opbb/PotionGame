@@ -15,20 +15,19 @@ public class NPCBehavior : MonoBehaviour
     public float rejectCooldown = 30.0f;
     float rejectTimer = 0.0f;
 
+    Rigidbody rb;
     QuestManager questManager;
-    float yFloor = 0.0f;
 
     // Start is called before the first frame update
     void Start()
-    {   
-        yFloor = transform.position.y;
-
+    {
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
         questManager = player.GetComponent<QuestManager>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -69,8 +68,9 @@ public class NPCBehavior : MonoBehaviour
             // look at player, lock x and z axis
             transform.LookAt(player.transform);
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
-            transform.position = new Vector3(transform.position.x, yFloor, transform.position.z);
+
+            // move towards player
+            rb.velocity = transform.forward * moveSpeed;
         }
     }
 }
