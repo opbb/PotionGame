@@ -17800,7 +17800,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525176492}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 492, y: 259, z: 478}
+  m_LocalPosition: {x: 450, y: 1000, z: 450}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17819,9 +17819,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 580b20d32b4ca1349abeeab7a0deda2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightSource: {fileID: 525176492}
-  timeSpeed: 5
+  lightSource: {fileID: 525176493}
+  speed: 10
   time: 0
+  dayIntensity: 2
+  nightIntensity: 0
+  intensity: 0
+  dayColor: {r: 1, g: 0.9568628, b: 0.83921576, a: 0}
+  nightColor: {r: 0.16126736, g: 0.16718987, b: 0.2264151, a: 0}
+  lightColor: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
 --- !u!1 &529485897 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 171590, guid: 9de81cb010fadd74c85f793bbb3f6830, type: 3}
@@ -31836,8 +31842,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightSource: {fileID: 0}
-  timeSpeed: 0.1
+  speed: 0.1
   time: 0
+  dayIntensity: 100
+  nightIntensity: 20
+  intensity: 0
+  dayColor: {r: 0, g: 0, b: 0, a: 0}
+  nightColor: {r: 0, g: 0, b: 0, a: 0}
+  lightColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &764993618
 Transform:
   m_ObjectHideFlags: 0
