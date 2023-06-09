@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RecipeManager : MonoBehaviour, IGUIScreen
+public class RecipeManager : MonoBehaviour, IBrewingInteractable
 {
     public List<Button> recipeButtons;
     public List<Recipe> recipes;
 
     public PlayerInventory inventory;
-    public Text brewFailedText; 
+    public Text brewFailedText;
 
     // Remembers whether this screen is currently active
     private bool isActive;
@@ -39,7 +39,7 @@ public class RecipeManager : MonoBehaviour, IGUIScreen
         if (CheckInventory(recipe.requiredIngredients))
         {
             RemoveIngredientsFromInventory(recipe.requiredIngredients);
-          
+
             StartBrewingPotion(recipe);
 
         }
@@ -74,7 +74,7 @@ public class RecipeManager : MonoBehaviour, IGUIScreen
         {
             if (!inventoryCount.ContainsKey(requiredItem.Details.CommonName) || inventoryCount[requiredItem.Details.CommonName] == 0)
             {
-               
+
                 return false;
             }
 
@@ -90,7 +90,7 @@ public class RecipeManager : MonoBehaviour, IGUIScreen
         foreach (StoredItem requiredItem in requiredIngredients)
         {
             inventory.TryTakeOutItem(requiredItem.Details);
-           
+
             print("Removing " + requiredItem.Details.CommonName + " from inventory");
         }
     }
@@ -115,6 +115,13 @@ public class RecipeManager : MonoBehaviour, IGUIScreen
     {
         isActive = true;
         toggleUIButtons(true);
+    }
+
+    // IBrewingInteractable implementation
+
+    public void PrintTestMessage()
+    {
+        Debug.Log("Test message from RecipeManager.");
     }
 
     public void deactivateGUI()
