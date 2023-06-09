@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3229391146551797138}
   - component: {fileID: 3229391145904633843}
   - component: {fileID: 7670861296206680126}
+  - component: {fileID: 6654904252833322586}
   m_Layer: 0
   m_Name: Cauldron
   m_TagString: Cauldron
@@ -110,3 +111,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce91f7b90d17c3499c0cf77b13e170a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recipeManager: {fileID: 0}
+  prepStation: {fileID: 0}
+--- !u!114 &6654904252833322586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3229391146554012698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92549742e9f1c44a87f66d8ab3f87a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipeButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  recipes:
+  - {fileID: 11400000, guid: 826db7a663c787f4db3c6cbb9a116761, type: 2}
+  - {fileID: 11400000, guid: f97eca50b4774bc4b8b455690c63c7c6, type: 2}
+  - {fileID: 11400000, guid: 29b933fb5138d7e419eb883d1096f41f, type: 2}
+  inventory: {fileID: 0}
+  brewFailedText: {fileID: 0}

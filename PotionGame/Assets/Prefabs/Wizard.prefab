@@ -230,7 +230,6 @@ GameObject:
   - component: {fileID: 7430035105156665032}
   - component: {fileID: 7430035105156665035}
   - component: {fileID: 2024844219683552349}
-  - component: {fileID: 2119331768689407357}
   - component: {fileID: 936954599}
   - component: {fileID: 7656101821744860944}
   - component: {fileID: 148283268}
@@ -330,28 +329,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 2, z: 0}
---- !u!114 &2119331768689407357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7430035105156664884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d92549742e9f1c44a87f66d8ab3f87a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  recipeButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  recipes:
-  - {fileID: 11400000, guid: f97eca50b4774bc4b8b455690c63c7c6, type: 2}
-  - {fileID: 11400000, guid: 29b933fb5138d7e419eb883d1096f41f, type: 2}
-  - {fileID: 11400000, guid: 826db7a663c787f4db3c6cbb9a116761, type: 2}
-  inventory: {fileID: 0}
-  brewFailedText: {fileID: 0}
 --- !u!114 &936954599
 MonoBehaviour:
   m_ObjectHideFlags: 0
