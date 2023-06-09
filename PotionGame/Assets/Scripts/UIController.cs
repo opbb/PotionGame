@@ -16,7 +16,7 @@ public class UIController : MonoBehaviour
     // Input keys
     [SerializeField] private KeyCode closeUIKey = KeyCode.Escape;
     [SerializeField] private KeyCode inventoryKey = KeyCode.E;
-    [SerializeField] private KeyCode recipeKey = KeyCode.T;
+    [SerializeField] private KeyCode recipeKey = KeyCode.F;
 
     // Tells if any GUI screen is currently active
     private bool isAnyGUIActive { get => activeScreen != null; }
@@ -55,29 +55,31 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isAnyGUIActive)
+        if (isAnyGUIActive)
         {
             // If a UI is open, check if we should close it
-            if(Input.GetKeyDown(closeUIKey))
+            if (Input.GetKeyDown(closeUIKey))
             {
                 // IF escape is pressed, close the UI no matter what
                 DeactivatGUIScreen();
-            } else if(playerInventory.isGUIActive() && Input.GetKeyDown(inventoryKey))
+            }
+            else if (playerInventory.isGUIActive() && Input.GetKeyDown(inventoryKey))
             {
                 // If the inventory key is pressed while it is open, close it
                 DeactivatePlayerInventory();
             }
-        } else
+        }
+        else
         {
             if (Input.GetKeyDown(recipeKey) && InRange.isInRange)
             {
-                ActivateRecipeManager();
+                InRange.nearestBrewingInteractableOrNull.PrintTestMessage();
             }
             else if (Input.GetKeyDown(inventoryKey))
             {
                 ActivatePlayerInventory();
             }
-        } 
+        }
     }
 
     // ======= UI Specific Helpers =======
@@ -91,7 +93,7 @@ public class UIController : MonoBehaviour
     // Deactivates the QuestManager if it is the active screen.
     public void DeactivateQuestManager()
     {
-        if(ReferenceEquals(activeScreen, questManager))
+        if (ReferenceEquals(activeScreen, questManager))
         {
             DeactivatGUIScreen();
         }

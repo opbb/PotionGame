@@ -509,12 +509,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a883e937b247b5a4bb8eb68535580f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInventory: {fileID: 0}
-  questManager: {fileID: 0}
-  recipeManager: {fileID: 0}
   closeUIKey: 27
   inventoryKey: 101
-  recipeKey: 116
+  recipeKey: 102
 --- !u!1001 &1494892267842511148
 PrefabInstance:
   m_ObjectHideFlags: 0
