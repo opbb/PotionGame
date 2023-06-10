@@ -12,11 +12,13 @@ public class UIController : MonoBehaviour
     private PlayerInventory playerInventory;
     private QuestManager questManager;
     private RecipeManager recipeManager;
+    private Herbarium herbariumManager;
 
     // Input keys
     [SerializeField] private KeyCode closeUIKey = KeyCode.Escape;
     [SerializeField] private KeyCode inventoryKey = KeyCode.E;
     [SerializeField] private KeyCode recipeKey = KeyCode.T;
+    [SerializeField] private KeyCode herbariumKey = KeyCode.F;
 
     // Tells if any GUI screen is currently active
     private bool isAnyGUIActive { get => activeScreen != null; }
@@ -44,7 +46,8 @@ public class UIController : MonoBehaviour
         playerInventory = PlayerInventory.Instance;
         questManager = GetComponent<QuestManager>();
         recipeManager = GetComponent<RecipeManager>();
-        if (playerInventory == null || questManager == null || recipeManager == null)
+        herbariumManager = Herbarium.Instance;
+        if (playerInventory == null || questManager == null || recipeManager == null || herbariumManager == null)
         {
             throw new InvalidOperationException("The UI Controller cant find all of the GUIScreens, " +
                 "they are probably not attached to the same GameObject, which they should be.");
@@ -76,6 +79,10 @@ public class UIController : MonoBehaviour
             else if (Input.GetKeyDown(inventoryKey))
             {
                 ActivatePlayerInventory();
+            }
+            else if (Input.GetKeyDown(herbariumKey))
+            {
+                ActivateHerbarium();
             }
         } 
     }
@@ -127,7 +134,20 @@ public class UIController : MonoBehaviour
         }
     }
 
+    // Activates the Herbarium GUI if it is safe to do so, returning true if it does.
+    public bool ActivateHerbarium()
+    {
+        return ActivateGUIScreen(playerInventory);
+    }
 
+    // Deactivates the PlayerInventory if it is the active screen.
+    public void DeactivateHerbarium()
+    {
+        if (ReferenceEquals(activeScreen, playerInventory))
+        {
+            DeactivatGUIScreen();
+        }
+    }
 
 
     // ======= Generic Helpers =======
