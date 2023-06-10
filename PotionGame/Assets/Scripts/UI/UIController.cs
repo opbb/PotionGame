@@ -44,9 +44,10 @@ public class UIController : MonoBehaviour
     void Start()
     {
         playerInventory = PlayerInventory.Instance;
+        herbariumManager = Herbarium.Instance;
         questManager = GetComponent<QuestManager>();
         recipeManager = GetComponent<RecipeManager>();
-        herbariumManager = Herbarium.Instance;
+       
         if (playerInventory == null || questManager == null || recipeManager == null || herbariumManager == null)
         {
             throw new InvalidOperationException("The UI Controller cant find all of the GUIScreens, " +
@@ -140,7 +141,7 @@ public class UIController : MonoBehaviour
     // Activates the Herbarium GUI if it is safe to do so, returning true if it does.
     public bool ActivateHerbarium()
     {
-        return ActivateGUIScreen(playerInventory);
+        return ActivateGUIScreen(herbariumManager);
     }
 
     // Deactivates the PlayerInventory if it is the active screen.
