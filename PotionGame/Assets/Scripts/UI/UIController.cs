@@ -12,11 +12,13 @@ public class UIController : MonoBehaviour
     private PlayerInventory playerInventory;
     private QuestManager questManager;
     private RecipeManager recipeManager;
+    private Herbarium herbariumManager;
 
     // Input keys
     [SerializeField] private KeyCode closeUIKey = KeyCode.Escape;
     [SerializeField] private KeyCode inventoryKey = KeyCode.E;
     [SerializeField] private KeyCode recipeKey = KeyCode.F;
+    [SerializeField] private KeyCode herbariumKey = KeyCode.C;
 
     // Tells if any GUI screen is currently active
     private bool isAnyGUIActive { get => activeScreen != null; }
@@ -42,9 +44,11 @@ public class UIController : MonoBehaviour
     void Start()
     {
         playerInventory = PlayerInventory.Instance;
+        herbariumManager = Herbarium.Instance;
         questManager = GetComponent<QuestManager>();
         recipeManager = GetComponent<RecipeManager>();
-        if (playerInventory == null || questManager == null || recipeManager == null)
+       
+        if (playerInventory == null || questManager == null || recipeManager == null || herbariumManager == null)
         {
             throw new InvalidOperationException("The UI Controller cant find all of the GUIScreens, " +
                 "they are probably not attached to the same GameObject, which they should be.");
@@ -79,7 +83,12 @@ public class UIController : MonoBehaviour
             {
                 ActivatePlayerInventory();
             }
-        }
+            else if (Input.GetKeyDown(herbariumKey))
+            {
+                ActivateHerbarium();
+            }
+        } 
+        
     }
 
     // ======= UI Specific Helpers =======
@@ -129,7 +138,20 @@ public class UIController : MonoBehaviour
         }
     }
 
+    // Activates the Herbarium GUI if it is safe to do so, returning true if it does.
+    public bool ActivateHerbarium()
+    {
+        return ActivateGUIScreen(herbariumManager);
+    }
 
+    // Deactivates the PlayerInventory if it is the active screen.
+    public void DeactivateHerbarium()
+    {
+        if (ReferenceEquals(activeScreen, playerInventory))
+        {
+            DeactivatGUIScreen();
+        }
+    }
 
 
     // ======= Generic Helpers =======
