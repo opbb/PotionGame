@@ -33,7 +33,7 @@ public class NPCBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if this quest is active
+        // if this NPC's quest is active, update quest state to match quest manager
         if (questManager.activeQuest != null && questManager.activeQuest.questName == quest.questName) {
             questState = questManager.questState;
         }
@@ -43,9 +43,8 @@ public class NPCBehavior : MonoBehaviour
             return;
         }
 
-        // if player is in quest menu, don't act
+        // if player is in quest menu, and this NPC's quest is active, make player look at npc
         if (questManager.showGUI && questManager.quest == quest) {
-            // making player look at npc, lerp over time
             var lookPos = transform.position - player.transform.position;
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
@@ -64,12 +63,11 @@ public class NPCBehavior : MonoBehaviour
         if (distance <= activateQuestDistance) {
             questManager.InitiateQuest(quest);
             rejectTimer = rejectCooldown;
-        } else if (distance <= minDistance) {
-            // look at player, lock x and z axis
+        } 
+        else if (distance <= minDistance) {
             transform.LookAt(player.transform);
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
 
-            // move towards player
             rb.velocity = transform.forward * moveSpeed;
         }
     }
