@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
-  m_Name: SeaSponge
+  m_Name: Mushroom
   m_EditorClassIdentifier: 
   ID: 0696cbc9-6c53-40c9-ab40-485ff7009f27
-  CommonName: SeaSponge
-  Description: Antimicrobial and anti inflammatory
-  Icon: {fileID: 21300000, guid: 024c5cc8ae4557a4d817a31eeb3de459, type: 3}
+  CommonName: Mushroom
+  Description: Mushroom. Yummy?
+  Icon: {fileID: 21300000, guid: 1d0f73eecba84fa4896a363ade41b837, type: 3}
   SlotDimension:
     Height: 2
     Width: 2
