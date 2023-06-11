@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
-  m_Name: Lily
+  m_Name: BrewOfFortune
   m_EditorClassIdentifier: 
-  ID: 79a78313-2833-4591-8898-8106598d7548
-  CommonName: Lily
-  Description: Enhancing psychic abilities, promoting purity, and attracting positive
-    energies
-  Icon: {fileID: 21300000, guid: ef73a3c623c8a0d49a4e614a813bb151, type: 3}
+  ID: 00810f6f-b709-4a15-8a97-9ded53996784
+  CommonName: Fortune
+  Description: Attracts luck - abundance - and positive outcomes in various endeavors.
+  Icon: {fileID: 21300000, guid: bec3f714c0b7113438079d30ff996b71, type: 3}
   SlotDimension:
     Height: 2
-    Width: 1
+    Width: 2

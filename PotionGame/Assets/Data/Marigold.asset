@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
-  m_Name: Lily
+  m_Name: Marigold
   m_EditorClassIdentifier: 
-  ID: 79a78313-2833-4591-8898-8106598d7548
-  CommonName: Lily
-  Description: Enhancing psychic abilities, promoting purity, and attracting positive
-    energies
-  Icon: {fileID: 21300000, guid: ef73a3c623c8a0d49a4e614a813bb151, type: 3}
+  ID: fbb95bbf-a0e7-416d-9b0c-a8d147c12f3f
+  CommonName: Marigold
+  Description: Protection, healing, enhancing psychic abilities
+  Icon: {fileID: 21300000, guid: 27d96066a9160494e839ab984a95af36, type: 3}
   SlotDimension:
     Height: 2
     Width: 1

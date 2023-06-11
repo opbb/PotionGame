@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 2497a35f-9709-42c6-bd89-d7b2d4a3608a
   CommonName: Dandelion
-  Description: It yellow.
-  Icon: {fileID: 21300000, guid: 6c1e661cc3f555349b8a2f1b426e27f4, type: 3}
+  Description: Detoxifying, used for cleansing and purification
+  Icon: {fileID: 21300000, guid: 0ee4d5caab6a07f4986ab0faf3b9245e, type: 3}
   SlotDimension:
     Height: 2
     Width: 1
