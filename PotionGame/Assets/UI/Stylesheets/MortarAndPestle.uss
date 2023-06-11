@@ -1,1 +1,61 @@
-VisualElement {}
+.visual-icon {
+    height: 100%;
+    width: 100%;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.Center {
+    width: 0;
+    height: 0;
+    left: 50%;
+    bottom: auto;
+    top: 70%;
+    position: absolute;
+}
+
+.TopLeft {
+    width: 0;
+    height: 0;
+    left: 2%;
+    bottom: auto;
+    top: 25%;
+    position: absolute;
+}
+
+.TopRight {
+    width: 0;
+    height: 0;
+    left: 98%;
+    bottom: auto;
+    top: 25%;
+    position: absolute;
+}
+
+.BottomRight {
+    width: 0;
+    height: 0;
+    left: 70%;
+    bottom: auto;
+    top: 80%;
+    position: absolute;
+}
+
+.BottomLeft {
+    width: 0;
+    height: 0;
+    left: 30%;
+    bottom: auto;
+    top: 80%;
+    position: absolute;
+}
+
+.Pestle {
+    flex-basis: auto;
+    background-image: url('project://database/Assets/Sprites/pestle.png?fileID=2800000&guid=54ae49b3466581b4c95feb919ecf3b67&type=3#pestle');
+    position: absolute;
+    left: 319px;
+    top: -113px;
+    width: 22.5%;
+    height: 93%;
+    transform-origin: center 8%;
+}

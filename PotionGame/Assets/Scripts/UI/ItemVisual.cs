@@ -30,15 +30,11 @@ public class ItemVisual : VisualElement
         icon.AddToClassList("visual-icon");
         AddToClassList("visual-icon-container");
 
-        //RegisterCallback<MouseMoveEvent>(OnMouseMoveEvent);
-        //RegisterCallback<MouseUpEvent>(OnMouseUpEvent);
         RegisterCallback<MouseDownEvent>(OnMouseDownEvent);
     }
 
     ~ItemVisual()
     {
-        //UnregisterCallback<MouseMoveEvent>(OnMouseMoveEvent);
-        //UnregisterCallback<MouseUpEvent>(OnMouseUpEvent);
         UnregisterCallback<MouseDownEvent>(OnMouseDownEvent);
     }
 

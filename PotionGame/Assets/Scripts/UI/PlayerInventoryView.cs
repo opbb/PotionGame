@@ -104,9 +104,7 @@ public sealed class PlayerInventoryView : MonoBehaviour
     private void ConfigureMouseTracker()
     {
         mouseTracker = new MouseTracker();
-        mouseTracker.AddToClassList("mouse-tracker");
         mouseTracker.BringToFront();
-        mouseTracker.pickingMode = PickingMode.Ignore;
         m_WholeScreen.Add(mouseTracker);
     }
 
