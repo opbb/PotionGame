@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
-  m_Name: Lily
+  m_Name: Lotus
   m_EditorClassIdentifier: 
-  ID: 79a78313-2833-4591-8898-8106598d7548
-  CommonName: Lily
-  Description: Enhancing psychic abilities, promoting purity, and attracting positive
-    energies
-  Icon: {fileID: 21300000, guid: ef73a3c623c8a0d49a4e614a813bb151, type: 3}
+  ID: f648efe6-4148-4de2-a72c-8832754ec6e5
+  CommonName: Lotus
+  Description: Spiritual significance, meditation and inner peace
+  Icon: {fileID: 21300000, guid: 0e1b9c532a30a384fa209400c21fded1, type: 3}
   SlotDimension:
     Height: 2
-    Width: 1
+    Width: 2
