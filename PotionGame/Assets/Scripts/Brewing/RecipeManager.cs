@@ -14,7 +14,7 @@ public class RecipeManager : MonoBehaviour, IBrewingInteractable, IGUIScreen
     [SerializeField] TMP_Text brewFailedText;
 
     [HideInInspector] public static RecipeManager Instance;
-
+    
     // Remembers whether this screen is currently active
     private bool isActive;
     private int currentPage = 0;
@@ -175,7 +175,7 @@ public class RecipeManager : MonoBehaviour, IBrewingInteractable, IGUIScreen
         {
             inventory.TryTakeOutItem(requiredItem.Details);
 
-            print("Removing " + requiredItem.Details.CommonName + " from inventory");
+
         }
     }
 
@@ -186,7 +186,6 @@ public class RecipeManager : MonoBehaviour, IBrewingInteractable, IGUIScreen
 
         // show the inventory
         inventory.OpenInventoryWithItem(recipe.resultingItem.Details);
-        Debug.Log("brewing " + recipe.name);
     }
 
   

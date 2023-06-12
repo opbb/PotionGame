@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dfff35830ba3a94ab0cb51cab691c4d, type: 3}
-  m_Name: Tranquil Essence
+  m_Name: ConcoctionOfEnergy
   m_EditorClassIdentifier: 
-  recipeName: Tranquil Essence
-  brewingTime: 10
+  recipeName: Concotion Of Energy
+  brewingTime: 5
   requiredIngredients:
-  - Details: {fileID: 11400000, guid: ff16e668a1428924c991404e333b5b30, type: 2}
+  - Details: {fileID: 11400000, guid: 05affef6a2c43af40ab1a2fccfe06e0d, type: 2}
   - Details: {fileID: 11400000, guid: fa6e06dd91632d3448c7a53b6eba5ff1, type: 2}
-  - Details: {fileID: 11400000, guid: a55140c62febd9543bebae4bcb8b8615, type: 2}
+  - Details: {fileID: 11400000, guid: 01e69059ecf07ec40a2019a1bdf0b732, type: 2}
   resultingItem:
-    Details: {fileID: 11400000, guid: a1c5ab04774346042b2ac1f327890f72, type: 2}
+    Details: {fileID: 11400000, guid: 7d42640c320665a4e944d42924e53c5e, type: 2}

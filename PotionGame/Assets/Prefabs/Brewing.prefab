@@ -609,7 +609,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -192, y: 90}
-  m_SizeDelta: {x: 96, y: 96}
+  m_SizeDelta: {x: 110, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8560304992264625269
 CanvasRenderer:
@@ -720,7 +720,7 @@ GameObject:
   - component: {fileID: 2943678102695880357}
   - component: {fileID: 2835668650626722499}
   m_Layer: 5
-  m_Name: Button4
+  m_Name: Button3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -741,12 +741,12 @@ RectTransform:
   - {fileID: 678111678683551270}
   - {fileID: 4818492339350077139}
   m_Father: {fileID: 2355497783116937868}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -192, y: -180}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: -192.00008, y: -180}
+  m_SizeDelta: {x: 110, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7694846841058547283
 CanvasRenderer:
@@ -842,7 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4708b5d6f14a736488e46f5e8b5c49c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipeIndex: 3
+  recipeIndex: 2
 --- !u!1 &2270087577625330943
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,6 +932,7 @@ GameObject:
   - component: {fileID: 2355497783116937858}
   - component: {fileID: 2355497783116937857}
   - component: {fileID: 1453942712}
+  - component: {fileID: 903414951}
   m_Layer: 5
   m_Name: Brewing
   m_TagString: Untagged
@@ -954,8 +955,8 @@ RectTransform:
   - {fileID: 1676488227239924539}
   - {fileID: 5519433838763714762}
   - {fileID: 372776955137240347}
-  - {fileID: 4211606734691400390}
   - {fileID: 3545354886820852253}
+  - {fileID: 4211606734691400390}
   - {fileID: 901362933796140550}
   - {fileID: 4451173633813949978}
   - {fileID: 1475135805}
@@ -1044,20 +1045,127 @@ MonoBehaviour:
   recipeButtons:
   - {fileID: 3322884055440391411}
   - {fileID: 4268666325867839114}
-  - {fileID: 762053058255692514}
   - {fileID: 2943678102695880357}
+  - {fileID: 762053058255692514}
   recipes:
-  - {fileID: 11400000, guid: 704d9f4c2531ed342affe35f8b05d35c, type: 2}
-  - {fileID: 11400000, guid: f97eca50b4774bc4b8b455690c63c7c6, type: 2}
-  - {fileID: 11400000, guid: 29b933fb5138d7e419eb883d1096f41f, type: 2}
-  - {fileID: 11400000, guid: 7f5e5bf67d0a6ba45997e2601a2cbc97, type: 2}
-  - {fileID: 11400000, guid: f97eca50b4774bc4b8b455690c63c7c6, type: 2}
-  - {fileID: 11400000, guid: 826db7a663c787f4db3c6cbb9a116761, type: 2}
-  - {fileID: 11400000, guid: 704d9f4c2531ed342affe35f8b05d35c, type: 2}
-  - {fileID: 11400000, guid: 704d9f4c2531ed342affe35f8b05d35c, type: 2}
-  - {fileID: 11400000, guid: 704d9f4c2531ed342affe35f8b05d35c, type: 2}
+  - {fileID: 11400000, guid: 41d0bb6a73d4c634c89b5f2d0806e056, type: 2}
+  - {fileID: 11400000, guid: 6d2ccc8247d462343bfe39c6d496f5a3, type: 2}
+  - {fileID: 11400000, guid: 9ab5176317a286f418fcc14f3583ee66, type: 2}
+  - {fileID: 11400000, guid: eeec48baf62a4d9489bfa75ddca388d1, type: 2}
+  - {fileID: 11400000, guid: 331e4a94ae3269c4795f003773bec907, type: 2}
+  - {fileID: 11400000, guid: 48e38108aec50a449b0ea5e2ea33bb07, type: 2}
+  - {fileID: 11400000, guid: 1ef65c4fe2dd2184c936ed828faddfe2, type: 2}
+  - {fileID: 11400000, guid: 4a278229640a6b14486e7947bce928db, type: 2}
+  - {fileID: 11400000, guid: 0553f714e2350fc45ab979e4a9ccaab0, type: 2}
+  - {fileID: 11400000, guid: 1854a758c6cdc6242a0eaff1de65423d, type: 2}
+  - {fileID: 11400000, guid: 457a551c78d72e4499b5f5054f35fa3a, type: 2}
+  - {fileID: 11400000, guid: 306c92802c69dca439579bc885a3ae10, type: 2}
+  - {fileID: 11400000, guid: cac53b572212eca4b8816ac7c0f58292, type: 2}
+  - {fileID: 11400000, guid: e6b126cf4758acc42b323943e89f267c, type: 2}
+  - {fileID: 11400000, guid: 62a73d8e071db5843b13dc27b524736c, type: 2}
+  - {fileID: 11400000, guid: 210d9336ed957294699fc1409b84516c, type: 2}
+  - {fileID: 11400000, guid: 2bbedc9d43613a341bd926baebe692be, type: 2}
+  - {fileID: 11400000, guid: 19a9825fca9e35c4590793f170536f3e, type: 2}
+  - {fileID: 11400000, guid: 3aa8c6515b6900f4fbf3b21d0e971d71, type: 2}
   inventory: {fileID: 0}
   brewFailedText: {fileID: 6670376594686207453}
+  brewPotionSFX: {fileID: 0}
+--- !u!82 &903414951
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2355497783116937856}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2679035642293669015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,7 +1282,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 192, y: 90}
-  m_SizeDelta: {x: 96, y: 96}
+  m_SizeDelta: {x: 110, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &196687203464964823
 CanvasRenderer:
@@ -2212,7 +2320,7 @@ GameObject:
   - component: {fileID: 762053058255692514}
   - component: {fileID: 5444931602600973395}
   m_Layer: 5
-  m_Name: Button3
+  m_Name: Button4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2233,12 +2341,12 @@ RectTransform:
   - {fileID: 6809275400548800182}
   - {fileID: 7618055130165497959}
   m_Father: {fileID: 2355497783116937868}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 192, y: -180}
-  m_SizeDelta: {x: 96, y: 96}
+  m_SizeDelta: {x: 110, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3527664085145593888
 CanvasRenderer:
@@ -2334,4 +2442,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4708b5d6f14a736488e46f5e8b5c49c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipeIndex: 2
+  recipeIndex: 3
