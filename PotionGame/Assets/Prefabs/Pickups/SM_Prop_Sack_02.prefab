@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3973670304941949821}
   - component: {fileID: 3973670304940719585}
   - component: {fileID: 6046119024607996426}
-  m_Layer: 0
+  - component: {fileID: 1980715444}
+  m_Layer: 6
   m_Name: SM_Prop_Sack_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3973670304942930715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 373.50586, y: 0.0049466323, z: 488.22424}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,3 +98,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisItemDef: {fileID: 11400000, guid: 01e69059ecf07ec40a2019a1bdf0b732, type: 2}
+--- !u!135 &1980715444
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3973670304942930715}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: -0.000030308962, y: 0.2501388, z: 0}

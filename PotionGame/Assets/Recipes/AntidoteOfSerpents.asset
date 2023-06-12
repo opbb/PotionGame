@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfff35830ba3a94ab0cb51cab691c4d, type: 3}
   m_Name: AntidoteOfSerpents
   m_EditorClassIdentifier: 
-  recipeName: 
-  brewingTime: 0
-  requiredIngredients: []
+  recipeName: Antidote Of Serpents
+  brewingTime: 3
+  requiredIngredients:
+  - Details: {fileID: 11400000, guid: dff6d5d5b28ab584b8f460e0936cd178, type: 2}
+  - Details: {fileID: 11400000, guid: aebf8027f9093d74fb40c69ab84a3bd9, type: 2}
+  - Details: {fileID: 11400000, guid: 01e69059ecf07ec40a2019a1bdf0b732, type: 2}
   resultingItem:
-    Details: {fileID: 0}
+    Details: {fileID: 11400000, guid: 1c95b84ab74af3b4a9ba4a0e71d768dc, type: 2}

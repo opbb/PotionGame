@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7e800534f0f304ab35bed16301c1ea, type: 3}
+  m_Name: YouthfulnessQuest
+  m_EditorClassIdentifier: 
+  questName: Potion Of Youthfulness
+  requiredPotion: {fileID: 11400000, guid: c3c842920d6672c418e5fd73b45dec54, type: 2}
+  rewardItem: {fileID: 11400000, guid: a7743fa50e12d7b4e9c16e282138a8b8, type: 2}
+  questDialogue: Every day I wake up feeling older. I would do anything to feel young
+    again. Can you bring me a Potion of Youthfulness?
+  questCompleteDialogue: I cannot wait to try this out, thank you!
+  questAcceptDialogue: Only the best please!
+  questRejectDialogue: I will forever dream of being young again!
+  questInProgressDialogue: Don't forget to bring me my potion!

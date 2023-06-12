@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfff35830ba3a94ab0cb51cab691c4d, type: 3}
   m_Name: BrewOfTranquility
   m_EditorClassIdentifier: 
-  recipeName: 
-  brewingTime: 0
-  requiredIngredients: []
+  recipeName: Brew Of Tranquility
+  brewingTime: 10
+  requiredIngredients:
+  - Details: {fileID: 11400000, guid: 88a4f9ce0183dc04b9a68b7c008b82ae, type: 2}
+  - Details: {fileID: 11400000, guid: a55140c62febd9543bebae4bcb8b8615, type: 2}
+  - Details: {fileID: 11400000, guid: 01e69059ecf07ec40a2019a1bdf0b732, type: 2}
   resultingItem:
-    Details: {fileID: 0}
+    Details: {fileID: 11400000, guid: a1c5ab04774346042b2ac1f327890f72, type: 2}

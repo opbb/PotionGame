@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfff35830ba3a94ab0cb51cab691c4d, type: 3}
   m_Name: EuphoriaElixir
   m_EditorClassIdentifier: 
-  recipeName: 
-  brewingTime: 0
-  requiredIngredients: []
+  recipeName: Euphoria Elixir
+  brewingTime: 10
+  requiredIngredients:
+  - Details: {fileID: 11400000, guid: dff6d5d5b28ab584b8f460e0936cd178, type: 2}
+  - Details: {fileID: 11400000, guid: fa6e06dd91632d3448c7a53b6eba5ff1, type: 2}
+  - Details: {fileID: 11400000, guid: 01e69059ecf07ec40a2019a1bdf0b732, type: 2}
   resultingItem:
-    Details: {fileID: 0}
+    Details: {fileID: 11400000, guid: 5e7bb1cba0179574e9e4513753ec1314, type: 2}

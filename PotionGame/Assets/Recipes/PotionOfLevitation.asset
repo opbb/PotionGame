@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfff35830ba3a94ab0cb51cab691c4d, type: 3}
   m_Name: PotionOfLevitation
   m_EditorClassIdentifier: 
-  recipeName: 
-  brewingTime: 0
-  requiredIngredients: []
+  recipeName: Potion Of Levitation
+  brewingTime: 10
+  requiredIngredients:
+  - Details: {fileID: 11400000, guid: 35256129840900c49a694f741bf1ae92, type: 2}
+  - Details: {fileID: 11400000, guid: 5a1574bdb0baf9942804613b1f7f840c, type: 2}
+  - Details: {fileID: 11400000, guid: 01e69059ecf07ec40a2019a1bdf0b732, type: 2}
   resultingItem:
-    Details: {fileID: 0}
+    Details: {fileID: 11400000, guid: 0d3cc78862c4bfc4eb9b3b12c0fcc50d, type: 2}
