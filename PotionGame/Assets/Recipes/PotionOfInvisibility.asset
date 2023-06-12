@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dfff35830ba3a94ab0cb51cab691c4d, type: 3}
-  m_Name: MintTest
+  m_Name: PotionOfInvisibility
   m_EditorClassIdentifier: 
-  recipeName: PotionOfCourage
-  brewingTime: 10
-  requiredIngredients:
-  - Details: {fileID: 11400000, guid: fa6e06dd91632d3448c7a53b6eba5ff1, type: 2}
+  recipeName: 
+  brewingTime: 0
+  requiredIngredients: []
   resultingItem:
-    Details: {fileID: 11400000, guid: 0e146198e031de84a97164be12dc6d0e, type: 2}
+    Details: {fileID: 0}

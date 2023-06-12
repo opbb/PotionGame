@@ -1047,15 +1047,25 @@ MonoBehaviour:
   - {fileID: 762053058255692514}
   - {fileID: 2943678102695880357}
   recipes:
-  - {fileID: 11400000, guid: 704d9f4c2531ed342affe35f8b05d35c, type: 2}
-  - {fileID: 11400000, guid: f97eca50b4774bc4b8b455690c63c7c6, type: 2}
-  - {fileID: 11400000, guid: 29b933fb5138d7e419eb883d1096f41f, type: 2}
-  - {fileID: 11400000, guid: 7f5e5bf67d0a6ba45997e2601a2cbc97, type: 2}
-  - {fileID: 11400000, guid: f97eca50b4774bc4b8b455690c63c7c6, type: 2}
-  - {fileID: 11400000, guid: 826db7a663c787f4db3c6cbb9a116761, type: 2}
-  - {fileID: 11400000, guid: 704d9f4c2531ed342affe35f8b05d35c, type: 2}
-  - {fileID: 11400000, guid: 704d9f4c2531ed342affe35f8b05d35c, type: 2}
-  - {fileID: 11400000, guid: 704d9f4c2531ed342affe35f8b05d35c, type: 2}
+  - {fileID: 11400000, guid: 41d0bb6a73d4c634c89b5f2d0806e056, type: 2}
+  - {fileID: 11400000, guid: 6d2ccc8247d462343bfe39c6d496f5a3, type: 2}
+  - {fileID: 11400000, guid: 9ab5176317a286f418fcc14f3583ee66, type: 2}
+  - {fileID: 11400000, guid: eeec48baf62a4d9489bfa75ddca388d1, type: 2}
+  - {fileID: 11400000, guid: 331e4a94ae3269c4795f003773bec907, type: 2}
+  - {fileID: 11400000, guid: 48e38108aec50a449b0ea5e2ea33bb07, type: 2}
+  - {fileID: 11400000, guid: 1ef65c4fe2dd2184c936ed828faddfe2, type: 2}
+  - {fileID: 11400000, guid: 4a278229640a6b14486e7947bce928db, type: 2}
+  - {fileID: 11400000, guid: 0553f714e2350fc45ab979e4a9ccaab0, type: 2}
+  - {fileID: 11400000, guid: 1854a758c6cdc6242a0eaff1de65423d, type: 2}
+  - {fileID: 11400000, guid: 457a551c78d72e4499b5f5054f35fa3a, type: 2}
+  - {fileID: 11400000, guid: 306c92802c69dca439579bc885a3ae10, type: 2}
+  - {fileID: 11400000, guid: cac53b572212eca4b8816ac7c0f58292, type: 2}
+  - {fileID: 11400000, guid: e6b126cf4758acc42b323943e89f267c, type: 2}
+  - {fileID: 11400000, guid: 62a73d8e071db5843b13dc27b524736c, type: 2}
+  - {fileID: 11400000, guid: 210d9336ed957294699fc1409b84516c, type: 2}
+  - {fileID: 11400000, guid: 2bbedc9d43613a341bd926baebe692be, type: 2}
+  - {fileID: 11400000, guid: 19a9825fca9e35c4590793f170536f3e, type: 2}
+  - {fileID: 11400000, guid: 3aa8c6515b6900f4fbf3b21d0e971d71, type: 2}
   inventory: {fileID: 0}
   brewFailedText: {fileID: 6670376594686207453}
 --- !u!1 &2679035642293669015

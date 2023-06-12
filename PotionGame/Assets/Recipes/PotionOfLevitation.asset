@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dfff35830ba3a94ab0cb51cab691c4d, type: 3}
-  m_Name: TonicOfClarity
+  m_Name: PotionOfLevitation
   m_EditorClassIdentifier: 
-  recipeName: Tonic Of Clarity
-  brewingTime: 10
-  requiredIngredients:
-  - Details: {fileID: 11400000, guid: 88a4f9ce0183dc04b9a68b7c008b82ae, type: 2}
-  - Details: {fileID: 11400000, guid: 1ecb3f30043c3024ca266c1ae263c833, type: 2}
+  recipeName: 
+  brewingTime: 0
+  requiredIngredients: []
   resultingItem:
-    Details: {fileID: 11400000, guid: d7e0bbaf79b56f3468aac3aea8c34188, type: 2}
+    Details: {fileID: 0}
