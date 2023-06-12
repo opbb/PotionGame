@@ -11,6 +11,7 @@
 .visual-icon {
     height: 100%;
     width: 100%;
+    visibility: visible;
     -unity-background-scale-mode: scale-to-fit;
 }
 

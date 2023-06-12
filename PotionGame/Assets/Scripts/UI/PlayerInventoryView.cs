@@ -23,6 +23,7 @@ public sealed class PlayerInventoryView : MonoBehaviour
     private VisualElement m_Root;
     private VisualElement m_InventoryGrid;
     private VisualElement m_WholeScreen;
+    private VisualElement m_Loose;
     private VisualElement m_LooseCenter;
     private MouseTracker mouseTracker;
     //private static Label m_ItemDetailHeader;
@@ -66,6 +67,7 @@ public sealed class PlayerInventoryView : MonoBehaviour
         m_Root = GetComponentInChildren<UIDocument>().rootVisualElement;
         m_InventoryGrid = m_Root.Q<VisualElement>("Grid");
         m_WholeScreen = m_Root.Q<VisualElement>("WholeScreen");
+        m_Loose = m_Root.Q<VisualElement>("Loose");
         m_LooseCenter = m_Root.Q<VisualElement>("LooseCenter");
         looseItems = new HashSet<StoredItem>();
         
@@ -75,7 +77,7 @@ public sealed class PlayerInventoryView : MonoBehaviour
         //m_ItemDetailPrice = itemDetails.Q<Label>("SellPrice");
         //await UniTask.WaitForEndOfFrame();
 
-        ConfigureInventoryTelegraph();
+        //ConfigureInventoryTelegraph();
         ConfigureMouseTracker();
 
         await UniTask.Yield(PlayerLoopTiming.LastPostLateUpdate);
@@ -99,6 +101,16 @@ public sealed class PlayerInventoryView : MonoBehaviour
     {
         item.RootVisual = visual;
         visual.style.visibility = Visibility.Visible;
+    }
+
+    public void AddScreenToLoose(VisualElement screenRoot)
+    {
+        screenRoot.style.position = Position.Absolute;
+        screenRoot.style.left = new StyleLength(new Length(0f, LengthUnit.Percent));
+        screenRoot.style.top = new StyleLength(new Length(0f, LengthUnit.Percent));
+        screenRoot.style.width = new StyleLength(new Length(100f, LengthUnit.Percent));
+        screenRoot.style.height = new StyleLength(new Length(100f, LengthUnit.Percent));
+        m_Loose.Add(screenRoot);
     }
 
     private void ConfigureMouseTracker()

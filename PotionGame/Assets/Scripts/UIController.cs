@@ -11,7 +11,7 @@ public class UIController : MonoBehaviour
     // IGUIScreens to manage
     private PlayerInventory playerInventory;
     private QuestManager questManager;
-    private RecipeManager recipeManager;
+    [SerializeField] private RecipeManager recipeManager;
 
     // Input keys
     [SerializeField] private KeyCode closeUIKey = KeyCode.Escape;
@@ -43,7 +43,6 @@ public class UIController : MonoBehaviour
     {
         playerInventory = PlayerInventory.Instance;
         questManager = GetComponent<QuestManager>();
-        recipeManager = GetComponent<RecipeManager>();
         if (playerInventory == null || questManager == null || recipeManager == null)
         {
             throw new InvalidOperationException("The UI Controller cant find all of the GUIScreens, " +

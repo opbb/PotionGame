@@ -26,6 +26,7 @@ public class ItemVisual : VisualElement
         {
             style = { backgroundImage = m_Item.Icon.texture }
         };
+
         Add(icon);
         icon.AddToClassList("visual-icon");
         AddToClassList("visual-icon-container");
@@ -124,6 +125,9 @@ public class ItemVisual : VisualElement
 
     private void OnMouseDownEvent(MouseDownEvent mouseEvent)
     {
+        Debug.Log(thisItem.Details.name + "\n" + thisItem.Details.SlotDimension.Height + "," + thisItem.Details.SlotDimension.Width);
+        Debug.Log("Style dimensions: " + style.width + "," + style.height);
+        Debug.Log(parent.name);
         StartDrag();
     }
 

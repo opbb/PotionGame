@@ -17,6 +17,7 @@ public class ItemDefinition : ScriptableObject
     public Sprite Icon;
     private Sprite PlacementTelegraph;
     public Dimensions SlotDimension;
+    public ItemDefinition afterMortarAndPestle;
 }
 
 [Serializable]

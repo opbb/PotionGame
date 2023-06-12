@@ -19,3 +19,4 @@ MonoBehaviour:
   SlotDimension:
     Height: 2
     Width: 1
+  afterMortarAndPestle: {fileID: 11400000, guid: 11d96ca1c0d7fbc4eb72b0c0381dce63, type: 2}
