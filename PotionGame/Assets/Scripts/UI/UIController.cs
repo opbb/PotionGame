@@ -46,7 +46,7 @@ public class UIController : MonoBehaviour
         playerInventory = PlayerInventory.Instance;
         herbariumManager = Herbarium.Instance;
         questManager = GetComponent<QuestManager>();
-        recipeManager = GetComponent<RecipeManager>();
+        recipeManager = RecipeManager.Instance;
        
         if (playerInventory == null || questManager == null || recipeManager == null || herbariumManager == null)
         {
@@ -77,7 +77,8 @@ public class UIController : MonoBehaviour
         {
             if (Input.GetKeyDown(recipeKey) && InRange.isInRange)
             {
-                InRange.nearestBrewingInteractableOrNull.PrintTestMessage();
+                //InRange.nearestBrewingInteractableOrNull.PrintTestMessage();
+                ActivateRecipeManager();
             }
             else if (Input.GetKeyDown(inventoryKey))
             {

@@ -16,7 +16,6 @@ public class RecipeButton : MonoBehaviour
 
     private void BrewPotion()
     {
-        Debug.Log("Brewing Potion");
         recipeManager.BrewPotion(recipeIndex);
     }
 }
