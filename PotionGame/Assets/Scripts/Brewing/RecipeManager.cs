@@ -174,8 +174,6 @@ public class RecipeManager : MonoBehaviour, IBrewingInteractable, IGUIScreen
         foreach (StoredItem requiredItem in requiredIngredients)
         {
             inventory.TryTakeOutItem(requiredItem.Details);
-
-
         }
     }
 
