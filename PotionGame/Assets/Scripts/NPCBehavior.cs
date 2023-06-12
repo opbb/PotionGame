@@ -40,6 +40,11 @@ public class NPCBehavior : MonoBehaviour
 
         // will only follow player if quest is not initiated
         if (questState != QuestState.Initiate) {
+            // walk around randomly
+            // if (rb.velocity.magnitude < 0.1f) {
+            //     rb.velocity = Random.insideUnitSphere * moveSpeed;
+            // }
+            // transform.LookAt(transform.position + rb.velocity);
             return;
         }
 

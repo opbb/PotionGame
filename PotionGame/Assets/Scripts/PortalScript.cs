@@ -28,14 +28,13 @@ public class PortalScript : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player"))
         {
-            Vector3 portalToPlayer = player.transform.position - portal.position;
-            float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
-
-            float rotationDiff = -Quaternion.Angle(transform.rotation, portal.rotation);
-            rotationDiff += 180;
-            player.transform.Rotate(Vector3.up, rotationDiff);
-
             controller.TeleportPlayer(portal.position + new Vector3(-2.0f, -0.5f, 0));
+
+            // rotate player to face portal.forward
+            var lookPos = portal.forward;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            player.transform.rotation = rotation;
         }
     }
 }

@@ -21,9 +21,11 @@ public class QuestManager : MonoBehaviour, IGUIScreen
     public QuestState questState = QuestState.Initiate;
     public PlayerInventory inventory;
     public string missingIngredientsDialogue = "You don't have what I need!\nCome back when you do!";
-    Rect titleWindow = new Rect(50, 40, 200, 20);
-    Rect textWindow = new Rect(50, 60, 200, 130);
-
+    public Text titleText;
+    public Text descriptionText;
+    public Button acceptButton;
+    public Button rejectButton;
+    public Button completeButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,12 +74,6 @@ public class QuestManager : MonoBehaviour, IGUIScreen
             }
         }
     }
-
-    public Text titleText;
-    public Text descriptionText;
-    public Button acceptButton;
-    public Button rejectButton;
-    public Button completeButton;
 
     private void OnGUI() {
         if (showGUI) {
