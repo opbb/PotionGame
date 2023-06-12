@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
     private PlayerInventory playerInventory;
     private QuestManager questManager;
     private RecipeManager recipeManager;
+    [SerializeField] private MortarAndPestleTest mortarAndPestle;
 
     // Input keys
     [SerializeField] private KeyCode closeUIKey = KeyCode.Escape;
@@ -50,6 +51,9 @@ public class UIController : MonoBehaviour
                 "they are probably not attached to the same GameObject, which they should be.");
         }
         activeScreen = null;
+
+        // Testing
+        mortarAndPestle.NestInsideInventoryLoose();
     }
 
     // Update is called once per frame

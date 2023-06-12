@@ -23,6 +23,8 @@ public sealed class PlayerInventoryView : MonoBehaviour
     private VisualElement m_Root;
     private VisualElement m_InventoryGrid;
     private VisualElement m_WholeScreen;
+    private VisualElement m_Container;
+    private VisualElement m_Loose;
     private VisualElement m_LooseCenter;
     private MouseTracker mouseTracker;
     //private static Label m_ItemDetailHeader;
@@ -66,6 +68,8 @@ public sealed class PlayerInventoryView : MonoBehaviour
         m_Root = GetComponentInChildren<UIDocument>().rootVisualElement;
         m_InventoryGrid = m_Root.Q<VisualElement>("Grid");
         m_WholeScreen = m_Root.Q<VisualElement>("WholeScreen");
+        m_Container = m_Root.Q<VisualElement>("Container");
+        m_Loose = m_Root.Q<VisualElement>("Loose");
         m_LooseCenter = m_Root.Q<VisualElement>("LooseCenter");
         looseItems = new HashSet<StoredItem>();
         
@@ -310,5 +314,22 @@ public sealed class PlayerInventoryView : MonoBehaviour
         }
     }
     */
+
+    // Experimental
+
+    public void AddUIDocumentToLoose(VisualElement root)
+    {
+        //Debug.Log("In AddUIDoc");
+        //Debug.Log(root == null);
+        root.AddToClassList("other-ui-doc");
+        //Debug.Log(m_Loose == null);
+        m_Loose.Add(root);
+        root.visible = true;
+    }
+
+    public Vector2 GetLooseWorldBoundPosition()
+    {
+        return m_Loose.worldBound.position + m_Container.worldBound.position + m_WholeScreen.worldBound.position;
+    }
 }
 

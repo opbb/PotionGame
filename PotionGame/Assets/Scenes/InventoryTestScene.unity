@@ -674,7 +674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9094266586015171653, guid: 843b0a3c9ffca57468e821991ec15fbb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 843b0a3c9ffca57468e821991ec15fbb, type: 3}
@@ -788,6 +788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a883e937b247b5a4bb8eb68535580f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mortarAndPestle: {fileID: 1029220764}
   closeUIKey: 27
   inventoryKey: 101
   recipeKey: 102

@@ -32,9 +32,15 @@ public class MortarAndPestleTest : MonoBehaviour
     float topBoundPixels;
     float bottomBoundPixels;
 
+    // Stores whether this screen is currently container within the inventory.
+    private bool isInInventory = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
+    {
+        Configure();
+    }
+
+    private void Configure()
     {
         root = GetComponentInChildren<UIDocument>().rootVisualElement;
         pestle = root.Q<VisualElement>("Pestle");
@@ -163,13 +169,13 @@ public class MortarAndPestleTest : MonoBehaviour
     private Vector2 MouseSpaceToMortarSpace(Vector2 mousePosition)
     {
         // Makes mouse position relative to the origin of mortarBackground
-        return mousePosition - workSpace.worldBound.position - mortarBackground.worldBound.position;
+        return mousePosition - GetMortarSpaceOffset();
     }
 
+    // Gets the exact location of the pestle pivot relative to the top left of the screen
     private Vector2 GetPestlePivotInMouseSpace()
     {
-        Vector2 pivotLocationInPestle = GetPivotLocationInPestle();
-        return workSpace.worldBound.position + mortarBackground.worldBound.position + pestle.worldBound.position + pivotLocationInPestle;
+        return GetMortarSpaceOffset() + pestle.worldBound.position + GetPivotLocationInPestle();
     }
 
     private void MovePestleToPos(Vector2 targetPos)
@@ -189,5 +195,24 @@ public class MortarAndPestleTest : MonoBehaviour
     private Vector2 GetPivotLocationInPestle()
     {
         return new Vector2(pestle.worldBound.width * pivotXPercentage, pestle.worldBound.height * pivotYPercentage);
+    }
+
+    public void NestInsideInventoryLoose()
+    {
+        PlayerInventoryView.Instance.AddUIDocumentToLoose(root);
+        isInInventory = true;
+    }
+
+    // Gets the position of the mortar relative to the top left of the screen.
+    private Vector2 GetMortarSpaceOffset()
+    {
+        Vector2 mortarPosition = workSpace.worldBound.position + mortarBackground.worldBound.position;
+
+        if (isInInventory)
+        {
+            mortarPosition += PlayerInventoryView.Instance.GetLooseWorldBoundPosition();
+        }
+
+        return mortarPosition;
     }
 }
