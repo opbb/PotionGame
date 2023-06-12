@@ -312,7 +312,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029220761}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029220761}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05c0862bb0ae62f43afc5f3811933a9e, type: 3}
   m_Name: 
@@ -356,7 +356,7 @@ MonoBehaviour:
   pivotYPercentage: 0.08
   rotationCenterYOffsetPercent: 3
   quadrantCenterYOffsetPercent: -0.45
-  defaultOutput: {fileID: 0}
+  defaultOutput: {fileID: 11400000, guid: 11d96ca1c0d7fbc4eb72b0c0381dce63, type: 2}
 --- !u!1 &1763483766
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,6 +791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a883e937b247b5a4bb8eb68535580f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recipeManager: {fileID: 3315058316813304141}
   closeUIKey: 27
   inventoryKey: 101
   recipeKey: 102
