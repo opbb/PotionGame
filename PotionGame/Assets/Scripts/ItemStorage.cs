@@ -13,6 +13,7 @@ public class ItemStorage : MonoBehaviour
     public Image itemImage;
 
     Transform playerTransform;
+    bool isActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +29,6 @@ public class ItemStorage : MonoBehaviour
         {
             Interact();
         }
-        else
-        {
-            ToggleUI(false);
-        }
     }
 
     void Interact()
@@ -39,22 +36,26 @@ public class ItemStorage : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, interactRange))
         {
-            if (hit.transform == transform || hit.transform.IsChildOf(transform))
+            if (hit.transform == transform || hit.transform.parent == transform)
             {
                 ToggleUI(true);
                 quantityText.text = amount.ToString();
                 itemImage.sprite = item.Icon;
 
+                isActive = true;
+
                 MouseInput();
             } 
-            else
+            else if (isActive)
             {
                 ToggleUI(false);
+                isActive = false;
             }
         } 
-        else
+        else if (isActive)
         {
             ToggleUI(false);
+            isActive = false;
         }
     }
 
