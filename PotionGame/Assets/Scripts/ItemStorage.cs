@@ -19,13 +19,24 @@ public class ItemStorage : MonoBehaviour
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
+        if (quantityText == null || itemImage == null)
+        {
+            GameObject ui = GameObject.Find("UI").transform.Find("HutStorageUI").gameObject;
+            if (ui != null)
+            {
+                quantityText = ui.transform.Find("QuantityText").GetComponent<Text>();
+                itemImage = ui.transform.Find("SpriteImage").GetComponent<Image>();
+            }
+        }
+
         ToggleUI(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, playerTransform.position) < interactRange)
+        if (Vector3.Distance(transform.GetChild(0).transform.position, playerTransform.position) < interactRange)
         {
             Interact();
         }
