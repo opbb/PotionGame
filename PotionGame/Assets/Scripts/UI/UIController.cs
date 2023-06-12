@@ -205,4 +205,9 @@ public class UIController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    public bool isUIActive()
+    {
+        return isAnyGUIActive;
+    }
 }

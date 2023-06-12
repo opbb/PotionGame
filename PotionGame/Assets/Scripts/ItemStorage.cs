@@ -61,10 +61,19 @@ public class ItemStorage : MonoBehaviour
     void MouseInput()
     {
         // left click to take out
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && amount > 0)
         {
-            if (amount > 0)
+            if (Input.GetKey(KeyCode.LeftShift))
             {
+                List<ItemDefinition> items = new List<ItemDefinition>();
+                for (int i = 0; i < amount; i++)
+                {
+                    items.Add(item);
+                }
+                PlayerInventory.Instance.OpenInventoryWithItems(items);
+                amount = 0;
+            }
+            else {
                 PlayerInventory.Instance.OpenInventoryWithItem(item);
                 amount--;
             }

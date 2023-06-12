@@ -88,7 +88,7 @@ public class RecipeManager : MonoBehaviour, IBrewingInteractable, IGUIScreen
     {
         if (inventory == null)
         {
-            inventory = gameObject.GetComponent<PlayerInventory>();
+            inventory = PlayerInventory.Instance;
         }
 
         if (recipeButtons.Count <= 0)

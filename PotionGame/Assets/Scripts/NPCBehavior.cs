@@ -50,6 +50,8 @@ public class NPCBehavior : MonoBehaviour
             var rotation = Quaternion.LookRotation(lookPos);
             player.transform.rotation = Quaternion.Slerp(player.transform.rotation, rotation, Time.deltaTime * 5);
             return;
+        } else if (UIController.Instance.isUIActive()) {
+            return;
         }
 
         // cooldown for following player if player rejects quest
@@ -68,7 +70,7 @@ public class NPCBehavior : MonoBehaviour
             transform.LookAt(player.transform);
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
 
-            rb.velocity = transform.forward * moveSpeed;
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
         }
     }
 }
