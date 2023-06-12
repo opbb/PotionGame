@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class RecipeManager : MonoBehaviour, IBrewingInteractable, IGUIScreen
 {
@@ -62,10 +63,15 @@ public class RecipeManager : MonoBehaviour, IBrewingInteractable, IGUIScreen
         {
             string ingredientsText = "";
             TMP_Text buttonTextBox = b.GetComponentInChildren<TMP_Text>(true);
+            
+            // Get all Image components including nested ones
+            Image[] buttonImages = b.GetComponentsInChildren<Image>(true);
+
+            // Filter out the parent GameObject from the results
+            Image buttonImage = buttonImages.FirstOrDefault(image => image.gameObject != b.gameObject);
 
             if (!(currentRecipe >= recipes.Count))
             {
-                
                 // Set the potion name
                 ingredientsText = recipes[currentRecipe].recipeName + "\n";
 
@@ -77,7 +83,20 @@ public class RecipeManager : MonoBehaviour, IBrewingInteractable, IGUIScreen
                     ItemDefinition ingredient = recipes[currentRecipe].requiredIngredients[i].Details;
                     ingredientsText += ingredient.CommonName + "\n";
                 }
+
+                // Set the potion image
+                Sprite potionSprite = recipes[currentRecipe].resultingItem.Details.Icon;
+                buttonImage.sprite = potionSprite;
+
+                // Enable the image component
+                buttonImage.enabled = true;
             }
+            else
+            {
+                // Disable the image component when there is no recipe
+                buttonImage.enabled = false;
+            }
+
             buttonTextBox.text = ingredientsText;
             currentRecipe++;
         }
@@ -103,18 +122,13 @@ public class RecipeManager : MonoBehaviour, IBrewingInteractable, IGUIScreen
     public void BrewPotion(int recipeIndex)
     {
         Recipe recipe = recipes[recipeIndex + (currentPage * 4)];
-
-        Debug.Log("index " + recipeIndex.ToString() + "page " + currentPage.ToString() + " " + recipe.recipeName);
-
         if (CheckInventory(recipe.requiredIngredients))
         {
             RemoveIngredientsFromInventory(recipe.requiredIngredients);
-
             StartBrewingPotion(recipe);
         }
         else
         {
-            Debug.Log("Not enough ingredients!");
             brewFailedText.gameObject.SetActive(true);
         }
     }
@@ -141,10 +155,10 @@ public class RecipeManager : MonoBehaviour, IBrewingInteractable, IGUIScreen
 
         // Check if the inventory has all the required ingredients
         foreach (StoredItem requiredItem in requiredIngredients)
-        {
+        { 
+
             if (!inventoryCount.ContainsKey(requiredItem.Details.CommonName) || inventoryCount[requiredItem.Details.CommonName] == 0)
             {
-
                 return false;
             }
 
