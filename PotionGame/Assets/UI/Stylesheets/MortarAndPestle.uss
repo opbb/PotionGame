@@ -1,0 +1,16 @@
+.visual-icon {
+    height: 100%;
+    width: 100%;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.Pestle {
+    flex-basis: auto;
+    background-image: url('project://database/Assets/Sprites/pestle.png?fileID=2800000&guid=54ae49b3466581b4c95feb919ecf3b67&type=3#pestle');
+    position: absolute;
+    left: 319px;
+    top: -113px;
+    width: 22.5%;
+    height: 93%;
+    transform-origin: center 8%;
+}

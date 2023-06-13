@@ -9,9 +9,17 @@ public class MouseTracker : VisualElement
     public Vector2 mousePosition {get; set; }
     public MouseTracker()
     {
-        //this.style.width = parent.style.width;
-        //this.style.height = parent.style.height;
-        //this.style.position = parent.style.position;
+        StyleLength oneHundredPercent = new StyleLength(new Length(100f, LengthUnit.Percent));
+
+        style.flexBasis = oneHundredPercent;
+        style.flexGrow = 0f;
+        style.width = oneHundredPercent;
+        style.height = oneHundredPercent;
+        style.position = Position.Absolute;
+        style.visibility = Visibility.Visible;
+
+        pickingMode = PickingMode.Ignore;
+
         RegisterCallback<MouseMoveEvent>(OnMouseMoveEvent);
     }
 

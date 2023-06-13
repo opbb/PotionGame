@@ -70,6 +70,8 @@ public class PlayerInventory : MonoBehaviour, IGUIScreen
         inventory = new StoredItem[InventoryWidthSlotCount, InventoryHeightSlotCount];
     }
 
+
+
     private void LoadInventory()
     {
         foreach(ItemDefinition item in startingItems)

@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 
-public class RecipeManager : MonoBehaviour, IBrewingInteractable, IGUIScreen
+public class RecipeManager : MonoBehaviour, IGUIScreen, IBrewingInteractable
+
 {
     [SerializeField] List<Button> recipeButtons;
     [SerializeField] List<Recipe> recipes;
@@ -207,5 +208,10 @@ public class RecipeManager : MonoBehaviour, IBrewingInteractable, IGUIScreen
             currentPage += amount;
             updateButtonText();
         }
+    }
+
+    public void OpenBrewingGUI()
+    {
+        UIController.Instance.ActivateRecipeManager();
     }
 }

@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IBrewingInteractable : IGUIScreen
+public interface IBrewingInteractable
 {
+    public void OpenBrewingGUI();
 
+    // For testing obv
     public void PrintTestMessage();
 
 }

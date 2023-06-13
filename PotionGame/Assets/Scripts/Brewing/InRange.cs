@@ -22,7 +22,7 @@ public class InRange : MonoBehaviour
     //This is a workaround to Unity not letting you set the slot type to an interface.
     [Header("Only fill one of the slots below.")]
     [SerializeField] private RecipeManager recipeManager;
-    [SerializeField] private PrepStation prepStation;
+    [SerializeField] private MortarAndPestleInteractable mortarAndPestle;
 
     private IBrewingInteractable thisBrewingInteractable;
 
@@ -44,9 +44,9 @@ public class InRange : MonoBehaviour
             thisBrewingInteractable = (IBrewingInteractable)recipeManager;
             interactableCount++;
         }
-        if (prepStation != null)
+        if (mortarAndPestle != null)
         {
-            thisBrewingInteractable = (IBrewingInteractable)prepStation;
+            thisBrewingInteractable = (IBrewingInteractable)mortarAndPestle;
             interactableCount++;
         }
         if (interactableCount < 1)
@@ -80,7 +80,7 @@ public class InRange : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
+        Debug.Log("In on trigger enter");
         if (other.CompareTag("Player"))
         {
             isThisInRange = true;

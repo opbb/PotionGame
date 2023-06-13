@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
-  m_Name: Dandelion
+  m_Name: DubiousMash
   m_EditorClassIdentifier: 
-  ID: 2497a35f-9709-42c6-bd89-d7b2d4a3608a
-  CommonName: Dandelion
-  Description: Detoxifying, used for cleansing and purification
-  Icon: {fileID: 21300000, guid: 0ee4d5caab6a07f4986ab0faf3b9245e, type: 3}
+  ID: d641e911-83af-4f3f-9b62-24c4e23179f2
+  CommonName: DubiousMash
+  Description: What you get when you mortar and pestle something that maybe was better
+    left unmashed.
+  Icon: {fileID: 21300000, guid: 1d0bb75914e9b5c419cd38938a954be1, type: 3}
   SlotDimension:
-    Height: 2
+    Height: 1
     Width: 1
-  afterMortarAndPestle: {fileID: 11400000, guid: 11d96ca1c0d7fbc4eb72b0c0381dce63, type: 2}
+  afterMortarAndPestle: {fileID: 0}

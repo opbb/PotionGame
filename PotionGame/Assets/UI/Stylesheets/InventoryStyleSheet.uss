@@ -2,7 +2,6 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    padding: 15px;
     background-color: rgb(14, 14, 14);
     border-width: 1px;
     border-color: rgb(75, 75, 75);
@@ -29,4 +28,12 @@
     height: 100%;
     position: absolute;
     visibility: visible;
+}
+
+.other-ui-doc {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
 }

@@ -13,6 +13,7 @@ public class UIController : MonoBehaviour
     private QuestManager questManager;
     private RecipeManager recipeManager;
     private Herbarium herbariumManager;
+    [SerializeField] private MortarAndPestleView mortarAndPestle;
 
     // Input keys
     [SerializeField] private KeyCode closeUIKey = KeyCode.Escape;
@@ -22,8 +23,10 @@ public class UIController : MonoBehaviour
 
     // Tells if any GUI screen is currently active
     private bool isAnyGUIActive { get => activeScreen != null; }
+    private bool isAnyInventorySubscreenActive { get => activeInventorySubscreen != null; }
     // Remember the current GUI Screen which is active
     private IGUIScreen activeScreen;
+    private IGUIInventorySubscreen activeInventorySubscreen;
 
 
     // This awake method enforces the singleton design pattern.
@@ -44,11 +47,13 @@ public class UIController : MonoBehaviour
     void Start()
     {
         playerInventory = PlayerInventory.Instance;
+        mortarAndPestle.NestInsideInventoryLoose();
+        questManager = GetComponent<QuestManager>();
         herbariumManager = Herbarium.Instance;
         questManager = GetComponent<QuestManager>();
         recipeManager = RecipeManager.Instance;
        
-        if (playerInventory == null || questManager == null || recipeManager == null || herbariumManager == null)
+        if (playerInventory == null || questManager == null || recipeManager == null || herbariumManager == null || mortarAndPestle == null)
         {
             throw new InvalidOperationException("The UI Controller cant find all of the GUIScreens, " +
                 "they are probably not attached to the same GameObject, which they should be.");
@@ -65,7 +70,7 @@ public class UIController : MonoBehaviour
             if (Input.GetKeyDown(closeUIKey))
             {
                 // IF escape is pressed, close the UI no matter what
-                DeactivatGUIScreen();
+                DeactivateGUIScreen();
             }
             else if (playerInventory.isGUIActive() && Input.GetKeyDown(inventoryKey))
             {
@@ -77,8 +82,7 @@ public class UIController : MonoBehaviour
         {
             if (Input.GetKeyDown(recipeKey) && InRange.isInRange)
             {
-                //InRange.nearestBrewingInteractableOrNull.PrintTestMessage();
-                ActivateRecipeManager();
+                InRange.nearestBrewingInteractableOrNull.OpenBrewingGUI();
             }
             else if (Input.GetKeyDown(inventoryKey))
             {
@@ -105,7 +109,7 @@ public class UIController : MonoBehaviour
     {
         if (ReferenceEquals(activeScreen, questManager))
         {
-            DeactivatGUIScreen();
+            DeactivateGUIScreen();
         }
     }
 
@@ -120,7 +124,7 @@ public class UIController : MonoBehaviour
     {
         if (ReferenceEquals(activeScreen, recipeManager))
         {
-            DeactivatGUIScreen();
+            DeactivateGUIScreen();
         }
     }
 
@@ -135,7 +139,20 @@ public class UIController : MonoBehaviour
     {
         if (ReferenceEquals(activeScreen, playerInventory))
         {
-            DeactivatGUIScreen();
+            DeactivateGUIScreen();
+        }
+    }
+
+    public bool ActivateMortarAndPestle()
+    {
+        return ActivateInventorySubscreen(mortarAndPestle);
+    }
+
+    public void DeactivateMortarAndPestle()
+    {
+        if (ReferenceEquals(activeInventorySubscreen, mortarAndPestle))
+        {
+            DeactivateGUIScreen();
         }
     }
 
@@ -154,21 +171,27 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public IGUIInventorySubscreen GetActiveSubscreen()
+    {
+        return activeInventorySubscreen;
+    }
+
+
 
     // ======= Generic Helpers =======
 
 
-    private bool ActivateGUIScreen(IGUIScreen screenType)
+    private bool ActivateGUIScreen(IGUIScreen screen)
     {
         // Ensure other GUIs aren't active
         if (isAnyGUIActive)
         {
             // If this GUIScreen is already active, return true, otherwise return false
-            return ReferenceEquals(screenType, activeScreen);
+            return ReferenceEquals(screen, activeScreen);
         }
 
         // Set the new active screen
-        activeScreen = screenType;
+        activeScreen = screen;
 
         // Set up generic UI stuff
         EnterUIMode();
@@ -180,11 +203,48 @@ public class UIController : MonoBehaviour
         return true;
     }
 
-    private void DeactivatGUIScreen()
+    private bool ActivateInventorySubscreen(IGUIInventorySubscreen subscreen)
     {
+
+        if (ActivatePlayerInventory())
+        {
+            // Ensure other GUIs aren't active
+            if (isAnyInventorySubscreenActive)
+            {
+                // If this GUIScreen is already active, return true, otherwise return false
+                return ReferenceEquals(subscreen, activeInventorySubscreen);
+            }
+
+            // Set the new active screen
+            activeInventorySubscreen = subscreen;
+
+            // Activate the UI
+            activeInventorySubscreen.activateGUI();
+
+            // Return succeess.
+            return true;
+        } else
+        {
+            // If we can't open the inventory, return false.
+            return false;
+        }
+    }
+
+    private void DeactivateGUIScreen()
+    {
+        if(isAnyInventorySubscreenActive)
+        {
+            DeactivateInventorySubscreen();
+        }
         activeScreen.deactivateGUI();
         activeScreen = null;
         ExitUIMode();
+    }
+
+    private void DeactivateInventorySubscreen()
+    {
+        activeInventorySubscreen.deactivateGUI();
+        activeInventorySubscreen = null;
     }
 
 

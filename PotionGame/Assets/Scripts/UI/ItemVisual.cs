@@ -26,19 +26,15 @@ public class ItemVisual : VisualElement
         {
             style = { backgroundImage = m_Item.Icon.texture }
         };
-        Add(icon);
         icon.AddToClassList("visual-icon");
+        Add(icon);
         AddToClassList("visual-icon-container");
 
-        //RegisterCallback<MouseMoveEvent>(OnMouseMoveEvent);
-        //RegisterCallback<MouseUpEvent>(OnMouseUpEvent);
         RegisterCallback<MouseDownEvent>(OnMouseDownEvent);
     }
 
     ~ItemVisual()
     {
-        //UnregisterCallback<MouseMoveEvent>(OnMouseMoveEvent);
-        //UnregisterCallback<MouseUpEvent>(OnMouseUpEvent);
         UnregisterCallback<MouseDownEvent>(OnMouseDownEvent);
     }
 
@@ -97,8 +93,8 @@ public class ItemVisual : VisualElement
             }
         } else
         {
-            // If the item is outside of the inventory, then mark it as loose
-            PlayerInventoryView.Instance.MakeItemLoose(thisItem);
+            // If the item is outside of the inventory, then move it to the subscreen
+            PlayerInventoryView.Instance.MoveItemToSubscreen(thisItem);
         }
 
         // This will show you what the actual PlayerInventory array looks like so you can confirm that it matches the visuals
