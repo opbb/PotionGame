@@ -13,7 +13,10 @@ public class NPCBehavior : MonoBehaviour
     public float activateQuestDistance = 2.0f;
     public float moveSpeed = 1;
     public float rejectCooldown = 30.0f;
-    float rejectTimer = 0.0f;
+    float rejectTimer = 0.0f; 
+    public Vector3[] waypoints = new Vector3[4];
+    public float waypointSearchRadius = 10.0f;
+    int targetWaypointIndex = 0;
 
     Rigidbody rb;
     QuestManager questManager;
@@ -28,6 +31,12 @@ public class NPCBehavior : MonoBehaviour
 
         questManager = player.GetComponent<QuestManager>();
         rb = GetComponent<Rigidbody>();
+
+        // generate random waypoints
+        for (int i = 0; i < waypoints.Length; i++) {
+            waypoints[i] = Random.insideUnitSphere * waypointSearchRadius + transform.position;
+            waypoints[i].y = 0;
+        }
     }
 
     // Update is called once per frame
@@ -38,13 +47,21 @@ public class NPCBehavior : MonoBehaviour
             questState = questManager.questState;
         }
 
-        // will only follow player if quest is not initiated
         if (questState != QuestState.Initiate) {
-            // walk around randomly
-            // if (rb.velocity.magnitude < 0.1f) {
-            //     rb.velocity = Random.insideUnitSphere * moveSpeed;
-            // }
-            // transform.LookAt(transform.position + rb.velocity);
+            // this will need to be improved no doubt
+            Vector3 targetWaypoint = waypoints[targetWaypointIndex];
+            targetWaypoint.y = transform.position.y;
+            var distanceTo = Vector3.Distance(transform.position, targetWaypoint);
+            if (distanceTo <= 1.0f) {
+                targetWaypointIndex++;
+                if (targetWaypointIndex >= waypoints.Length) {
+                    targetWaypointIndex = 0;
+                }
+            }
+            transform.LookAt(waypoints[targetWaypointIndex]);
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+
+            transform.position = Vector3.MoveTowards(transform.position, waypoints[targetWaypointIndex], moveSpeed * Time.deltaTime);
             return;
         }
 
