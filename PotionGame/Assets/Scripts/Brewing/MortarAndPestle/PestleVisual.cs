@@ -1,29 +1,24 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using System;
-public class PestleMouseCapture : VisualElement
+public class PestleVisual : VisualElement
 {
-
-    MortarAndPestleTest parentPestle;
-
-    public PestleMouseCapture(MortarAndPestleTest parentPestle)
+    public PestleVisual()
     {
-        this.parentPestle = parentPestle;
-
         style.height = new StyleLength(new Length(100f, LengthUnit.Percent));
         style.width = new StyleLength(new Length(100f, LengthUnit.Percent));
 
         RegisterCallback<MouseDownEvent>(OnMouseDownEvent);
     }
 
-    ~PestleMouseCapture()
+    ~PestleVisual()
     {
         UnregisterCallback<MouseDownEvent>(OnMouseDownEvent);
     }
 
     private void OnMouseDownEvent(MouseDownEvent mouseEvent)
     {
-        parentPestle.OnClick();
+        parent.transform.position = mouseEvent.localMousePosition;
     }
 
 }

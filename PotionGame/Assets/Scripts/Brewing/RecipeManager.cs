@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RecipeManager : MonoBehaviour, IBrewingInteractable
+public class RecipeManager : MonoBehaviour, IGUIScreen, IBrewingInteractable
 {
     public List<Button> recipeButtons;
     public List<Recipe> recipes;
@@ -129,5 +129,10 @@ public class RecipeManager : MonoBehaviour, IBrewingInteractable
         isActive = false;
         toggleUIButtons(false);
         brewFailedText.gameObject.SetActive(false);
+    }
+
+    public void OpenBrewingGUI()
+    {
+        UIController.Instance.ActivateRecipeManager();
     }
 }

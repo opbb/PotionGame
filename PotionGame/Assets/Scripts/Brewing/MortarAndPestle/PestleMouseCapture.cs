@@ -1,29 +1,29 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using System;
-public class PestleVisual : VisualElement
+public class PestleMouseCapture : VisualElement
 {
-    // Defines the bounding box for where the pestle can be dragged.
-    [SerializeField] private float leftBoundSlope;
-    [SerializeField] private float topBound;
 
+    MortarAndPestleView parentPestle;
 
-    public PestleVisual()
+    public PestleMouseCapture(MortarAndPestleView parentPestle)
     {
+        this.parentPestle = parentPestle;
+
         style.height = new StyleLength(new Length(100f, LengthUnit.Percent));
         style.width = new StyleLength(new Length(100f, LengthUnit.Percent));
 
         RegisterCallback<MouseDownEvent>(OnMouseDownEvent);
     }
 
-    ~PestleVisual()
+    ~PestleMouseCapture()
     {
         UnregisterCallback<MouseDownEvent>(OnMouseDownEvent);
     }
 
     private void OnMouseDownEvent(MouseDownEvent mouseEvent)
     {
-        parent.transform.position = mouseEvent.localMousePosition;
+        parentPestle.OnClick();
     }
 
 }

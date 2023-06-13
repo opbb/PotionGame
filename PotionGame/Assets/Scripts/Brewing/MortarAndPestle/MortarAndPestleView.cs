@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using System;
 
-public class MortarAndPestleTest : MonoBehaviour
+public class MortarAndPestleView : MonoBehaviour, IGUIInventorySubscreen
 {
 
     private VisualElement root;
@@ -42,7 +42,7 @@ public class MortarAndPestleTest : MonoBehaviour
     [SerializeField] private float rotationCenterYOffsetPercent = 3f;
 
     [Header("Pestle Quadrant Center Settings")]
-    [SerializeField] private float quadrantCenterYOffsetPercent = .25f;
+    [SerializeField] private float quadrantCenterYOffsetPercent = -.45f;
 
     [Header("Input/Output Options")]
     [Tooltip("What will come out if you mash something that doesn't mash into anything. (Should probably be Dubious Mash)")]
@@ -75,6 +75,7 @@ public class MortarAndPestleTest : MonoBehaviour
 
         UpdateBounds();
         ConfigureMouseTracker();
+        deactivateGUI();
     }
 
     // Update is called once per frame
@@ -89,22 +90,24 @@ public class MortarAndPestleTest : MonoBehaviour
                 UpdateBounds();
                 MovePestleToMouse();
                 RotatePestleToBottom();
-                if(UpdateCirclesAndCheckForCompleted())
+                if (UpdateCirclesAndCheckForCompleted())
                 {
                     ReturnMashFromMortar();
                 }
-            } else
+            }
+            else
             {
                 mouseTracker.pickingMode = PickingMode.Ignore;
                 isHoldingPestle = false;
             }
-            
+
         }
     }
 
     public void OnClick()
     {
-        if (!isHoldingPestle) {
+        if (!isHoldingPestle)
+        {
             mouseTracker.pickingMode = PickingMode.Position;
             isHoldingPestle = true;
             mouseTracker.mousePosition = GetPestlePivotInMouseSpace();
@@ -119,23 +122,20 @@ public class MortarAndPestleTest : MonoBehaviour
 
     private Vector2 ClampPestlePositionToBounds(Vector2 unclampedPos)
     {
-        Vector2 pivotLocationInPestle = GetPivotLocationInPestle();
-        float topBoundPixelsAdj = topBoundPixels - pivotLocationInPestle.y;
-        float bottomBoundPixelsAdj = bottomBoundPixels - pivotLocationInPestle.y;
-        float bottomLeftXPixelsAdj = bottomLeftXPixels - pivotLocationInPestle.x;
-        float bottomRightXPixelsAdj = bottomRightXPixels - pivotLocationInPestle.x;
         float clampedX;
         float clampedY;
 
         // Clamp Y
         // Note that a lower Y means it is higher up on the screen, as counting starts from the top left corner.
-        if(unclampedPos.y < topBoundPixelsAdj)
+        if (unclampedPos.y < topBoundPixels)
         {
-            clampedY = topBoundPixelsAdj;
-        } else if (unclampedPos.y > bottomBoundPixelsAdj)
+            clampedY = topBoundPixels;
+        }
+        else if (unclampedPos.y > bottomBoundPixels)
         {
-            clampedY = bottomBoundPixelsAdj;
-        } else
+            clampedY = bottomBoundPixels;
+        }
+        else
         {
             clampedY = unclampedPos.y;
         }
@@ -143,8 +143,8 @@ public class MortarAndPestleTest : MonoBehaviour
         // Clamp X based on Y.
         // This is just using point slope form to define a sloped line for the X bound.
         // Uses the bottom left point of the bounding box for x_1 and y_1.
-        float leftXLimit = ((clampedY - bottomBoundPixelsAdj) / leftBoundSlope) + bottomLeftXPixelsAdj;
-        float rightXLimit = ((clampedY - bottomBoundPixelsAdj) / -leftBoundSlope) + bottomRightXPixelsAdj;
+        float leftXLimit = ((clampedY - bottomBoundPixels) / leftBoundSlope) + bottomLeftXPixels;
+        float rightXLimit = ((clampedY - bottomBoundPixels) / -leftBoundSlope) + bottomRightXPixels;
 
         if (unclampedPos.x < leftXLimit)
         {
@@ -159,7 +159,7 @@ public class MortarAndPestleTest : MonoBehaviour
             clampedX = unclampedPos.x;
         }
 
-        return new Vector2(clampedX,clampedY);
+        return new Vector2(clampedX, clampedY);
     }
 
     private void UpdateBounds()
@@ -175,7 +175,7 @@ public class MortarAndPestleTest : MonoBehaviour
 
     private void RotatePestleToBottom()
     {
-        Quaternion rotationToCenter = Quaternion.Euler(0f,0f,GetPestleAngleFromCenter());
+        Quaternion rotationToCenter = Quaternion.Euler(0f, 0f, GetPestleAngleFromCenter());
 
         pestleVisual.transform.rotation = rotationToCenter;
     }
@@ -183,18 +183,18 @@ public class MortarAndPestleTest : MonoBehaviour
     private Vector2 MouseSpaceToMortarSpace(Vector2 mousePosition)
     {
         // Makes mouse position relative to the origin of mortarBackground
-        return mousePosition - workSpace.worldBound.position - mortarBackground.worldBound.position;
+        return mousePosition - GetMortarSpaceOffset();
     }
 
     private Vector2 GetPestlePivotInMouseSpace()
     {
-        Vector2 pivotLocationInPestle = GetPivotLocationInPestle();
-        return workSpace.worldBound.position + mortarBackground.worldBound.position + pestlePosition.worldBound.position + pivotLocationInPestle;
+        return GetMortarSpaceOffset() + pestlePosition.worldBound.position + GetPivotLocationInPestle();
     }
 
     private void MovePestleToPos(Vector2 targetPos)
     {
         Vector2 clampedPos = ClampPestlePositionToBounds(targetPos);
+        clampedPos -= GetPivotLocationInPestle();
         pestlePosition.style.left = clampedPos.x;
         pestlePosition.style.top = clampedPos.y;
     }
@@ -216,10 +216,6 @@ public class MortarAndPestleTest : MonoBehaviour
 
         Vector2 pestleToCenter = centerPos - pestlePos;
 
-        /*Debug.Log("pestlePos: (" + pestlePos.x + "," + pestlePos.y + ")\n" +
-          "centerPos: (" + centerPos.x + "," + centerPos.y + ")\n" +
-          "pestleToCenter: (" + pestleToCenter.x + "," + pestleToCenter.y + ")");*/
-
         return -Vector2.SignedAngle(pestleToCenter, Vector2.up);
     }
 
@@ -230,14 +226,16 @@ public class MortarAndPestleTest : MonoBehaviour
 
 
     // Adds an item to the mortar if it is empty, returning false and not adding it if it is full
-    public bool AddItemToMortar(ItemDefinition item, Action<ItemDefinition> returnAction)
+    public bool MoveItemFromInventoryToSubscreen(ItemDefinition item, Action<ItemDefinition> returnAction)
     {
         if (currentItem == null)
         {
             currentItem = item;
             this.returnAction = returnAction;
+            circlesRemaining = 5; // Default value for testing
             return true;
-        } else
+        }
+        else
         {
             return false;
         }
@@ -259,7 +257,8 @@ public class MortarAndPestleTest : MonoBehaviour
             returnAction = null;
             currentItem = null;
             circlesRemaining = -1;
-        } else
+        }
+        else
         {
             throw new InvalidOperationException("Mortar and Pestle is trying to return an item when it is empty.");
         }
@@ -276,16 +275,19 @@ public class MortarAndPestleTest : MonoBehaviour
             if (isTop)
             {
                 return MortarQuadrant.TopLeft;
-            } else
+            }
+            else
             {
                 return MortarQuadrant.BottomLeft;
             }
-        } else
+        }
+        else
         {
-            if(isTop)
+            if (isTop)
             {
                 return MortarQuadrant.TopRight;
-            } else
+            }
+            else
             {
                 return MortarQuadrant.BottomRight;
             }
@@ -297,21 +299,24 @@ public class MortarAndPestleTest : MonoBehaviour
         MortarQuadrant currentQuadrant = GetCurrentQuadrant();
 
 
-        if(currentQuadrant == previousQuadrant)
+        if (currentQuadrant == previousQuadrant)
         {
             // If nothing's changed, return.
             return false;
-        } else if(((int)currentQuadrant - 1) == (int)previousQuadrant || (currentQuadrant == MortarQuadrant.TopLeft && previousQuadrant == MortarQuadrant.BottomLeft)) // The second condition here is because modulo doesn't work on negative numbers
+        }
+        else if (((int)currentQuadrant - 1) == (int)previousQuadrant || (currentQuadrant == MortarQuadrant.TopLeft && previousQuadrant == MortarQuadrant.BottomLeft)) // The second condition here is because modulo doesn't work on negative numbers
         {
             // If we advanced clockwise, increment the clockwise counter and reset the counterclockwise counter.
             clockwiseCounter++;
             counterClockwiseCounter = 0;
-        } else if (((int)currentQuadrant + 1) % 4 == (int)previousQuadrant)
+        }
+        else if (((int)currentQuadrant + 1) % 4 == (int)previousQuadrant)
         {
             // If we advanced counterclockwise, increment the counterclockwise counter and reset the clockwise counter.
             counterClockwiseCounter++;
             clockwiseCounter = 0;
-        } else
+        }
+        else
         {
             // If we somehow moved diagonally, reset both counters
             clockwiseCounter = 0;
@@ -328,15 +333,39 @@ public class MortarAndPestleTest : MonoBehaviour
             counterClockwiseCounter = 0;
 
             return circlesRemaining == 0;
-        } else
+        }
+        else
         {
             return false;
         }
     }
 
-    public VisualElement GetRoot()
+    public void NestInsideInventoryLoose()
     {
-        return root;
+        PlayerInventoryView.Instance.AddUIDocumentToLoose(root);
+        deactivateGUI();
+    }
+
+    // Gets the position of the mortar relative to the top left of the MortarAndPestleUIDoc
+    private Vector2 GetMortarSpaceOffset()
+    {
+        return mortarBackground.worldBound.position;
+    }
+
+    // IGUIScreen implementation
+    public bool isGUIActive()
+    {
+        return root.visible;
+    }
+
+    public void activateGUI()
+    {
+        root.visible = true;
+    }
+
+    public void deactivateGUI()
+    {
+        root.visible = false;
     }
 
     private enum MortarQuadrant

@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using System;
-
-using System.Collections.Generic;
 public class ItemVisual : VisualElement
 {
     private readonly ItemDefinition m_Item;
@@ -95,8 +93,8 @@ public class ItemVisual : VisualElement
             }
         } else
         {
-            // If the item is outside of the inventory, then mark it as loose
-            PlayerInventoryView.Instance.MakeItemLoose(thisItem);
+            // If the item is outside of the inventory, then move it to the subscreen
+            PlayerInventoryView.Instance.MoveItemToSubscreen(thisItem);
         }
 
         // This will show you what the actual PlayerInventory array looks like so you can confirm that it matches the visuals
@@ -126,12 +124,6 @@ public class ItemVisual : VisualElement
 
     private void OnMouseDownEvent(MouseDownEvent mouseEvent)
     {
-        //Debug.Log(thisItem.Details.name + "\n" + thisItem.Details.SlotDimension.Height + "," + thisItem.Details.SlotDimension.Width);
-        //Debug.Log("Style dimensions: " + style.width + "," + style.height);
-        //Debug.Log(parent.name);
-        Debug.Log(childCount);
-        List<VisualElement> children = new List<VisualElement>(Children());
-        Debug.Log(children[0].worldBound.size);
         StartDrag();
     }
 
