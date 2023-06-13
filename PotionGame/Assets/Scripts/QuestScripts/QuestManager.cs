@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum QuestState {
     Initiate,
@@ -20,9 +21,11 @@ public class QuestManager : MonoBehaviour, IGUIScreen
     public QuestState questState = QuestState.Initiate;
     public PlayerInventory inventory;
     public string missingIngredientsDialogue = "You don't have what I need!\nCome back when you do!";
-    Rect titleWindow = new Rect(50, 40, 200, 20);
-    Rect textWindow = new Rect(50, 60, 200, 130);
-
+    public Text titleText;
+    public Text descriptionText;
+    public Button acceptButton;
+    public Button rejectButton;
+    public Button completeButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -73,78 +76,88 @@ public class QuestManager : MonoBehaviour, IGUIScreen
     }
 
     private void OnGUI() {
-        GUIStyle style = new GUIStyle(GUI.skin.textArea);
-        style.wordWrap = true;
-        
         if (showGUI) {
-            GUI.TextField(titleWindow, "Quest: " + quest.questName, style);
+            string title = "Quest: " + quest.questName;
+            titleText.text = title;
             switch (questState) {
                 case QuestState.Initiate:
-                    InitiateGUI(style);
+                    InitiateGUI();
                     break;
                 case QuestState.Accept:
-                    GUI.TextField(textWindow, quest.questAcceptDialogue, style);
+                    descriptionText.text = quest.questAcceptDialogue;
                     break;
                 case QuestState.Reject:
-                    GUI.TextField(textWindow, quest.questRejectDialogue, style);
+                    descriptionText.text = quest.questRejectDialogue;
                     break;
                 case QuestState.InProgress:
-                    InProgressGUI(style);
+                    InProgressGUI();
                     break;
                 case QuestState.MissingIngredients:
-                    GUI.TextField(textWindow, missingIngredientsDialogue, style);
+                    descriptionText.text = missingIngredientsDialogue;
                     break;
                 case QuestState.Complete:
-                    GUI.TextField(textWindow, quest.questCompleteDialogue, style);
+                    descriptionText.text = quest.questCompleteDialogue;
                     break;
             }
         }
     }
 
-    void InitiateGUI(GUIStyle style) {
-        GUI.TextField(textWindow, quest.questDialogue + "\n\nRequirement: " + quest.requiredPotion.CommonName, style);
-        if (GUI.Button(new Rect(50, 200, 95, 20), "Accept"))
-        {
-            Debug.Log("accept button pressed");
-            questState = QuestState.Accept;
-            activeQuest = quest;
-        }
+    void InitiateGUI() {
+        string infoText = quest.questDialogue + "\n\nRequirement: " + quest.requiredPotion.CommonName;
+        descriptionText.text = infoText;
 
-        if (GUI.Button(new Rect(155, 200, 95, 20), "Reject"))
-        {
-            Debug.Log("reject button pressed");
-            questState = QuestState.Reject;
+        bool loaded = acceptButton.gameObject.activeSelf;
+
+        if (!loaded) {
+            acceptButton.gameObject.SetActive(true);
+            rejectButton.gameObject.SetActive(true);
+
+            acceptButton.onClick.AddListener(() => {
+                questState = QuestState.Accept;
+                activeQuest = quest;
+
+                acceptButton.gameObject.SetActive(false);
+                rejectButton.gameObject.SetActive(false);
+
+                acceptButton.onClick.RemoveAllListeners();
+                rejectButton.onClick.RemoveAllListeners();
+            });
+
+            rejectButton.onClick.AddListener(() => {
+                questState = QuestState.Reject;
+
+                acceptButton.gameObject.SetActive(false);
+                rejectButton.gameObject.SetActive(false);
+
+                acceptButton.onClick.RemoveAllListeners();
+                rejectButton.onClick.RemoveAllListeners();
+            });
         }
     }
 
-    void InProgressGUI(GUIStyle style) {
+    void InProgressGUI() {
         string infoText = activeQuest.questInProgressDialogue + "\n\nRequirement: " + activeQuest.requiredPotion.CommonName;
-        GUI.TextField(textWindow, infoText, style);
+        descriptionText.text = infoText;
 
-        // submitting code
-        if (GUI.Button(new Rect(50, 200, 95, 20), "Complete"))
-        {
-            bool success = inventory.TryTakeOutItem(activeQuest.requiredPotion);
-            if (success) {
-                Debug.Log("quest complete!");
-                questState = QuestState.Complete;
+        bool loaded = completeButton.gameObject.activeSelf;
 
-                Invoke("GiveReward", 2.0f);
-            } else {
-                Debug.Log("missing ingredients!");
-                questState = QuestState.MissingIngredients;
-            }
+        if (!loaded) {
+            completeButton.gameObject.SetActive(true);
+
+            completeButton.onClick.AddListener(() => {
+                bool success = inventory.TryTakeOutItem(activeQuest.requiredPotion);
+                if (success) {
+                    questState = QuestState.Complete;
+
+                    Invoke("GiveReward", 2.0f);
+                } else {
+                    questState = QuestState.MissingIngredients;
+                }
+
+                completeButton.gameObject.SetActive(false);
+                completeButton.onClick.RemoveAllListeners();
+            });
         }
-    }
-
-    StoredItem CheckInventory(List<StoredItem> ingredients, string potionName) {
-        foreach (StoredItem ingredient in ingredients) {
-            if (ingredient.Details.CommonName == potionName) {
-                return ingredient;
-            }
-        }
-
-        return null;
     }
 
     // first screen when seeing quest
@@ -153,7 +166,6 @@ public class QuestManager : MonoBehaviour, IGUIScreen
 
         if(ToggleUI())
         {
-            Debug.Log("quest initiated!");
             questState = QuestState.Initiate;
 
             quest = npcQuest;
@@ -169,14 +181,6 @@ public class QuestManager : MonoBehaviour, IGUIScreen
         {
             // Tell UIController to activate this UI
             bool succeeded = UIController.Instance.ActivateQuestManager();
-            if(succeeded)
-            {
-                // We successfully activated the UI.
-            } else
-            {
-                // The UI could not be activated (something else is probably open already)
-            }
-
             return succeeded;
         } else
         {
@@ -201,6 +205,7 @@ public class QuestManager : MonoBehaviour, IGUIScreen
     public void activateGUI()
     {
         showGUI = true;
+        titleText.transform.parent.gameObject.SetActive(true);
     }
 
     public void deactivateGUI()
@@ -218,6 +223,7 @@ public class QuestManager : MonoBehaviour, IGUIScreen
             Debug.Log("how'd you get here?");
         }
 
-        deactivateGUI();
+        showGUI = false;
+        titleText.transform.parent.gameObject.SetActive(false);
     }
 }

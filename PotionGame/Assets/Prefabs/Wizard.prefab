@@ -351,6 +351,11 @@ MonoBehaviour:
 
     Come back when you
     do!'
+  titleText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  acceptButton: {fileID: 0}
+  rejectButton: {fileID: 0}
+  completeButton: {fileID: 0}
 --- !u!82 &7656101821744860944
 AudioSource:
   m_ObjectHideFlags: 0
@@ -489,6 +494,7 @@ MonoBehaviour:
   closeUIKey: 27
   inventoryKey: 101
   recipeKey: 102
+  herbariumKey: 99
 --- !u!1001 &1494892267842511148
 PrefabInstance:
   m_ObjectHideFlags: 0

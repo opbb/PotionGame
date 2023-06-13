@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dfff35830ba3a94ab0cb51cab691c4d, type: 3}
+  m_Name: PhilterOfLove
+  m_EditorClassIdentifier: 
+  recipeName: Philter of Love
+  brewingTime: 8
+  requiredIngredients:
+  - Details: {fileID: 11400000, guid: dff6d5d5b28ab584b8f460e0936cd178, type: 2}
+  - Details: {fileID: 11400000, guid: 35256129840900c49a694f741bf1ae92, type: 2}
+  - Details: {fileID: 11400000, guid: 01e69059ecf07ec40a2019a1bdf0b732, type: 2}
+  resultingItem:
+    Details: {fileID: 11400000, guid: 4022fe83759743842a9be9594f7495d2, type: 2}

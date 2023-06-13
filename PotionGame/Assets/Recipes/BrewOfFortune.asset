@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dfff35830ba3a94ab0cb51cab691c4d, type: 3}
+  m_Name: BrewOfFortune
+  m_EditorClassIdentifier: 
+  recipeName: Brew Of Fortune
+  brewingTime: 2
+  requiredIngredients:
+  - Details: {fileID: 11400000, guid: ff16e668a1428924c991404e333b5b30, type: 2}
+  - Details: {fileID: 11400000, guid: a55140c62febd9543bebae4bcb8b8615, type: 2}
+  - Details: {fileID: 11400000, guid: 01e69059ecf07ec40a2019a1bdf0b732, type: 2}
+  resultingItem:
+    Details: {fileID: 11400000, guid: 2456a521f0570254c9a0556754490f97, type: 2}

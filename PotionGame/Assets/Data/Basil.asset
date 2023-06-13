@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
+  m_Name: Basil
+  m_EditorClassIdentifier: 
+  ID: de1f0d74-e05b-47fb-8a99-ffa6afb47587
+  CommonName: Basil
+  Description: Promotes mental clarity and reduces stress.
+  Icon: {fileID: 21300000, guid: 69fa006a495ad5848bbb63d1dcbe5edc, type: 3}
+  SlotDimension:
+    Height: 1
+    Width: 1
