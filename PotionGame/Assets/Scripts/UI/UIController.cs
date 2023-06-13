@@ -167,7 +167,7 @@ public class UIController : MonoBehaviour
     {
         if (ReferenceEquals(activeScreen, playerInventory))
         {
-            DeactivatGUIScreen();
+            DeactivateGUIScreen();
         }
     }
 
