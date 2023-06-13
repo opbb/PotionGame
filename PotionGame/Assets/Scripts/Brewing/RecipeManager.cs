@@ -180,7 +180,7 @@ public class RecipeManager : MonoBehaviour, IBrewingInteractable, IGUIScreen
     private void StartBrewingPotion(Recipe recipe)
     {
         // Hide the crafting buttons
-        deactivateGUI();
+        UIController.Instance.DeactivateRecipeManager();
 
         // show the inventory
         inventory.OpenInventoryWithItem(recipe.resultingItem.Details);
