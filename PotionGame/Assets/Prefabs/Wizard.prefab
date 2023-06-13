@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964c9dc29f2e9e84a9ef028564bc0fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 200
+  mouseSensitivity: 150
   thirdPersonOffset: {x: 0, y: 4, z: -4}
   firstPersonOffset: {x: 0.142, y: 2.52, z: 0.5}
 --- !u!82 &3780947705883384049
@@ -271,11 +271,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ced37ef5e2512743b07775c073b485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
-  jumpHeight: 3
-  gravity: 9.8
+  moveSpeed: 10
+  jumpHeight: 3.5
+  gravity: 40
   airControl: 3
-  friction: 1
+  friction: 0.95
   walkingSFX: {fileID: 8300000, guid: fc32c6fd07980144996b811e5d1f2971, type: 3}
   jumpStartSFX: {fileID: 8300000, guid: 984d316ed8be3ac4da9e31768a8b1fa9, type: 3}
 --- !u!114 &7430035105156665032
@@ -491,6 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a883e937b247b5a4bb8eb68535580f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mortarAndPestle: {fileID: 0}
   closeUIKey: 27
   inventoryKey: 101
   recipeKey: 102
@@ -553,6 +554,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2a975f4d441c779449eedbec5c4e3f03, type: 3}
       propertyPath: m_Name
       value: Neutral Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8378927838121979043, guid: 2a975f4d441c779449eedbec5c4e3f03, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8378927838121979043, guid: 2a975f4d441c779449eedbec5c4e3f03, type: 3}
       propertyPath: m_IsActive
