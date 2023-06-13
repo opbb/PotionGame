@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
   m_Name: Mushroom
   m_EditorClassIdentifier: 
-  ID: a0524810-8d4b-47a9-b7ec-4540f45ce56b
+  ID: 0696cbc9-6c53-40c9-ab40-485ff7009f27
   CommonName: Mushroom
-  Description: 'Mushroom : )'
-  Icon: {fileID: 21300000, guid: de35993fbb6f649479d043e7e462b453, type: 3}
+  Description: Mushroom. Yummy?
+  Icon: {fileID: 21300000, guid: 1d0f73eecba84fa4896a363ade41b837, type: 3}
   SlotDimension:
-    Height: 1
-    Width: 1
-  afterMortarAndPestle: {fileID: 11400000, guid: 11d96ca1c0d7fbc4eb72b0c0381dce63, type: 2}
+    Height: 2
+    Width: 2
