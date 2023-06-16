@@ -47,7 +47,6 @@ public class UIController : MonoBehaviour
     void Start()
     {
         playerInventory = PlayerInventory.Instance;
-        mortarAndPestle.NestInsideInventoryLoose();
         questManager = GetComponent<QuestManager>();
         herbariumManager = Herbarium.Instance;
         questManager = GetComponent<QuestManager>();
@@ -269,5 +268,10 @@ public class UIController : MonoBehaviour
     public bool isUIActive()
     {
         return isAnyGUIActive;
+    }
+
+    public void InitialSetupMortarAndPestle()
+    {
+        mortarAndPestle.NestInsideInventoryLoose();
     }
 }

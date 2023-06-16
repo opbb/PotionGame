@@ -142,6 +142,8 @@ public sealed class PlayerInventoryView : MonoBehaviour
                     SlotDimension.Height * loadedItem.position.y));
             ConfigureInventoryItem(loadedItem, inventoryItemVisual);
         }
+
+        UIController.Instance.InitialSetupMortarAndPestle();
         DisableInventoryView();// Disable the inventory once it's loaded
     }
 
