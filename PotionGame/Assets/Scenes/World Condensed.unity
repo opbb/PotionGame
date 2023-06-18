@@ -29140,6 +29140,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 468244, guid: 2fc9030bab9f973468407234c24224e3, type: 3}
   m_PrefabInstance: {fileID: 1801497479}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1802653542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7430035103956227921, guid: 31fc6cafad9d15d4ba7d74f0e885537f, type: 3}
+  m_PrefabInstance: {fileID: 1511956477}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1802653549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802653542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 545568d0d04e8734e8c07535254b2262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  depthTextureMode: 1
+--- !u!114 &1802653550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802653542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb673dc7054839408bab92e0bc65ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalsShader: {fileID: 4800000, guid: 380378acd88467349a00f1ef12caeaae, type: 3}
 --- !u!1001 &1833412249
 PrefabInstance:
   m_ObjectHideFlags: 0
