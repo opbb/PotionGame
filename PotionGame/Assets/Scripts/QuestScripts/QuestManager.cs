@@ -46,24 +46,25 @@ public class QuestManager : MonoBehaviour, IGUIScreen
     }
 
     void Interact() {
+        print("Interacting");
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, maxInteractDistance))
         {
             if (hit.collider.gameObject.CompareTag("NPC"))
             {
-                NPCBehavior npc = hit.collider.gameObject.GetComponent<NPCBehavior>();
+                NPCNavBehavior npc = hit.collider.gameObject.GetComponent<NPCNavBehavior>();
 
                 // if player interacts with npc with active quest
                 if (npc.quest != null && activeQuest && activeQuest.questName == npc.quest.questName)
                 {
-                    questState = npc.questState;
+                    //questState = npc.questState;
                     quest = npc.quest;
 
                     ToggleUI();
                 } 
                 // if player interacts with npc, with no active quest
-                else if (npc.quest != null && npc.questState == QuestState.Initiate) 
+                else if (npc.quest != null && questState == QuestState.Initiate) 
                 {
                     InitiateQuest(npc.quest);
                 }

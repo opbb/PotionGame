@@ -20,6 +20,8 @@ public class NPCBehavior : MonoBehaviour
 
     Rigidbody rb;
     QuestManager questManager;
+    Animator anim;
+    UnityEngine.AI.NavMeshAgent agent;
 
     // Start is called before the first frame update
     void Start()
@@ -31,12 +33,16 @@ public class NPCBehavior : MonoBehaviour
 
         questManager = player.GetComponent<QuestManager>();
         rb = GetComponent<Rigidbody>();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 
         // generate random waypoints
         for (int i = 0; i < waypoints.Length; i++) {
             waypoints[i] = Random.insideUnitSphere * waypointSearchRadius + transform.position;
             waypoints[i].y = 0;
         }
+
+        anim = GetComponent<Animator>();
+        anim.SetInteger("animState", 1);
     }
 
     // Update is called once per frame
