@@ -124,7 +124,11 @@ public class ItemVisual : VisualElement
 
     private void OnMouseDownEvent(MouseDownEvent mouseEvent)
     {
-        StartDrag();
+        if (mouseEvent.button == 0) {
+            StartDrag();
+        } else if (mouseEvent.button == 1 && m_Item.effect.controllerVariable.Length > 0) {
+            ApplyEffect();
+        }
     }
 
     private void StartDrag()
@@ -132,6 +136,12 @@ public class ItemVisual : VisualElement
         m_OriginalPosition = worldBound.position - parent.worldBound.position;
         BringToFront();
         PlayerInventoryView.Instance.StartDragging(thisItem);
+    }
+
+    private void ApplyEffect()
+    {
+        PotionEffectManager.Instance.ApplyEffect(m_Item.effect);
+        PlayerInventory.Instance.TryTakeOutItem(m_Item);
     }
 
     public void MoveToGridSlot(int x, int y)
