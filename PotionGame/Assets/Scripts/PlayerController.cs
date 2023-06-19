@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
 
     private RecipeManager recipeManager;
 
+    // Stores the last position where we were grounded and above water
+    private Vector3 lastLandedPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour
         recipeManager = GetComponent<RecipeManager>();
         audioSource = GetComponent<AudioSource>();
         moveSpeedStore = moveSpeed;
+        lastLandedPos = transform.position;
     }
 
     // Update is called once per frame
@@ -74,6 +78,13 @@ public class PlayerController : MonoBehaviour
       
         if (controller.isGrounded)
         {
+            // Record our position so we can teleport back here if we enter water
+            if(!HeadUnderwaterCheck.isHeadUnderwater())
+            {
+                lastLandedPos = transform.position;
+            }
+
+
             moveDirection = input;
 
             // apply friction to slow down player
@@ -117,6 +128,12 @@ public class PlayerController : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
 
         controller.Move(moveDirection * Time.deltaTime);
+
+        // If we are in water and not under the proper potion effect, teleport us back to land.
+        if (HeadUnderwaterCheck.isHeadUnderwater() && !(PotionEffectManager.Instance.GetCurrentEffect() == "SeaStrider"))
+        {
+            transform.position = lastLandedPos;
+        }
     }
 
     public void TeleportPlayer(Vector3 position)

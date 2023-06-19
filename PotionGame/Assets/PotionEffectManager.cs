@@ -75,4 +75,15 @@ public class PotionEffectManager : MonoBehaviour
 
         potionEffectCanvas.SetActive(true);
     }
+
+    public string GetCurrentEffect()
+    {
+        if (effectActive)
+        {
+            return effectName;
+        } else
+        {
+            return "";
+        }
+    }
 }
