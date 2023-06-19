@@ -14,12 +14,15 @@ public class PlantSpawner : MonoBehaviour
     public float respawnTime = 5f;
     float respawnTimer = 0f;
 
-    Terrain terrain;
+    public Terrain terrain;
 
     // Start is called before the first frame update
     void Start()
     {
-        terrain = Terrain.activeTerrain;
+        if (terrain == null)
+        {
+            terrain = GameObject.Find("Terrain").GetComponent<Terrain>();
+        }
 
         LoadPlants();
     }
