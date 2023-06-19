@@ -62,11 +62,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SurfaceDistortion:
         m_Texture: {fileID: 2800000, guid: c53bb6b8c40b02141be3fdec5cc582e9, type: 3}
-        m_Scale: {x: 200, y: 100}
+        m_Scale: {x: 300, y: 100}
         m_Offset: {x: 0, y: 0}
     - _SurfaceNoise:
         m_Texture: {fileID: 2800000, guid: e182ac5d3b797044fb29f3fa2acc3708, type: 3}
-        m_Scale: {x: 200, y: 400}
+        m_Scale: {x: 300, y: 400}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
