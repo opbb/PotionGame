@@ -18,6 +18,7 @@ public class ItemDefinition : ScriptableObject
     private Sprite PlacementTelegraph;
     public Dimensions SlotDimension;
     public ItemDefinition afterMortarAndPestle;
+    public PotionEffect effect;
 }
 
 [Serializable]
@@ -27,4 +28,12 @@ public struct Dimensions
     public int Width;
     //Coordinate array defining what areas the item DOESNT occupy within its height and width dimensions.
     //public (int, int)[] EmptySpaces;
+}
+
+[Serializable]
+public struct PotionEffect
+{
+    public string controllerVariable;
+    public float value;
+    public float duration;
 }

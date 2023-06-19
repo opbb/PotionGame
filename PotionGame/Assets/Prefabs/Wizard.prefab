@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7430035103956227922}
   - component: {fileID: 3780947705883384049}
   - component: {fileID: 1601711442}
+  - component: {fileID: 1802653549}
+  - component: {fileID: 1802653550}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -99,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964c9dc29f2e9e84a9ef028564bc0fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 150
+  mouseSensitivity: 50
   thirdPersonOffset: {x: 0, y: 4, z: -4}
   firstPersonOffset: {x: 0.142, y: 2.52, z: 0.5}
 --- !u!82 &3780947705883384049
@@ -217,6 +219,32 @@ MonoBehaviour:
   pickupLayers:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &1802653549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7430035103956227921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 545568d0d04e8734e8c07535254b2262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  depthTextureMode: 1
+--- !u!114 &1802653550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7430035103956227921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb673dc7054839408bab92e0bc65ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalsShader: {fileID: 4800000, guid: 380378acd88467349a00f1ef12caeaae, type: 3}
 --- !u!1 &7430035105156664884
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +263,7 @@ GameObject:
   - component: {fileID: 148283268}
   - component: {fileID: 226851826}
   - component: {fileID: 8011309177378150321}
+  - component: {fileID: 226851836}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Player
@@ -478,7 +507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1fd4c967b52d04e86f8d1ade85e92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingItems: []
+  startingItems:
+  - {fileID: 11400000, guid: 1c95b84ab74af3b4a9ba4a0e71d768dc, type: 2}
 --- !u!114 &8011309177378150321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,6 +526,19 @@ MonoBehaviour:
   inventoryKey: 101
   recipeKey: 102
   herbariumKey: 99
+--- !u!114 &226851836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7430035105156664884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1e5726d4da0644889b273184541471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  potionEffectCanvas: {fileID: 0}
 --- !u!1001 &1494892267842511148
 PrefabInstance:
   m_ObjectHideFlags: 0

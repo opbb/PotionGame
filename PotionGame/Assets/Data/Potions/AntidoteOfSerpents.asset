@@ -19,3 +19,8 @@ MonoBehaviour:
   SlotDimension:
     Height: 2
     Width: 2
+  afterMortarAndPestle: {fileID: 0}
+  effect:
+    controllerVariable: jumpHeight
+    value: 20
+    duration: 20
