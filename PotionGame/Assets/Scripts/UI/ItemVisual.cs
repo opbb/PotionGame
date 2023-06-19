@@ -126,7 +126,7 @@ public class ItemVisual : VisualElement
     {
         if (mouseEvent.button == 0) {
             StartDrag();
-        } else if (mouseEvent.button == 1 && m_Item.effect != null) {
+        } else if (mouseEvent.button == 1 && m_Item.effect.controllerVariable.Length > 0) {
             ApplyEffect();
         }
     }

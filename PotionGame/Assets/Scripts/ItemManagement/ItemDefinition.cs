@@ -18,7 +18,7 @@ public class ItemDefinition : ScriptableObject
     private Sprite PlacementTelegraph;
     public Dimensions SlotDimension;
     public ItemDefinition afterMortarAndPestle;
-    public PotionEffect effect;
+    public PotionEffect effect = new PotionEffect();
 }
 
 [Serializable]

@@ -40,7 +40,6 @@ public class PotionEffectManager : MonoBehaviour
         }
 
         potionEffectText = potionEffectCanvas.transform.GetComponentInChildren<Text>();
-        Debug.Log(potionEffectCanvas);
     }
 
     // Update is called once per frame
