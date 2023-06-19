@@ -44,7 +44,7 @@ public class PlantSpawner : MonoBehaviour
     }
 
     void LoadPlant() {
-        Vector3 randomPosition = new Vector3(Random.Range(-spawnRadius, spawnRadius), 0, Random.Range(-spawnRadius, spawnRadius));
+        Vector3 randomPosition = new Vector3(Random.Range(-spawnRadius + transform.position.x, spawnRadius + transform.position.x), 0, Random.Range(-spawnRadius + transform.position.z, spawnRadius + transform.position.z));
         randomPosition.y = terrain.SampleHeight(randomPosition);
         GameObject plant = Instantiate(plants[Random.Range(0, plants.Length)], randomPosition, Quaternion.identity);
         plant.transform.parent = transform;
