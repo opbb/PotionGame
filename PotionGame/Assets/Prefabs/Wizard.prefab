@@ -359,6 +359,7 @@ MonoBehaviour:
   jumpHeight: 3.5
   gravity: 40
   airControl: 3
+  jumpGroundedTolerance: 0.3
   friction: 0.95
   walkingSFX: {fileID: 8300000, guid: fc32c6fd07980144996b811e5d1f2971, type: 3}
   jumpStartSFX: {fileID: 8300000, guid: 984d316ed8be3ac4da9e31768a8b1fa9, type: 3}
