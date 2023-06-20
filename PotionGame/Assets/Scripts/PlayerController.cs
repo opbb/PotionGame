@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 10f;
     public float gravity = 9.8f;
     public float airControl = 10f;
+    [Tooltip("The higher the tolerance, the steeper the surfaces the player can jump up.")]
+    public float jumpGroundedTolerance = -.1f;
 
     // 1 = no friction, 0 = no movement
     public float friction = 1f;
@@ -24,6 +26,9 @@ public class PlayerController : MonoBehaviour
 
     private RecipeManager recipeManager;
 
+    // Stores the last position where we were grounded and above water
+    private Vector3 lastLandedPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +36,7 @@ public class PlayerController : MonoBehaviour
         recipeManager = GetComponent<RecipeManager>();
         audioSource = GetComponent<AudioSource>();
         moveSpeedStore = moveSpeed;
+        lastLandedPos = transform.position;
     }
 
     // Update is called once per frame
@@ -74,6 +80,13 @@ public class PlayerController : MonoBehaviour
       
         if (controller.isGrounded)
         {
+            // Record our position so we can teleport back here if we enter water
+            if(!HeadUnderwaterCheck.isHeadUnderwater())
+            {
+                lastLandedPos = transform.position;
+            }
+
+
             moveDirection = input;
 
             // apply friction to slow down player
@@ -90,7 +103,7 @@ public class PlayerController : MonoBehaviour
                 audioSource.Stop();
             }
 
-            if (jump)
+            if (jump && ExpensiveIsGrounded())
             {
                 // Play jump start clip
                 audioSource.clip = jumpStartSFX;
@@ -117,6 +130,12 @@ public class PlayerController : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
 
         controller.Move(moveDirection * Time.deltaTime);
+
+        // If we are in water and not under the proper potion effect, teleport us back to land.
+        if (HeadUnderwaterCheck.isHeadUnderwater() && !(PotionEffectManager.Instance.GetCurrentEffect() == "SeaStrider"))
+        {
+            transform.position = lastLandedPos;
+        }
     }
 
     public void TeleportPlayer(Vector3 position)
@@ -125,5 +144,33 @@ public class PlayerController : MonoBehaviour
         controller.enabled = false;
         transform.position = position;
         controller.enabled = true;
+    }
+
+    private bool OnSteepSlope()
+    {
+        if (!controller.isGrounded) return false;
+
+        RaycastHit slopeHit;
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, controller.height))
+        {
+            float slopeAngle = Vector3.Angle(slopeHit.normal, Vector3.up);
+            if (slopeAngle > controller.slopeLimit) return true;
+        }
+        return false;
+    }
+
+    // Check if we're grounded using an expensive spherecast. Use sparingly
+    private bool ExpensiveIsGrounded()
+    {
+        // This method is meant to double check that we are in fact grounded, not check if we are not grounded. If char controller says we're not, we aren't.
+        if (controller.isGrounded)
+        {
+            RaycastHit hitInfo;
+            if(Physics.SphereCast(transform.position + controller.center, controller.radius - controller.skinWidth - jumpGroundedTolerance, Vector3.down, out hitInfo, (controller.height / 2)))
+            {
+                return true;
+            }
+        } 
+        return false;
     }
 }

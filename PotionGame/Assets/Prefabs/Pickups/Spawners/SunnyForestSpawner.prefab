@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1419796227779420992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1419796227779420993}
+  - component: {fileID: 1419796227779421006}
+  m_Layer: 0
+  m_Name: SunnyForestSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: de35993fbb6f649479d043e7e462b453, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1419796227779420993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419796227779420992}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 43.96, y: 0, z: 218.53}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1419796227779421006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419796227779420992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89576ec913d505246ae650e9941fdd4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plants:
+  - {fileID: 142994, guid: d6389bfdb7e456640b3a45339aac60a4, type: 3}
+  - {fileID: 185154, guid: bd797f8b461dda044840c3a0bd197fe7, type: 3}
+  - {fileID: 101696, guid: 708a09f0caf6e7f44914556a8749d5f5, type: 3}
+  - {fileID: 101696, guid: 708a09f0caf6e7f44914556a8749d5f5, type: 3}
+  - {fileID: 101680, guid: 487da53ead5d8b34f829f38dfa345485, type: 3}
+  - {fileID: 161590, guid: 238e0e53f4c46bb4788d29a24841d6f5, type: 3}
+  - {fileID: 101696, guid: 708a09f0caf6e7f44914556a8749d5f5, type: 3}
+  - {fileID: 142994, guid: d6389bfdb7e456640b3a45339aac60a4, type: 3}
+  maxPlantCount: 5
+  spawnRadius: 10
+  respawnTime: 180
+  terrain: {fileID: 0}
+  gizmoColor: {r: 0, g: 1, b: 0.009073973, a: 0.6509804}

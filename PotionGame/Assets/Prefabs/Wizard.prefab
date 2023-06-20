@@ -1,5 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &309821881032547067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1587314892314684271}
+  - component: {fileID: 7970563998809731024}
+  - component: {fileID: 4482666000874384743}
+  m_Layer: 0
+  m_Name: HeadUnderwaterCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1587314892314684271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309821881032547067}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.142, y: 0.042999983, z: -0.507}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7430035103956227920}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7970563998809731024
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309821881032547067}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &4482666000874384743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309821881032547067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb460984e17c7c42b9a03a9f0ab2b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sealevel: 0.01
 --- !u!1 &7430035103956227921
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,6 +68,8 @@ GameObject:
   - component: {fileID: 7430035103956227922}
   - component: {fileID: 3780947705883384049}
   - component: {fileID: 1601711442}
+  - component: {fileID: 1802653549}
+  - component: {fileID: 1802653550}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -32,7 +88,8 @@ Transform:
   m_LocalPosition: {x: 0.142, y: 2.527, z: 0.507}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1587314892314684271}
   m_Father: {fileID: 7430035105156665033}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -99,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964c9dc29f2e9e84a9ef028564bc0fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 150
+  mouseSensitivity: 50
   thirdPersonOffset: {x: 0, y: 4, z: -4}
   firstPersonOffset: {x: 0.142, y: 2.52, z: 0.5}
 --- !u!82 &3780947705883384049
@@ -217,6 +274,32 @@ MonoBehaviour:
   pickupLayers:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &1802653549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7430035103956227921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 545568d0d04e8734e8c07535254b2262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  depthTextureMode: 1
+--- !u!114 &1802653550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7430035103956227921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb673dc7054839408bab92e0bc65ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalsShader: {fileID: 4800000, guid: 380378acd88467349a00f1ef12caeaae, type: 3}
 --- !u!1 &7430035105156664884
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +318,7 @@ GameObject:
   - component: {fileID: 148283268}
   - component: {fileID: 226851826}
   - component: {fileID: 8011309177378150321}
+  - component: {fileID: 226851836}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Player
@@ -275,6 +359,7 @@ MonoBehaviour:
   jumpHeight: 3.5
   gravity: 40
   airControl: 3
+  jumpGroundedTolerance: 0.3
   friction: 0.95
   walkingSFX: {fileID: 8300000, guid: fc32c6fd07980144996b811e5d1f2971, type: 3}
   jumpStartSFX: {fileID: 8300000, guid: 984d316ed8be3ac4da9e31768a8b1fa9, type: 3}
@@ -478,7 +563,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1fd4c967b52d04e86f8d1ade85e92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingItems: []
+  startingItems:
+  - {fileID: 11400000, guid: 1c95b84ab74af3b4a9ba4a0e71d768dc, type: 2}
 --- !u!114 &8011309177378150321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,6 +582,19 @@ MonoBehaviour:
   inventoryKey: 101
   recipeKey: 102
   herbariumKey: 99
+--- !u!114 &226851836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7430035105156664884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1e5726d4da0644889b273184541471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  potionEffectCanvas: {fileID: 0}
 --- !u!1001 &1494892267842511148
 PrefabInstance:
   m_ObjectHideFlags: 0

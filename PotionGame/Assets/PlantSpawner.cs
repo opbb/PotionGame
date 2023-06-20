@@ -14,12 +14,16 @@ public class PlantSpawner : MonoBehaviour
     public float respawnTime = 5f;
     float respawnTimer = 0f;
 
-    Terrain terrain;
+    public Terrain terrain;
+    public Color gizmoColor;
 
     // Start is called before the first frame update
     void Start()
     {
-        terrain = Terrain.activeTerrain;
+        if (terrain == null)
+        {
+            terrain = GameObject.Find("Terrain").GetComponent<Terrain>();
+        }
 
         LoadPlants();
     }
@@ -44,8 +48,8 @@ public class PlantSpawner : MonoBehaviour
     }
 
     void LoadPlant() {
-        Vector3 randomPosition = new Vector3(Random.Range(-spawnRadius, spawnRadius), 0, Random.Range(-spawnRadius, spawnRadius));
-        randomPosition.y = terrain.SampleHeight(randomPosition);
+        Vector3 randomPosition = new Vector3(Random.Range(-spawnRadius + transform.position.x + terrain.transform.position.x, spawnRadius + transform.position.x + terrain.transform.position.x), 0, Random.Range(-spawnRadius + transform.position.z + terrain.transform.position.z, spawnRadius + transform.position.z + terrain.transform.position.z));
+        randomPosition.y = terrain.SampleHeight(randomPosition) + terrain.transform.position.y;
         GameObject plant = Instantiate(plants[Random.Range(0, plants.Length)], randomPosition, Quaternion.identity);
         plant.transform.parent = transform;
     }
@@ -60,5 +64,17 @@ public class PlantSpawner : MonoBehaviour
 
             activePlantCount = gameObject.transform.childCount;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = gizmoColor;
+        Gizmos.DrawIcon(transform.position, "mushroom_test_sprite", true);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = gizmoColor;
+        Gizmos.DrawWireSphere(transform.position, spawnRadius);
     }
 }
