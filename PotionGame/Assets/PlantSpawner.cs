@@ -15,6 +15,7 @@ public class PlantSpawner : MonoBehaviour
     float respawnTimer = 0f;
 
     public Terrain terrain;
+    public Color gizmoColor;
 
     // Start is called before the first frame update
     void Start()
@@ -63,5 +64,17 @@ public class PlantSpawner : MonoBehaviour
 
             activePlantCount = gameObject.transform.childCount;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = gizmoColor;
+        Gizmos.DrawIcon(transform.position, "mushroom_test_sprite", true);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = gizmoColor;
+        Gizmos.DrawWireSphere(transform.position, spawnRadius);
     }
 }
