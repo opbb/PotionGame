@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8174754856537368643}
   - component: {fileID: 1370495020}
   - component: {fileID: 1370495021}
-  - component: {fileID: 1370495022}
+  - component: {fileID: 2050971391}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -82,7 +82,7 @@ CapsuleCollider:
   m_Radius: 0.5133972
   m_Height: 2.0012653
   m_Direction: 1
-  m_Center: {x: 0, y: -0.1, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &8174754856537368643
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 3
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -142,7 +142,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1370495022
+--- !u!114 &2050971391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,17 +151,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1481591253879190222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 856078fad96c22643a0cf7801ebfbad4, type: 3}
+  m_Script: {fileID: 11500000, guid: 835738b0ec2a00548bf3b95bbebac593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcName: Dobby
+  dialogue: []
   quest: {fileID: 11400000, guid: 733873d7a4dff9b48af36baa49bae82e, type: 2}
   questState: 0
-  currentState: 0
   player: {fileID: 0}
-  chaseDistance: 25
-  interactDistance: 5
-  enemyEyes: {fileID: 375202595}
-  fieldOfView: 70
+  minDistance: 20
+  activateQuestDistance: 2
+  moveSpeed: 1
+  rejectCooldown: 30
+  waypoints:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  waypointSearchRadius: 15
 --- !u!1 &6703346431364293441
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1.2}
+  m_AnchoredPosition: {x: 0, y: 0.2}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4502533203337091442
@@ -411,6 +418,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9fe7f53934f4cf6419c4008c3e923149, type: 3}
       propertyPath: m_Name
       value: Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9fe7f53934f4cf6419c4008c3e923149, type: 3}
+      propertyPath: m_TagString
+      value: NPC
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: 9fe7f53934f4cf6419c4008c3e923149, type: 3}
