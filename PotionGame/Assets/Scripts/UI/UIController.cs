@@ -76,6 +76,16 @@ public class UIController : MonoBehaviour
                 // If the inventory key is pressed while it is open, close it
                 DeactivatePlayerInventory();
             }
+            else if (herbariumManager.isGUIActive() && Input.GetKeyDown(herbariumKey))
+            {
+                // If the herbarium key is pressed while it is open, close it
+                DeactivateHerbarium();
+            }
+            else if (recipeManager.isGUIActive() && Input.GetKeyDown(recipeKey))
+            {
+                // If the herbarium key is pressed while it is open, close it
+                DeactivateRecipeManager();
+            }
         }
         else
         {
@@ -161,10 +171,10 @@ public class UIController : MonoBehaviour
         return ActivateGUIScreen(herbariumManager);
     }
 
-    // Deactivates the PlayerInventory if it is the active screen.
+    // Deactivates the PlayerHerbarium if it is the active screen.
     public void DeactivateHerbarium()
     {
-        if (ReferenceEquals(activeScreen, playerInventory))
+        if (ReferenceEquals(activeScreen, herbariumManager))
         {
             DeactivateGUIScreen();
         }

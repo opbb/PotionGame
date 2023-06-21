@@ -54,6 +54,11 @@ public sealed class Herbarium : MonoBehaviour, IGUIScreen
         }
     }
 
+    void Update()
+    {
+
+    }
+
     // IGUIScreen implementation
     public bool isGUIActive()
     {
