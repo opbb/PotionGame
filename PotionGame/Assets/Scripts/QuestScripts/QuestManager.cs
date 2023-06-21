@@ -17,7 +17,7 @@ public class QuestManager : MonoBehaviour, IGUIScreen
     public Quest quest;
     public Quest activeQuest;
     public bool showGUI = false;
-    public float maxInteractDistance = 2.0f;
+    public float maxInteractDistance = 4.0f;
     public QuestState questState = QuestState.Initiate;
     public PlayerInventory inventory;
     public string missingIngredientsDialogue = "You don't have what I need!\nCome back when you do!";
@@ -46,8 +46,10 @@ public class QuestManager : MonoBehaviour, IGUIScreen
     }
 
     void Interact() {
+        print("interacting");
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
         if (Physics.Raycast(ray, out hit, maxInteractDistance))
         {
             if (hit.collider.gameObject.CompareTag("NPC"))
@@ -57,13 +59,13 @@ public class QuestManager : MonoBehaviour, IGUIScreen
                 // if player interacts with npc with active quest
                 if (npc.quest != null && activeQuest && activeQuest.questName == npc.quest.questName)
                 {
-                    questState = npc.questState;
+                    //questState = npc.questState;
                     quest = npc.quest;
 
                     ToggleUI();
                 } 
                 // if player interacts with npc, with no active quest
-                else if (npc.quest != null && npc.questState == QuestState.Initiate) 
+                else if (npc.quest != null && questState == QuestState.Initiate) 
                 {
                     InitiateQuest(npc.quest);
                 }
