@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 525176493}
-  m_IndirectSpecularColor: {r: 0.1570094, g: 0.4551212, b: 0.6094171, a: 1}
+  m_IndirectSpecularColor: {r: 0.15700936, g: 0.4551212, b: 0.6094171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -45749,6 +45749,10 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 1248
       objectReference: {fileID: 0}
+    - target: {fileID: 8428930811374188, guid: 47779e5ffe2777045a971acb50e52bf7, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: ecb74cadc9c571d408e83daa78f07f3a, type: 2}
     - target: {fileID: 8428930857262179, guid: 47779e5ffe2777045a971acb50e52bf7, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -46007,6 +46011,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 445194598}
+    - target: {fileID: 4557783121837611437, guid: a697285c8d3cf1647a9bc4f793790de0, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 64e963948a8590942b5439c4fa30d1ff, type: 2}
     - target: {fileID: 4557783121945116802, guid: a697285c8d3cf1647a9bc4f793790de0, type: 3}
       propertyPath: portal
       value: 
