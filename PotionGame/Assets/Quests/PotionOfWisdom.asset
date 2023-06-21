@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7e800534f0f304ab35bed16301c1ea, type: 3}
   m_Name: PotionOfWisdom
   m_EditorClassIdentifier: 
-  questName: Tonic of Clarity
-  requiredPotion: {fileID: 11400000, guid: d7e0bbaf79b56f3468aac3aea8c34188, type: 2}
-  rewardItem: {fileID: 11400000, guid: aebf8027f9093d74fb40c69ab84a3bd9, type: 2}
-  questDialogue: I have been super forgettful and confused these days. Yesterday
-    I accidentally put my house keys in my coffee and choked. Can you brew me a Tonic
-    of Clarity to set my mind straight?
-  questCompleteDialogue: You're a life saver!
-  questAcceptDialogue: Hurry if you can, I'm a danger to myself.
-  questRejectDialogue: I'll need to find another way to keep track of my belongings.
-  questInProgressDialogue: Could I have that tonic I requested soon? I forget what
-    it's called already...
+  questName: Potion of Wisdom
+  requiredPotion: {fileID: 11400000, guid: c0a472829abaf524ba1f512509f92844, type: 2}
+  rewardItem: {fileID: 11400000, guid: b290194235cb6984c9cc6d4653b01849, type: 2}
+  questDialogue: I really want this promotion at my job, and I think you're the only
+    person who can help me get it. Could you make me a Potion of Wisdom?
+  questCompleteDialogue: I promise I'll get that promotion and wont let you down!
+  questAcceptDialogue: I think this is the missing piece to my pay raise.
+  questRejectDialogue: I'll have to look for another method to get that promotion.
+  questInProgressDialogue: Can I ask how my potion's doing? I'm eager to get that
+    job.
