@@ -347,7 +347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5546232285719953471, guid: 007021e33f30bc44da52613602b1dd58, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 007021e33f30bc44da52613602b1dd58, type: 3}
@@ -361,6 +361,10 @@ PrefabInstance:
     - target: {fileID: 4318182520914151378, guid: 74c99676035eb0f469c253cc9efc8317, type: 3}
       propertyPath: m_Name
       value: Herbarium
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318182520914151378, guid: 74c99676035eb0f469c253cc9efc8317, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4318182520914151406, guid: 74c99676035eb0f469c253cc9efc8317, type: 3}
       propertyPath: m_Pivot.x
@@ -996,6 +1000,42 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 411026770}
+    - target: {fileID: 92601030084668252, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_fontSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 92601030084668252, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 92601030084668252, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 678111678683551270, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 678111678683551270, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 678111678683551270, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778936367011809330, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778936367011809330, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778936367011809330, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2355497783116937856, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
       propertyPath: m_Name
       value: Brewing
@@ -1083,6 +1123,66 @@ PrefabInstance:
     - target: {fileID: 2355497783116937868, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806467102428723594, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_fontSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806467102428723594, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806467102428723594, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6059660853271677321, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6059660853271677321, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6059660853271677321, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809275400548800182, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809275400548800182, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809275400548800182, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197345179247077938, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_fontSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197345179247077938, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197345179247077938, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466759967070885048, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_fontSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466759967070885048, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466759967070885048, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
