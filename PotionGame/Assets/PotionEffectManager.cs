@@ -67,8 +67,12 @@ public class PotionEffectManager : MonoBehaviour
     public void ApplyEffect(PotionEffect effect)
     {
         var field = controller.GetType().GetField(effect.controllerVariable);
-        originalValue = (float)field.GetValue(controller);
-        field.SetValue(controller, originalValue + effect.value);
+
+        if (field != null) {
+            originalValue = (float)field.GetValue(controller);
+            field.SetValue(controller, originalValue + effect.value);
+        }
+
         effectActive = true;
         effectDuration = effect.duration;
         effectName = effect.controllerVariable;

@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         moveSpeedStore = moveSpeed;
         lastLandedPos = transform.position;
+
+        SetOrLoadPrefs(true);
     }
 
     // Update is called once per frame
@@ -172,5 +174,25 @@ public class PlayerController : MonoBehaviour
             }
         } 
         return false;
+    }
+
+    private void SetOrLoadPrefs(bool flag = false) {
+        if (flag) {
+            transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), PlayerPrefs.GetFloat("PlayerZ"));
+            transform.rotation = Quaternion.Euler(PlayerPrefs.GetFloat("PlayerRotX"), PlayerPrefs.GetFloat("PlayerRotY"), PlayerPrefs.GetFloat("PlayerRotZ"));
+        }
+        else {
+            PlayerPrefs.SetFloat("PlayerX", transform.position.x);
+            PlayerPrefs.SetFloat("PlayerY", transform.position.y);
+            PlayerPrefs.SetFloat("PlayerZ", transform.position.z);
+
+            PlayerPrefs.SetFloat("PlayerRotX", transform.rotation.x);
+            PlayerPrefs.SetFloat("PlayerRotY", transform.rotation.y);
+            PlayerPrefs.SetFloat("PlayerRotZ", transform.rotation.z);
+        }
+    }
+
+    private void OnDestroy() {
+        SetOrLoadPrefs();
     }
 }
