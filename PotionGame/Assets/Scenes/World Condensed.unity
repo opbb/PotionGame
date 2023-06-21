@@ -705,6 +705,10 @@ PrefabInstance:
       propertyPath: maxPlantCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6139206460180883868, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
+      propertyPath: spawnAtSealevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6139206460180883869, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -770,6 +774,10 @@ PrefabInstance:
     - target: {fileID: 6139206460180883868, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
       propertyPath: spawnRadius
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139206460180883868, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
+      propertyPath: spawnAtSealevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6139206460180883869, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
       propertyPath: m_RootOrder
@@ -2298,6 +2306,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139206460180883868, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
       propertyPath: maxPlantCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139206460180883868, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
+      propertyPath: spawnAtSealevel
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6139206460180883869, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
@@ -15092,6 +15104,10 @@ PrefabInstance:
       propertyPath: spawnRadius
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6139206460180883868, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
+      propertyPath: spawnAtSealevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6139206460180883869, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -22075,6 +22091,10 @@ PrefabInstance:
       propertyPath: maxPlantCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6139206460180883868, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
+      propertyPath: spawnAtSealevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6139206460180883869, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -25320,6 +25340,10 @@ PrefabInstance:
     - target: {fileID: 6139206460180883868, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
       propertyPath: spawnRadius
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139206460180883868, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
+      propertyPath: spawnAtSealevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6139206460180883869, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
       propertyPath: m_RootOrder
@@ -32944,6 +32968,10 @@ PrefabInstance:
       propertyPath: spawnRadius
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6139206460180883868, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
+      propertyPath: spawnAtSealevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6139206460180883869, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -39534,6 +39562,10 @@ PrefabInstance:
       propertyPath: maxPlantCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6139206460180883868, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
+      propertyPath: spawnAtSealevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6139206460180883869, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -43741,6 +43773,10 @@ PrefabInstance:
     - target: {fileID: 6139206460180883868, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
       propertyPath: spawnRadius
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139206460180883868, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
+      propertyPath: spawnAtSealevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6139206460180883869, guid: c299a7ddf4761a443bb565780b0a1668, type: 3}
       propertyPath: m_RootOrder
