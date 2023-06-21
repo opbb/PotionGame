@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 102568351435226489}
   - component: {fileID: 1634227216115884538}
   - component: {fileID: 1634227216115884539}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BasilPickup1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1236037453557630486
 Transform:
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1904065171741072556}
   m_LocalRotation: {x: -0.00000003774895, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: 220.42317, y: 1.596, z: 513.93695}
-  m_LocalScale: {x: 200, y: 200, z: 200}
+  m_LocalScale: {x: 400, y: 400, z: 400}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,7 +106,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904065171741072556}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.0009970904

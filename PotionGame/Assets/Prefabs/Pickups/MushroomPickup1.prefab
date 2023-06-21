@@ -13,13 +13,12 @@ GameObject:
   - component: {fileID: 2324208}
   - component: {fileID: 9184383307166381311}
   - component: {fileID: 2366212654570316193}
-  - component: {fileID: 1789173159265602893}
   m_Layer: 6
   m_Name: MushroomPickup1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &461522
 Transform:
@@ -107,20 +106,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121492}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.31381208
-  m_Center: {x: -0.0000072568655, y: 0.23834106, z: 0.00022804737}
---- !u!135 &1789173159265602893
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121492}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.31381208
