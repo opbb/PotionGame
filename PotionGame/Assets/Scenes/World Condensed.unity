@@ -39537,10 +39537,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 800686435402713569, guid: ec2c6158e753448428fa9a5590703b30, type: 3}
-      propertyPath: spawnRadius
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 800686435402713571, guid: ec2c6158e753448428fa9a5590703b30, type: 3}
       propertyPath: m_Name
       value: ShadyDrySpawner

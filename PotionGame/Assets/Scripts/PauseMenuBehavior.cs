@@ -8,10 +8,14 @@ public class PauseMenuBehavior : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject controlsMenu;
     public bool isPaused = false;
+    private UIController controller;
+    private GameObject player; 
 
     private void Start()
     {
         MouseLook.isUIActive = false;
+        player = GameObject.FindGameObjectWithTag("Player");
+        controller = player.GetComponent<UIController>();
     }
 
     // Update is called once per frame
@@ -32,7 +36,7 @@ public class PauseMenuBehavior : MonoBehaviour
 
     public void PauseGame()
     {
-        if (MouseLook.isUIActive == false)
+        if (MouseLook.isUIActive == false && !controller.isUIActive())
         {
             isPaused = true;
 

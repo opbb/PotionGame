@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plants:
-  - {fileID: 110038, guid: cc7144ff9653031498f244b1df8c8fa9, type: 3}
+  - {fileID: 110038, guid: 888a19a6a2e12e240b806f77f4d0ed07, type: 3}
   maxPlantCount: 5
-  spawnRadius: 10
+  spawnRadius: 30
   respawnTime: 180
-  terrain: {fileID: 0}
+  spawnAtSealevel: 0
   gizmoColor: {r: 0, g: 1, b: 0.009073973, a: 0.6509804}
