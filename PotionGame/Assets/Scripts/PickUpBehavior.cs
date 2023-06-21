@@ -74,7 +74,15 @@ public class PickUpBehavior : MonoBehaviour
 
     private void PickUp(GameObject pickup)
     {
-        Destroy(pickup); // Destroy the pickup
+        if (pickup.GetComponent<PickupableBehavior>().IsIndestructible())
+        {
+            pickup.GetComponent<PickupableBehavior>().OpenInventoryWith();
+        }
+        else
+        {
+            Destroy(pickup); // Destroy the pickup
+        }
+       
     }
 
     // Highlights the given pickup and unhighlights the old one.
