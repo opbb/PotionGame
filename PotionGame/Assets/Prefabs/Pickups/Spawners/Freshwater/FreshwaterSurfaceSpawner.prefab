@@ -50,5 +50,5 @@ MonoBehaviour:
   maxPlantCount: 3
   spawnRadius: 10
   respawnTime: 180
-  terrain: {fileID: 0}
+  spawnAtSealevel: 1
   gizmoColor: {r: 0, g: 1, b: 0.009073973, a: 0.6509804}
