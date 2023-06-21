@@ -11,7 +11,6 @@ public class PlayerInventory : MonoBehaviour, IGUIScreen
 {
     public static Dimensions InventoryDimensions { get; private set; }
 
-    public List<ItemDefinition> startingItems;
 
     // The number of slots in the 
     private readonly int InventoryWidthSlotCount = 7;
@@ -19,6 +18,10 @@ public class PlayerInventory : MonoBehaviour, IGUIScreen
 
     // The array representing the grid of the inventory.
     private StoredItem[,] inventory;
+
+    // Allows us to translate item definitions into strings and vice versa, used for saving
+    [SerializeField] private ItemDefinition[] allItemDefinitions;
+    private Dictionary<string, ItemDefinition> stringToItemDefMap;
 
     // A static variable allowing any script to access the inventory UI.
     [HideInInspector] public static PlayerInventory Instance;
@@ -52,6 +55,7 @@ public class PlayerInventory : MonoBehaviour, IGUIScreen
 
     private void Configure()
     {
+        ConfigureStringToItemDefMap();
         ConfigureInventoryDimensions();
         ConfigureInventoryArray();
     }
@@ -70,20 +74,24 @@ public class PlayerInventory : MonoBehaviour, IGUIScreen
         inventory = new StoredItem[InventoryWidthSlotCount, InventoryHeightSlotCount];
     }
 
+    private void ConfigureStringToItemDefMap()
+    {
+        stringToItemDefMap = new Dictionary<string, ItemDefinition>();
+        foreach(ItemDefinition itemDef in allItemDefinitions)
+        {
+            if( string.IsNullOrEmpty(itemDef.CommonName))
+            {
+                throw new InvalidOperationException("Item Definitions must have a common name.");
+            }
+
+            stringToItemDefMap.Add(itemDef.CommonName, itemDef);
+        }
+    }
 
 
     private void LoadInventory()
     {
-        foreach(ItemDefinition item in startingItems)
-        {
-            StoredItem initItem = new StoredItem();
-            initItem.Details = item;
-            bool wasAdded = AutoAddItem(initItem);
-            if(!wasAdded)
-            {
-                Debug.Log("Could not add item \"" + item.CommonName + "\" as it would not fit.");
-            }
-        }
+        LoadSavedInventoryState();
         
         if(PlayerInventoryView.Instance != null) 
         {
@@ -112,7 +120,16 @@ public class PlayerInventory : MonoBehaviour, IGUIScreen
         return false;
     }
 
-    
+
+    // =========================================
+    // ========= Save State On Destroy =========
+    // =========================================
+
+    private void OnDestroy()
+    {
+        SaveInventoryState();
+    }
+
 
     // ================================
     // ========= Safe For Use =========
@@ -372,6 +389,75 @@ public class PlayerInventory : MonoBehaviour, IGUIScreen
             x >= 0 && y >= 0 && x < PlayerInventory.InventoryDimensions.Width && y < PlayerInventory.InventoryDimensions.Height;
     }
 
+    // ======================================
+    // ========= Saving and Loading =========
+    // ======================================
+
+    private void SaveInventoryState()
+    {
+        List<StoredItem> inventoryContents = GetItemsInInventory();
+
+        foreach(StoredItem item in inventoryContents)
+        {
+            if(item == null || item.Details == null || item.position == null)
+            {
+                throw new InvalidOperationException("Incomplete object found in the inventory while attempting to save.");
+            }
+
+            PlayerPrefs.SetString(GetPlayerPrefsKeyForInvPos(item.position), item.Details.CommonName);
+        }
+    }
+
+    private void LoadSavedInventoryState()
+    {
+        for (int x = 0; x < InventoryWidthSlotCount; x++)
+        {
+            for (int y = 0; y < InventoryHeightSlotCount; y++)
+            {
+                string key = GetPlayerPrefsKeyForInvPos(new InvPos(x, y));
+                string itemName = PlayerPrefs.GetString(key, null);
+
+                Debug.Log("Name: " + itemName);
+
+                // Make sure the name we got was valid
+                if (string.IsNullOrEmpty(itemName))
+                {
+                    continue;
+                }
+
+                ItemDefinition itemDef = stringToItemDefMap.GetValueOrDefault(itemName, null);
+
+                // Make sure the name we got was valid again
+                if (itemDef == null)
+                {
+                    throw new InvalidOperationException("Stored item is not in stringToItemDefMap. Try adding it to the allItemDefinitions list.");
+                }
+
+                // Set up item
+                StoredItem initItem = new StoredItem(itemDef);
+
+                // Add to inventory
+                bool wasSuccessful = AddToInventory(new InvPos(x,y), initItem);
+
+                if(wasSuccessful)
+                {
+                    // Remove this item from player prefs
+                    PlayerPrefs.DeleteKey(key);
+                } else
+                {
+                    throw new InvalidOperationException("Couldn't add invetory item.");
+                }
+                
+            }
+        }
+    }
+
+    private string GetPlayerPrefsKeyForInvPos(InvPos pos)
+    {
+        return "playerInventory(" + pos.x + "," + pos.y + ")";
+    }
+
+
     // =============================================
     // ========= IGUIScreen Implementation =========
     // =============================================
@@ -417,6 +503,18 @@ public class PlayerInventory : MonoBehaviour, IGUIScreen
 [Serializable]
 public class StoredItem
 {
+    public StoredItem()
+    {
+        this.position = null;
+        this.Details = null;
+        this.RootVisual = null;
+    }
+
+    public StoredItem(ItemDefinition deets)
+    {
+        this.Details = deets;
+    }
+
     public PlayerInventory.InvPos position; // Should be null if the item is not in the inventory
     public ItemDefinition Details;
     public ItemVisual RootVisual;
