@@ -46,8 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plants:
   - {fileID: 107084, guid: 9ad607532c614c54ebd43e913aaf8857, type: 3}
-  - {fileID: 113636, guid: 29fa604a71af93f4ea5a436c6de8cb99, type: 3}
-  - {fileID: 157168, guid: 2fc9030bab9f973468407234c24224e3, type: 3}
   - {fileID: 157168, guid: 2fc9030bab9f973468407234c24224e3, type: 3}
   maxPlantCount: 2
   spawnRadius: 3

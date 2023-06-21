@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MouseLook : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class MouseLook : MonoBehaviour
     public static bool isUIActive; 
     public Vector3 thirdPersonOffset = new Vector3(0, 2, -2);
     public Vector3 firstPersonOffset = new Vector3(0.142f, 2.52f, 0.5f);
+
+    public Slider slider;
 
     float pitch = 0;
 
@@ -21,11 +24,14 @@ public class MouseLook : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         isUIActive = false;
+
+        slider.value = mouseSensitivity;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (!isUIActive)
         {
             float moveX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
@@ -64,5 +70,10 @@ public class MouseLook : MonoBehaviour
             transform.localPosition = thirdPersonOffset;
             transform.localRotation = Quaternion.Euler(20, 0, 0);
         }
+    }
+
+    public void ChangeSens()
+    {
+        mouseSensitivity = slider.value;
     }
 }

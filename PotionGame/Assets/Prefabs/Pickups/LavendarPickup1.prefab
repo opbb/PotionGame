@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3370670}
   - component: {fileID: 2378354}
   - component: {fileID: -7957646405898305263}
-  - component: {fileID: -187863170500522568}
+  - component: {fileID: 4740564289453893186}
   m_Layer: 6
   m_Name: LavendarPickup1
   m_TagString: Untagged
@@ -27,14 +27,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145908}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &3370670
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145908}
-  m_Mesh: {fileID: 4300000, guid: 9bae9f8720ec40445be911303b4cb908, type: 3}
+  m_Mesh: {fileID: 7273195874205770091, guid: bcd2d29f850db4844b5ad146b4cead3a, type: 3}
 --- !u!23 &2378354
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -63,7 +63,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fa8eda4ec55ee1a4e99ca991c5828dbf, type: 2}
+  - {fileID: 2100000, guid: 7690bbbfe14187749a422bd87ff8d70f, type: 2}
+  - {fileID: 2100000, guid: ffb5b2db270741841814a884db902228, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisItemDef: {fileID: 11400000, guid: 88a4f9ce0183dc04b9a68b7c008b82ae, type: 2}
---- !u!135 &-187863170500522568
-SphereCollider:
+--- !u!136 &4740564289453893186
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -108,6 +109,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.26731452
-  m_Center: {x: -0.0000003874302, y: 0.18853259, z: 0.00000008940697}
+  m_Radius: 0.0018914167
+  m_Height: 0.011161287
+  m_Direction: 2
+  m_Center: {x: -0.000026741922, y: 0.00025597558, z: 0.0048096105}
