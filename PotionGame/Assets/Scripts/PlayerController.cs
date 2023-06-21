@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
         recipeManager = GetComponent<RecipeManager>();
         audioSource = GetComponent<AudioSource>();
         moveSpeedStore = moveSpeed;
-        lastLandedPos = transform.position;
 
         SetOrLoadPrefs(true);
     }
@@ -178,10 +177,13 @@ public class PlayerController : MonoBehaviour
 
     private void SetOrLoadPrefs(bool flag = false) {
         if (flag) {
-            transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX"), PlayerPrefs.GetFloat("PlayerY"), PlayerPrefs.GetFloat("PlayerZ"));
-            transform.rotation = Quaternion.Euler(PlayerPrefs.GetFloat("PlayerRotX"), PlayerPrefs.GetFloat("PlayerRotY"), PlayerPrefs.GetFloat("PlayerRotZ"));
+            // Load Prefs
+            transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerX", transform.position.x), PlayerPrefs.GetFloat("PlayerY", transform.position.y), PlayerPrefs.GetFloat("PlayerZ", transform.position.z));
+            transform.rotation = Quaternion.Euler(PlayerPrefs.GetFloat("PlayerRotX", transform.rotation.eulerAngles.x), PlayerPrefs.GetFloat("PlayerRotY", transform.rotation.eulerAngles.y), PlayerPrefs.GetFloat("PlayerRotZ", transform.rotation.eulerAngles.z));
+            lastLandedPos = new Vector3(PlayerPrefs.GetFloat("PlayerLandedX", transform.position.x), PlayerPrefs.GetFloat("PlayerLandedY", transform.position.y), PlayerPrefs.GetFloat("PlayerLandedZ", transform.position.z));
         }
         else {
+            // Set Prefs
             PlayerPrefs.SetFloat("PlayerX", transform.position.x);
             PlayerPrefs.SetFloat("PlayerY", transform.position.y);
             PlayerPrefs.SetFloat("PlayerZ", transform.position.z);
@@ -189,6 +191,10 @@ public class PlayerController : MonoBehaviour
             PlayerPrefs.SetFloat("PlayerRotX", transform.rotation.x);
             PlayerPrefs.SetFloat("PlayerRotY", transform.rotation.y);
             PlayerPrefs.SetFloat("PlayerRotZ", transform.rotation.z);
+
+            PlayerPrefs.SetFloat("PlayerLandedX", lastLandedPos.x);
+            PlayerPrefs.SetFloat("PlayerLandedY", lastLandedPos.y);
+            PlayerPrefs.SetFloat("PlayerLandedZ", lastLandedPos.z);
         }
     }
 
