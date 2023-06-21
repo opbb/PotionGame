@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dfff35830ba3a94ab0cb51cab691c4d, type: 3}
-  m_Name: PotionOfYouthfulness
+  m_Name: PotionOfYouthfulness 1
   m_EditorClassIdentifier: 
   recipeName: Potion Of Youthfulness
   brewingTime: 2
