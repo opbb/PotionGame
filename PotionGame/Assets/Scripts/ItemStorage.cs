@@ -31,6 +31,8 @@ public class ItemStorage : MonoBehaviour
         }
 
         ToggleUI(false);
+
+        amount = PlayerPrefs.GetInt(item.name, 0);
     }
 
     // Update is called once per frame
@@ -73,7 +75,7 @@ public class ItemStorage : MonoBehaviour
     void MouseInput()
     {
         // left click to take out
-        if (Input.GetMouseButtonDown(0) && amount > 0)
+        if (Input.GetMouseButtonDown(0) && amount > 0 && !UIController.Instance.isUIActive())
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -99,6 +101,8 @@ public class ItemStorage : MonoBehaviour
                 amount++;
             }
         }
+
+        PlayerPrefs.SetInt(item.name, amount);
     }
 
     void ToggleUI(bool toggle)
