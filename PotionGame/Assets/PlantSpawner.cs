@@ -7,6 +7,7 @@ public class PlantSpawner : MonoBehaviour
     public GameObject[] plants;
 
     // The distance away from the player at which this item will deactivate all its children.
+    // This is changed by ItemLoadDistanceTriggers as you move around the map
     public static float loadDistance = 150f;
     private static Transform playerTransform;
     private static float loadedBehindCheckInterval = .05f;

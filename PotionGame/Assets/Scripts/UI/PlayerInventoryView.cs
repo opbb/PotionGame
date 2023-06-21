@@ -147,7 +147,15 @@ public sealed class PlayerInventoryView : MonoBehaviour
         DisableInventoryView();// Disable the inventory once it's loaded
     }
 
- 
+
+
+    // =================================
+    // ========= Safe Teardown =========
+    // =================================
+
+
+
+
     // ================================
     // ========= Player Input =========
     // ================================

@@ -18,7 +18,6 @@ public class ItemLoadDistanceTrigger : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            Debug.Log("entered " + gameObject.name);
             PlantSpawner.loadDistance = insideLoadDistance;
         }
     }
@@ -27,7 +26,6 @@ public class ItemLoadDistanceTrigger : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            Debug.Log("exited " + gameObject.name);
             PlantSpawner.loadDistance = outsideLoadDistance;
         }
     }
