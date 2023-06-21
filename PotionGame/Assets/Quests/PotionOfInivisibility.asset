@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7e800534f0f304ab35bed16301c1ea, type: 3}
+  m_Name: PotionOfInivisibility
+  m_EditorClassIdentifier: 
+  questName: Potion of Invisibility
+  requiredPotion: {fileID: 11400000, guid: 18e017816089cc44b810b5062328f178, type: 2}
+  rewardItem: {fileID: 11400000, guid: 05affef6a2c43af40ab1a2fccfe06e0d, type: 2}
+  questDialogue: Shhh. I want to pull a prank on my sister and sneak into her garden.
+    Could you make me a Potion of Invisibility?
+  questCompleteDialogue: Yes! I can't wait to finally get her. This is going to be
+    so good.
+  questAcceptDialogue: I want this to be a prank to remember.
+  questRejectDialogue: I'll have to find another way to get her back...
+  questInProgressDialogue: My sister's starting to get suspicious... Could I get
+    that potion soon?

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7e800534f0f304ab35bed16301c1ea, type: 3}
+  m_Name: HydrofluxPotion
+  m_EditorClassIdentifier: 
+  questName: Hydroflux Potion
+  requiredPotion: {fileID: 11400000, guid: 0e146198e031de84a97164be12dc6d0e, type: 2}
+  rewardItem: {fileID: 11400000, guid: 1ecb3f30043c3024ca266c1ae263c833, type: 2}
+  questDialogue: I never was able to learn how to swim when I was younger. I was
+    thinking lately its better to learn late than never! Could you help me out by
+    making me a Hydroflux Potion?
+  questCompleteDialogue: I am forever grateful, now I wont be confined in my home
+    out of fear!
+  questAcceptDialogue: Thank you so much, I hope this is not too much to ask for.
+    please!
+  questRejectDialogue: I understand, it is a lot to ask for.
+  questInProgressDialogue: Please hurry up that potion I ordered, just thinking about
+    the ocean makes me nervous.

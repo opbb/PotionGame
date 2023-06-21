@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7e800534f0f304ab35bed16301c1ea, type: 3}
+  m_Name: EssenceOfDreams
+  m_EditorClassIdentifier: 
+  questName: Essence of Dreams
+  requiredPotion: {fileID: 11400000, guid: ef4d0650f5ce8fb4487fc0a273a9a7c6, type: 2}
+  rewardItem: {fileID: 11400000, guid: a55140c62febd9543bebae4bcb8b8615, type: 2}
+  questDialogue: Psst. I heard you make potions and concoctions of sorts from my
+    parents. Could you make me an Essence of Dreams? Life here in the village is
+    so boring.
+  questCompleteDialogue: This is exactly what I needed! Thank you!
+  questAcceptDialogue: Yes! I'm so ready to have some excitement in my life ... for
+    once.
+  questRejectDialogue: '*Sigh* I knew nothing fun could come out of this village.'
+  questInProgressDialogue: Get that to me when you can, but keep in mind I'm practically
+    dying from boredom.

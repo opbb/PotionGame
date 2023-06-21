@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7e800534f0f304ab35bed16301c1ea, type: 3}
+  m_Name: PhilterOfLove
+  m_EditorClassIdentifier: 
+  questName: Philter of Love
+  requiredPotion: {fileID: 11400000, guid: 4022fe83759743842a9be9594f7495d2, type: 2}
+  rewardItem: {fileID: 11400000, guid: f2a6351288d832c4994a147881b69b61, type: 2}
+  questDialogue: I've had a crush on this girl since elementary school, but she has
+    no clue. Could you help me get her to finally notice me with a Philter of Love?
+  questCompleteDialogue: This means the world to me. Feel free to come to the wedding.
+  questAcceptDialogue: Can't wait to see how it works!
+  questRejectDialogue: I always knew I was bound to be single for the rest of my
+    life.
+  questInProgressDialogue: Any updates on the Philter? My parents want me to get
+    married soon.

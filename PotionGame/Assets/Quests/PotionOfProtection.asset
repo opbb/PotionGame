@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7e800534f0f304ab35bed16301c1ea, type: 3}
+  m_Name: PotionOfProtection
+  m_EditorClassIdentifier: 
+  questName: Potion of Protection
+  requiredPotion: {fileID: 11400000, guid: 553c318a8c4c4fa4e95e28fe4a387a97, type: 2}
+  rewardItem: {fileID: 11400000, guid: 4dac67f362ce6294c94e5c751f161c71, type: 2}
+  questDialogue: I have to go on a long trek for work soon, and the path to get there
+    is concerning to say the least. I would really appreciate it if you could brew
+    me a Potion of Protection.
+  questCompleteDialogue: This will make my trip so much easier!
+  questAcceptDialogue: This will really bring me some peace of mind.
+  questRejectDialogue: I've made the trip without it before, I guess I could do it
+    again...
+  questInProgressDialogue: I have to be leaving for my trip soon, please get that
+    potion to me when you can.

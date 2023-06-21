@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7e800534f0f304ab35bed16301c1ea, type: 3}
+  m_Name: PotionOfTransformation
+  m_EditorClassIdentifier: 
+  questName: Potion of Transformation
+  requiredPotion: {fileID: 11400000, guid: 0ddebf11818e38849a1ad7a1276ab3a8, type: 2}
+  rewardItem: {fileID: 11400000, guid: 37b38026af3f8714baffbedee51c4118, type: 2}
+  questDialogue: I had a dream last night that I turned into a little green tree
+    frog and frolicked happy in a swamp. Would it be possible for you to brew me
+    a Potion of Transformation?
+  questCompleteDialogue: I hope it turns out just like how my dream was last night.
+  questAcceptDialogue: I can't wait to be able to live my dream out!
+  questRejectDialogue: I guess some dreams are meant to stay dreams.
+  questInProgressDialogue: Is my potion ready yet? I can't wait to jump around in
+    a swamp.

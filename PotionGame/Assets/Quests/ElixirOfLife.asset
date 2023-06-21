@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: Elixir Of Life
   requiredPotion: {fileID: 11400000, guid: 7cd13c891b86c28408bc7ca14df80aaf, type: 2}
-  rewardItem: {fileID: 11400000, guid: aebf8027f9093d74fb40c69ab84a3bd9, type: 2}
+  rewardItem: {fileID: 11400000, guid: 2e709bf060efe7a4f932c2f39eb9c5c3, type: 2}
   questDialogue: 'My people have been seraching for the key to eternal youth an immortality.
     Can you bring me on Elixir of life? '
   questCompleteDialogue: I'm not sure this will be enough, but it's better than nothing

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac7e800534f0f304ab35bed16301c1ea, type: 3}
-  m_Name: YouthfulnessQuest
+  m_Name: PotionOfYouthfulness
   m_EditorClassIdentifier: 
-  questName: Potion Of Youthfulness
+  questName: Potion of Youthfulness
   requiredPotion: {fileID: 11400000, guid: c3c842920d6672c418e5fd73b45dec54, type: 2}
   rewardItem: {fileID: 11400000, guid: a7743fa50e12d7b4e9c16e282138a8b8, type: 2}
   questDialogue: Every day I wake up feeling older. I would do anything to feel young
@@ -20,4 +20,5 @@ MonoBehaviour:
   questCompleteDialogue: I cannot wait to try this out, thank you!
   questAcceptDialogue: Only the best please!
   questRejectDialogue: I will forever dream of being young again!
-  questInProgressDialogue: Don't forget to bring me my potion!
+  questInProgressDialogue: Don't forget to bring me my potion! I'm not getting any
+    younger here!

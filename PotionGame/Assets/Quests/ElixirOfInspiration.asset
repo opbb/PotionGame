@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7e800534f0f304ab35bed16301c1ea, type: 3}
+  m_Name: ElixirOfInspiration
+  m_EditorClassIdentifier: 
+  questName: Elixir of Inspiration
+  requiredPotion: {fileID: 11400000, guid: 37ad3f7eb2bb5a647891fd5d20594816, type: 2}
+  rewardItem: {fileID: 11400000, guid: 2cf9f09b9460153469947653ba469c3a, type: 2}
+  questDialogue: Hello there. I'm the village poet, however, I've been struggling
+    with coming up with new material. I would appreciate it a lot if you could brew
+    me an Elixir of Inspiration.
+  questCompleteDialogue: Words can not explain the amount of gratitude I have for
+    you.
+  questAcceptDialogue: I just want to be able to continue my passion for art.
+  questRejectDialogue: I'll have to deal with my writer's block another way then.
+  questInProgressDialogue: How's my elixir? Is there any hope for my poetry?

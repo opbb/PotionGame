@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7e800534f0f304ab35bed16301c1ea, type: 3}
+  m_Name: PotionOfHealing
+  m_EditorClassIdentifier: 
+  questName: Potion of Healing
+  requiredPotion: {fileID: 11400000, guid: cf5c4515cde96cf4bbef90a657db6e56, type: 2}
+  rewardItem: {fileID: 11400000, guid: 88a4f9ce0183dc04b9a68b7c008b82ae, type: 2}
+  questDialogue: My child hurt themselves the other day while climbing a rock wall.
+    We don't have any bandages on us at the moment, so could you please make us a
+    Potion of Healing?
+  questCompleteDialogue: You're a huge help! Thank you.
+  questAcceptDialogue: Nothing too crazy, just need to help out a scraped knee.
+  questRejectDialogue: I'll have to run to the market to purchase some bandages and
+    antibiotics I suppose.
+  questInProgressDialogue: Do you have my potion yet? My child is complaining about
+    the pain.

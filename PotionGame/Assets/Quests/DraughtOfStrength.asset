@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7e800534f0f304ab35bed16301c1ea, type: 3}
+  m_Name: DraughtOfStrength
+  m_EditorClassIdentifier: 
+  questName: DraughtOfStrength
+  requiredPotion: {fileID: 11400000, guid: c3d38fa536defaf49aeea6e68b0a4d5f, type: 2}
+  rewardItem: {fileID: 11400000, guid: c47b456f1375b3346a100fbfa3febb7c, type: 2}
+  questDialogue: 'I''m moving into a new home soon and will need some help moving
+    my belongings in and out. Could you brew me up a Draught of Strength? '
+  questCompleteDialogue: This will save my family so much time and money. Thank you!
+  questAcceptDialogue: Being able to move boxes without outside help would be beneficial.
+  questRejectDialogue: I'll have to call the movers then.
+  questInProgressDialogue: When do you think you'll have that draught done by? Our
+    move-out date is soon.

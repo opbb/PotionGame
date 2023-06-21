@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7e800534f0f304ab35bed16301c1ea, type: 3}
+  m_Name: BrewOfTranquility
+  m_EditorClassIdentifier: 
+  questName: Brew of Tranquility
+  requiredPotion: {fileID: 11400000, guid: a1c5ab04774346042b2ac1f327890f72, type: 2}
+  rewardItem: {fileID: 11400000, guid: ff16e668a1428924c991404e333b5b30, type: 2}
+  questDialogue: People are always running around and yelling back at my house. Is
+    there anything you could give me to help calm them down. Perhaps a Brew of Tranquility?
+  questCompleteDialogue: I can't want to have peace in my house again. Thank you.
+  questAcceptDialogue: I would love just like 5 seconds of silence.
+  questRejectDialogue: I suppose this is my life now. Forever.
+  questInProgressDialogue: How's my brew? I can only tolerate the noise in my house
+    for so much longer.
