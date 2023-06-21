@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1370495020}
   - component: {fileID: 1370495021}
   - component: {fileID: 2050971391}
+  - component: {fileID: 4136143664971579303}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -169,6 +170,19 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   waypointSearchRadius: 15
+--- !u!114 &4136143664971579303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481591253879190222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7c6d6254f06e5478cd6b063f757f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wall: {fileID: 0}
 --- !u!1 &6703346431364293441
 GameObject:
   m_ObjectHideFlags: 0
