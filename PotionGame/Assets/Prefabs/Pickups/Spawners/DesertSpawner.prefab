@@ -46,11 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plants:
   - {fileID: 145914, guid: d7a915fb0c1dc1b4dab87d1268965a0e, type: 3}
-  - {fileID: 145914, guid: d7a915fb0c1dc1b4dab87d1268965a0e, type: 3}
-  - {fileID: 154980, guid: 242d0b03090e28646991b4519bb2f151, type: 3}
-  - {fileID: 168714, guid: 999200afe6b45cc4da2c0bda41570269, type: 3}
   - {fileID: 145908, guid: 46c53497e3001f54a99bbdccd3d1a96f, type: 3}
-  - {fileID: 145908, guid: 46c53497e3001f54a99bbdccd3d1a96f, type: 3}
+  - {fileID: 1904065171741072556, guid: 4242d1e6f7922b04c93157927db688d4, type: 3}
   maxPlantCount: 5
   spawnRadius: 10
   respawnTime: 180

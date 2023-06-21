@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plants:
-  - {fileID: 128762, guid: 9afff6499b68a0e49a880ea03cce605f, type: 3}
-  - {fileID: 144238, guid: e56f1fbea0219724398a7942c07f3618, type: 3}
+  - {fileID: 6201240827994905430, guid: c0d2ff902b7acad4794281a754c63cef, type: 3}
+  - {fileID: 6201240827994905430, guid: c0d2ff902b7acad4794281a754c63cef, type: 3}
   - {fileID: 150346, guid: 160967ba76f9fb64980281b24fd0dbb0, type: 3}
   - {fileID: 161528, guid: 8f3253cb70543aa46b0b8912fa09f8a3, type: 3}
   maxPlantCount: 5
