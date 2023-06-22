@@ -417,8 +417,6 @@ public class PlayerInventory : MonoBehaviour, IGUIScreen
                 string key = GetPlayerPrefsKeyForInvPos(new InvPos(x, y));
                 string itemName = PlayerPrefs.GetString(key, null);
 
-                Debug.Log("Name: " + itemName);
-
                 // Make sure the name we got was valid
                 if (string.IsNullOrEmpty(itemName))
                 {

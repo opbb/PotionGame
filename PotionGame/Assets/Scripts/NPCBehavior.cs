@@ -42,15 +42,24 @@ public class NPCBehavior : MonoBehaviour
         }
 
         anim.SetInteger("animState", 0);
+
+        GetQuestStateFromPrefs();
+
+        if (questState != QuestState.Initiate)
+        {
+            questManager.activeQuest = quest;
+            questManager.questState = questState;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         // if this NPC's quest is active, update quest state to match quest manager
-        if (questManager.activeQuest != null && questManager.activeQuest.questName == quest.questName)
+        if (questManager.activeQuest != null && questManager.activeQuest.questName == quest.questName && questState != questManager.questState)
         {
             questState = questManager.questState;
+            SetQuestStateToPrefs();
         }
 
         if (questState != QuestState.Initiate)
@@ -110,5 +119,57 @@ public class NPCBehavior : MonoBehaviour
             anim.SetInteger("animState", 1);
             agent.SetDestination(player.transform.position);
         }
+    }
+
+    void GetQuestStateFromPrefs() {
+        int state = PlayerPrefs.GetInt(quest.questName, 0);
+
+        switch(state) {
+            case 0:
+                questState = QuestState.Initiate;
+                break;
+            case 1:
+                questState = QuestState.InProgress;
+                break;
+            case 2:
+                questState = QuestState.Complete;
+                break;
+            case 3:
+                questState = QuestState.Reject;
+                break;
+            default:
+                questState = QuestState.Initiate;
+                break;
+        }
+    }
+
+    void SetQuestStateToPrefs() {
+        int state = 0;
+
+        switch(questState) {
+            case QuestState.Initiate:
+                state = 0;
+                break;
+            case QuestState.InProgress:
+                state = 1;
+                break;
+            case QuestState.MissingIngredients:
+                state = 1;
+                break;
+            case QuestState.Accept:
+                state = 1;
+                break;
+            case QuestState.Complete:
+                state = 2;
+                break;
+            case QuestState.Reject:
+                state = 3;
+                break;
+            default:
+                state = 0;
+                break;
+        }
+
+        PlayerPrefs.SetInt(quest.questName, state);
     }
 }
