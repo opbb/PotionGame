@@ -14,8 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: cc63ab88-d6fe-42ca-b0f3-3421d3af1b2d
   CommonName: Chamomile
-  Description: Calming or sleep aid.
+  Description: Calming or sleep aid. Grows well in shady, well-drained soil.
   Icon: {fileID: 21300000, guid: 08f55645fc672394eb68180a391e2544, type: 3}
   SlotDimension:
     Height: 1
     Width: 1
+  afterMortarAndPestle: {fileID: 0}
+  effect:
+    controllerVariable: 
+    value: 0
+    duration: 0

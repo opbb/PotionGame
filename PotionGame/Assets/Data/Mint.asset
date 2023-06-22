@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 089a7744-4d55-4679-879b-47d1cd03a32a
   CommonName: Mint
-  Description: Known for its refreshing and energizing effects.
+  Description: Known for its refreshing and energizing effects. Grows in moist soil,
+    like the banks of rivers.
   Icon: {fileID: 21300000, guid: ad56880055994b542aaf1ffd717ea2f0, type: 3}
   SlotDimension:
     Height: 1
     Width: 1
+  afterMortarAndPestle: {fileID: 0}
+  effect:
+    controllerVariable: 
+    value: 0
+    duration: 0

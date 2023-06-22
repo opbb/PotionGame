@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0696cbc9-6c53-40c9-ab40-485ff7009f27
   CommonName: Yarrow
-  Description: Protection and divination
+  Description: Protection and divination. Grows abundantly in grasslands and open
+    forests.
   Icon: {fileID: 21300000, guid: b12f7f3b39509134288ed216bed8b2ac, type: 3}
   SlotDimension:
     Height: 3
     Width: 2
+  afterMortarAndPestle: {fileID: 0}
+  effect:
+    controllerVariable: 
+    value: 0
+    duration: 0

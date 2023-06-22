@@ -15,8 +15,13 @@ MonoBehaviour:
   ID: 79a78313-2833-4591-8898-8106598d7548
   CommonName: Lily
   Description: Enhancing psychic abilities, promoting purity, and attracting positive
-    energies
+    energies. Grow in forested, mountainous areas.
   Icon: {fileID: 21300000, guid: ef73a3c623c8a0d49a4e614a813bb151, type: 3}
   SlotDimension:
     Height: 2
     Width: 1
+  afterMortarAndPestle: {fileID: 0}
+  effect:
+    controllerVariable: 
+    value: 0
+    duration: 0

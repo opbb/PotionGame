@@ -14,8 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: de1f0d74-e05b-47fb-8a99-ffa6afb47587
   CommonName: Basil
-  Description: Promotes mental clarity and reduces stress.
+  Description: Promotes mental clarity and reduces stress. Likes hot, dry conditions.
   Icon: {fileID: 21300000, guid: 69fa006a495ad5848bbb63d1dcbe5edc, type: 3}
   SlotDimension:
     Height: 1
     Width: 1
+  afterMortarAndPestle: {fileID: 0}
+  effect:
+    controllerVariable: 
+    value: 0
+    duration: 0

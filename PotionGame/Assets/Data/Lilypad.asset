@@ -15,8 +15,13 @@ MonoBehaviour:
   ID: 79a78313-2833-4591-8898-8106598d7548
   CommonName: Lilypad
   Description: Enhancing psychic abilities, promoting purity, and attracting positive
-    energies
+    energies. Found floating in fresh water.
   Icon: {fileID: 21300000, guid: 59ff8661bbada0f46b71d0887e2cf540, type: 3}
   SlotDimension:
     Height: 2
     Width: 1
+  afterMortarAndPestle: {fileID: 0}
+  effect:
+    controllerVariable: 
+    value: 0
+    duration: 0
