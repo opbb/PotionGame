@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
   m_Name: Rosemary
   m_EditorClassIdentifier: 
-  ID: 14e1ca63-fd08-4758-af6f-796523be0e3d
+  ID: 017
   CommonName: Rosemary
   Description: Often used for memory enhancement and mental clarity. Grows in forested
     areas with full sun.

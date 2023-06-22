@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
   m_Name: Dandelion
   m_EditorClassIdentifier: 
-  ID: 2497a35f-9709-42c6-bd89-d7b2d4a3608a
+  ID: 002
   CommonName: Dandelion
   Description: Detoxifying, used for cleansing and purification. Loves open fields.
   Icon: {fileID: 21300000, guid: 0ee4d5caab6a07f4986ab0faf3b9245e, type: 3}

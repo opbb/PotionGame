@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
   m_Name: Marigold
   m_EditorClassIdentifier: 
-  ID: fbb95bbf-a0e7-416d-9b0c-a8d147c12f3f
+  ID: 011
   CommonName: Marigold
   Description: Protection, healing, enhancing psychic abilities. Grows in arid regions.
   Icon: {fileID: 21300000, guid: 27d96066a9160494e839ab984a95af36, type: 3}

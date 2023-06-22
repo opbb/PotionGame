@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
   m_Name: Elderberry
   m_EditorClassIdentifier: 
-  ID: a0524810-8d4b-47a9-b7ec-4540f45ce56b
+  ID: 004
   CommonName: Elderberry
   Description: Immune boosting. Needs plenty of sun and decent soil. The local variety
     LOVES being close to the sea.

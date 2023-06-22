@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
   m_Name: PotionOfTransformation
   m_EditorClassIdentifier: 
-  ID: 00810f6f-b709-4a15-8a97-9ded53996784
+  ID: 039
   CommonName: Transformation
   Description: Causes physical or magical transformation into a different form or
     creature.
@@ -20,3 +20,8 @@ MonoBehaviour:
   SlotDimension:
     Height: 2
     Width: 2
+  afterMortarAndPestle: {fileID: 0}
+  effect:
+    controllerVariable: 
+    value: 0
+    duration: 0

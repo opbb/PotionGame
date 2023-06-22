@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
   m_Name: Mushroom
   m_EditorClassIdentifier: 
-  ID: 0696cbc9-6c53-40c9-ab40-485ff7009f27
+  ID: 013
   CommonName: Mushroom
   Description: Mushroom. Yummy? Grows in dark, damp areas, especially near decaying
     foliage.

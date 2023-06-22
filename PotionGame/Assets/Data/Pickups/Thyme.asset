@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
   m_Name: Thyme
   m_EditorClassIdentifier: 
-  ID: 0696cbc9-6c53-40c9-ab40-485ff7009f27
+  ID: 020
   CommonName: Thyme
   Description: Anti-septic and immune boosting. Grows in more difficult, hilly terrain.
   Icon: {fileID: 21300000, guid: 6c6c08fccff32994c892633b2cb3532f, type: 3}

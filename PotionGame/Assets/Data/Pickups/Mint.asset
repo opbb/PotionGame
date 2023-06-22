@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
   m_Name: Mint
   m_EditorClassIdentifier: 
-  ID: 089a7744-4d55-4679-879b-47d1cd03a32a
+  ID: 012
   CommonName: Mint
   Description: Known for its refreshing and energizing effects. Grows in moist soil,
     like the banks of rivers.

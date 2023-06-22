@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
   m_Name: HydrofluxPotion
   m_EditorClassIdentifier: 
-  ID: 00810f6f-b709-4a15-8a97-9ded53996784
+  ID: 032
   CommonName: WaterBreathing
   Description: Grants the consumer the privledge to explore the depths of water without
     worrying about oxygen.
