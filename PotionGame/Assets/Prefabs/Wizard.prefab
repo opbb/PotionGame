@@ -607,6 +607,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c0a472829abaf524ba1f512509f92844, type: 2}
   - {fileID: 11400000, guid: c3c842920d6672c418e5fd73b45dec54, type: 2}
   - {fileID: 11400000, guid: d7e0bbaf79b56f3468aac3aea8c34188, type: 2}
+  - {fileID: 11400000, guid: 6693433ff7e5b2744a9f3695b4648a76, type: 2}
 --- !u!114 &8011309177378150321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,7 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mortarAndPestle: {fileID: 0}
-  closeUIKey: 27
+  closeUIKey: 9
   inventoryKey: 101
   recipeKey: 102
   herbariumKey: 99

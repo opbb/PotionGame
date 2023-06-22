@@ -19,7 +19,7 @@ MonoBehaviour:
   SlotDimension:
     Height: 2
     Width: 1
-  afterMortarAndPestle: {fileID: 0}
+  afterMortarAndPestle: {fileID: 11400000, guid: a4875b03b8dd35342abc01eb37d3148e, type: 2}
   effect:
     controllerVariable: 
     value: 0
