@@ -7,6 +7,7 @@ public class MainMenuBehavior : MonoBehaviour
 {
     public void StartGame()
     {
+        PlayerController.isUIActive = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene("World Condensed");
     }
