@@ -24607,6 +24607,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8049053234447757770, guid: 8e72206839746944fa40e93a0026b224, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049053234447757770, guid: 8e72206839746944fa40e93a0026b224, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049053234447757770, guid: 8e72206839746944fa40e93a0026b224, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049053234447757770, guid: 8e72206839746944fa40e93a0026b224, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049053234447757773, guid: 8e72206839746944fa40e93a0026b224, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8680294130835722272, guid: 8e72206839746944fa40e93a0026b224, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e72206839746944fa40e93a0026b224, type: 3}
 --- !u!224 &1232139314 stripped
