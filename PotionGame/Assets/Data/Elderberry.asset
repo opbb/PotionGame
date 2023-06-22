@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: a0524810-8d4b-47a9-b7ec-4540f45ce56b
   CommonName: Elderberry
-  Description: Immune boosting.
+  Description: Immune boosting. Needs plenty of sun and decent soil. The local variety
+    LOVES being close to the sea.
   Icon: {fileID: 21300000, guid: cbe546e1e56040446b1ab67f0e178f04, type: 3}
   SlotDimension:
     Height: 1
     Width: 2
+  afterMortarAndPestle: {fileID: 0}
+  effect:
+    controllerVariable: 
+    value: 0
+    duration: 0

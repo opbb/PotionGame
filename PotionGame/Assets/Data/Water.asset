@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0696cbc9-6c53-40c9-ab40-485ff7009f27
   CommonName: Water
-  Description: Base ingredient.
+  Description: "Base ingredient. It\u2019s nothing special, but the water in my well
+    is just fine for brewing."
   Icon: {fileID: 21300000, guid: 7e64c58173cdd0544ae97d26918b02d3, type: 3}
   SlotDimension:
     Height: 1
     Width: 1
+  afterMortarAndPestle: {fileID: 0}
+  effect:
+    controllerVariable: 
+    value: 0
+    duration: 0

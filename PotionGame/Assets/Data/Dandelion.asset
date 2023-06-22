@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 2497a35f-9709-42c6-bd89-d7b2d4a3608a
   CommonName: Dandelion
-  Description: Detoxifying, used for cleansing and purification
+  Description: Detoxifying, used for cleansing and purification. Loves open fields.
   Icon: {fileID: 21300000, guid: 0ee4d5caab6a07f4986ab0faf3b9245e, type: 3}
   SlotDimension:
     Height: 2
     Width: 1
   afterMortarAndPestle: {fileID: 11400000, guid: 11d96ca1c0d7fbc4eb72b0c0381dce63, type: 2}
+  effect:
+    controllerVariable: 
+    value: 0
+    duration: 0

@@ -14,8 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: fbb95bbf-a0e7-416d-9b0c-a8d147c12f3f
   CommonName: Marigold
-  Description: Protection, healing, enhancing psychic abilities
+  Description: Protection, healing, enhancing psychic abilities. Grows in arid regions.
   Icon: {fileID: 21300000, guid: 27d96066a9160494e839ab984a95af36, type: 3}
   SlotDimension:
     Height: 2
     Width: 1
+  afterMortarAndPestle: {fileID: 0}
+  effect:
+    controllerVariable: 
+    value: 0
+    duration: 0

@@ -14,8 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0696cbc9-6c53-40c9-ab40-485ff7009f27
   CommonName: Thyme
-  Description: Anti-septic and immune boosting
+  Description: Anti-septic and immune boosting. Grows in more difficult, hilly terrain.
   Icon: {fileID: 21300000, guid: 6c6c08fccff32994c892633b2cb3532f, type: 3}
   SlotDimension:
     Height: 2
     Width: 1
+  afterMortarAndPestle: {fileID: 0}
+  effect:
+    controllerVariable: 
+    value: 0
+    duration: 0

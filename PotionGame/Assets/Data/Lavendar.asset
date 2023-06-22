@@ -14,8 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0696cbc9-6c53-40c9-ab40-485ff7009f27
   CommonName: Lavendar
-  Description: Relaxation and stress relief
+  Description: Relaxation and stress relief. Grows in hot, sandy soil.
   Icon: {fileID: 21300000, guid: e1a21408ab627ed42a3268c8b798ede8, type: 3}
   SlotDimension:
     Height: 2
     Width: 1
+  afterMortarAndPestle: {fileID: 0}
+  effect:
+    controllerVariable: 
+    value: 0
+    duration: 0
