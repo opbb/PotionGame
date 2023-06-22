@@ -21,6 +21,6 @@ MonoBehaviour:
     Width: 2
   afterMortarAndPestle: {fileID: 0}
   effect:
-    controllerVariable: 
-    value: 0
-    duration: 0
+    controllerVariable: jumpHeight
+    value: 20
+    duration: 30

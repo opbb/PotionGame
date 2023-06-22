@@ -22,6 +22,6 @@ MonoBehaviour:
     Width: 2
   afterMortarAndPestle: {fileID: 0}
   effect:
-    controllerVariable: 
+    controllerVariable: SeaStrider
     value: 0
-    duration: 0
+    duration: 180

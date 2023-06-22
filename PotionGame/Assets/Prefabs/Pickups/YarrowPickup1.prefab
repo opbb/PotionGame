@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 368009176724216321}
   - component: {fileID: 5764261873761234602}
   - component: {fileID: 2300082335928087132}
-  - component: {fileID: 166320167625340242}
+  - component: {fileID: 7601608462229863318}
   m_Layer: 6
   m_Name: YarrowPickupActual
   m_TagString: Untagged
@@ -131,7 +131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisItemDef: {fileID: 11400000, guid: 4dac67f362ce6294c94e5c751f161c71, type: 2}
---- !u!135 &166320167625340242
+  isIndestructible: 0
+--- !u!135 &7601608462229863318
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,5 +143,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.56902826
-  m_Center: {x: 0, y: 0.51154685, z: 0}
+  m_Radius: 0.5085064
+  m_Center: {x: -0.0056046844, y: -0.12624721, z: 0.007911801}
