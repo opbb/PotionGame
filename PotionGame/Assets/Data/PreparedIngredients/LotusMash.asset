@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822d368046f75b4419cb9d2d78c9d711, type: 3}
+  m_Name: LotusMash
+  m_EditorClassIdentifier: 
+  ID: a80211aa-7d2b-4561-bb80-9879161f0a9a
+  CommonName: Lotus Mash
+  Description: I really squished it up good, huh.
+  Icon: {fileID: 21300000, guid: e47c1606c631bed42aac3e3f210be267, type: 3}
+  SlotDimension:
+    Height: 1
+    Width: 1
+  afterMortarAndPestle: {fileID: 11400000, guid: 11d96ca1c0d7fbc4eb72b0c0381dce63, type: 2}
+  effect:
+    controllerVariable: 
+    value: 0
+    duration: 0
