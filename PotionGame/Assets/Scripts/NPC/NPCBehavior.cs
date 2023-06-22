@@ -45,7 +45,7 @@ public class NPCBehavior : MonoBehaviour
 
         GetQuestStateFromPrefs();
 
-        if (questState != QuestState.Initiate)
+        if (questState != QuestState.Initiate && questState != QuestState.Complete)
         {
             questManager.activeQuest = quest;
             questManager.questState = questState;
@@ -135,7 +135,7 @@ public class NPCBehavior : MonoBehaviour
                 questState = QuestState.Complete;
                 break;
             case 3:
-                questState = QuestState.Reject;
+                questState = QuestState.Initiate;
                 break;
             default:
                 questState = QuestState.Initiate;
@@ -163,7 +163,7 @@ public class NPCBehavior : MonoBehaviour
                 state = 2;
                 break;
             case QuestState.Reject:
-                state = 3;
+                state = 0;
                 break;
             default:
                 state = 0;

@@ -48,6 +48,8 @@ public class QuestManager : MonoBehaviour, IGUIScreen
         if (activeQuest && activeQuestText.text != "Active Quest: " + activeQuest.questName)
         {
             activeQuestText.text = "Active Quest: " + activeQuest.questName;
+        } else {
+            activeQuestText.text = "";
         }
     }
 
@@ -202,6 +204,8 @@ public class QuestManager : MonoBehaviour, IGUIScreen
     void GiveReward() {
         ToggleUI(false);
         inventory.OpenInventoryWithItem(activeQuest.rewardItem);
+
+        activeQuest = null;
     }
 
 
