@@ -45,7 +45,7 @@ public class QuestManager : MonoBehaviour, IGUIScreen
             Interact();
         }
 
-        if (activeQuest && activeQuestText.text != "Active Quest: " + activeQuest.questName)
+        if (activeQuest)
         {
             activeQuestText.text = "Active Quest: " + activeQuest.questName;
         } else {
