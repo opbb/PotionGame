@@ -26,6 +26,7 @@ public class QuestManager : MonoBehaviour, IGUIScreen
     public Button acceptButton;
     public Button rejectButton;
     public Button completeButton;
+    public Text activeQuestText;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +43,11 @@ public class QuestManager : MonoBehaviour, IGUIScreen
         if (Input.GetMouseButtonDown(1) && !showGUI)
         {
             Interact();
+        }
+
+        if (activeQuest && activeQuestText.text != "Active Quest: " + activeQuest.questName)
+        {
+            activeQuestText.text = "Active Quest: " + activeQuest.questName;
         }
     }
 
@@ -117,6 +123,7 @@ public class QuestManager : MonoBehaviour, IGUIScreen
             acceptButton.onClick.AddListener(() => {
                 questState = QuestState.Accept;
                 activeQuest = quest;
+                activeQuestText.text = "Active Quest: " + activeQuest.questName;
 
                 acceptButton.gameObject.SetActive(false);
                 rejectButton.gameObject.SetActive(false);
