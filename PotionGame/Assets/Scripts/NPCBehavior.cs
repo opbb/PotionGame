@@ -112,7 +112,7 @@ public class NPCBehavior : MonoBehaviour
             questManager.InitiateQuest(quest);
             rejectTimer = rejectCooldown;
         }
-        else if (distance <= minDistance)
+        else if (distance <= minDistance && questManager.activeQuest == null)
         {
             transform.LookAt(player.transform);
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
