@@ -15,10 +15,12 @@ MonoBehaviour:
   questName: Potion of Youthfulness
   requiredPotion: {fileID: 11400000, guid: c3c842920d6672c418e5fd73b45dec54, type: 2}
   rewardItem: {fileID: 11400000, guid: a7743fa50e12d7b4e9c16e282138a8b8, type: 2}
-  questDialogue: Every day I wake up feeling older. I would do anything to feel young
-    again. Can you bring me a Potion of Youthfulness?
-  questCompleteDialogue: I cannot wait to try this out, thank you!
-  questAcceptDialogue: Only the best please!
-  questRejectDialogue: I will forever dream of being young again!
-  questInProgressDialogue: Don't forget to bring me my potion! I'm not getting any
-    younger here!
+  questDialogue: Guarding this bridge gets so tiring sometimes. Don't tell anyone,
+    but if you bring me a Potion Of Youthfulness I'll let you cross this bridge whenever
+    you want!
+  questCompleteDialogue: You kept up your side of the deal, so I will keep up mine.
+    You're free to go.
+  questAcceptDialogue: I can't wait to see how long I can stand here with that potion!
+  questRejectDialogue: I guess you'll never know what's on this island then!
+  questInProgressDialogue: Please get on that potion I ordered, I'm starting to get
+    tired standing here.

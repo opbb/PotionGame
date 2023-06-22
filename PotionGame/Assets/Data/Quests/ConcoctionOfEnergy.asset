@@ -15,10 +15,10 @@ MonoBehaviour:
   questName: Concoction of Energy
   requiredPotion: {fileID: 11400000, guid: 7d42640c320665a4e944d42924e53c5e, type: 2}
   rewardItem: {fileID: 11400000, guid: e49cb3c3755fa5848a1b1b210047cc89, type: 2}
-  questDialogue: I'm constantly running around trying to control my 3 little ones
-    and it's really draining me. Could you cook me up a Concoction of Energy?
-  questCompleteDialogue: This will help out so much, thank you.
-  questAcceptDialogue: Thank you! Now what to do with these kids while I wait...
-  questRejectDialogue: If only my husband would help me out from time to time.
-  questInProgressDialogue: Please get on that potion I ordered, these kids are killing
-    me.
+  questDialogue: These kids are so draining these days. Could you brew me a Concoction
+    of Energy to help me keep up with them?
+  questCompleteDialogue: I cannot wait to try this out, thank you!
+  questAcceptDialogue: Thank you. Now what to do with these kids while I wait.
+  questRejectDialogue: If only my wife would help.
+  questInProgressDialogue: The kids are really getting me tired. Could I  get that
+    potion soon?
