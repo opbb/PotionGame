@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 525176493}
-  m_IndirectSpecularColor: {r: 0.15700936, g: 0.4551212, b: 0.6094171, a: 1}
+  m_IndirectSpecularColor: {r: 0.1570094, g: 0.4551212, b: 0.6094171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21789,6 +21789,10 @@ PrefabInstance:
       propertyPath: npc
       value: 
       objectReference: {fileID: 1108304124}
+    - target: {fileID: 4136143664971579303, guid: 57325e4a4eb4d2d4d8f43d92b274688b, type: 3}
+      propertyPath: wall
+      value: 
+      objectReference: {fileID: 1436144390}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57325e4a4eb4d2d4d8f43d92b274688b, type: 3}
 --- !u!4 &1108304123 stripped
@@ -24519,6 +24523,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1990504628}
     m_Modifications:
+    - target: {fileID: 8049053234442513290, guid: 8e72206839746944fa40e93a0026b224, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8049053234442513294, guid: 8e72206839746944fa40e93a0026b224, type: 3}
       propertyPath: m_Name
       value: PotionEffectCanvas
@@ -24607,29 +24615,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8049053234447757770, guid: 8e72206839746944fa40e93a0026b224, type: 3}
-      propertyPath: m_Text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049053234447757770, guid: 8e72206839746944fa40e93a0026b224, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049053234447757770, guid: 8e72206839746944fa40e93a0026b224, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049053234447757770, guid: 8e72206839746944fa40e93a0026b224, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049053234447757773, guid: 8e72206839746944fa40e93a0026b224, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -100
-      objectReference: {fileID: 0}
     - target: {fileID: 8680294130835722272, guid: 8e72206839746944fa40e93a0026b224, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -40
+      value: -20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e72206839746944fa40e93a0026b224, type: 3}
@@ -29170,7 +29158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1436144391
 Transform:
   m_ObjectHideFlags: 0
@@ -30203,7 +30191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7430035105156665033, guid: 31fc6cafad9d15d4ba7d74f0e885537f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.12
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 7430035105156665033, guid: 31fc6cafad9d15d4ba7d74f0e885537f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -30717,6 +30705,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1990504628}
     m_Modifications:
+    - target: {fileID: 1453942712, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: recipes.Array.size
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453942712, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
+      propertyPath: recipes.Array.data[18]
+      value: 
+      objectReference: {fileID: 11400000, guid: 19a9825fca9e35c4590793f170536f3e, type: 2}
     - target: {fileID: 2355497783116937856, guid: 086b86e2c8c1fee49a8af284ef8bec97, type: 3}
       propertyPath: m_Name
       value: Brewing
@@ -33662,6 +33658,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4557783121100420768}
     m_Modifications:
+    - target: {fileID: 2900614341992143399, guid: 4dcabc1d1ea0b58479d11176fe408d4e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398740637065681932, guid: 4dcabc1d1ea0b58479d11176fe408d4e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6576971161094378427, guid: 4dcabc1d1ea0b58479d11176fe408d4e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390470784961498459, guid: 4dcabc1d1ea0b58479d11176fe408d4e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8390470784961498460, guid: 4dcabc1d1ea0b58479d11176fe408d4e, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -33709,6 +33721,10 @@ PrefabInstance:
     - target: {fileID: 8390470784961498462, guid: 4dcabc1d1ea0b58479d11176fe408d4e, type: 3}
       propertyPath: m_Name
       value: MortarAndPestle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390470784961498462, guid: 4dcabc1d1ea0b58479d11176fe408d4e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dcabc1d1ea0b58479d11176fe408d4e, type: 3}
